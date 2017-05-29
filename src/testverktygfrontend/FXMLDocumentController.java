@@ -6,6 +6,7 @@
 package testverktygfrontend;
 
 import com.model.User;
+import com.serverconnection.Server;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -25,7 +26,7 @@ import javax.ws.rs.core.MediaType;
  */
 public class FXMLDocumentController implements Initializable {
     
-    Client client;
+    
     
     @FXML
     private Label label;
@@ -40,14 +41,11 @@ public class FXMLDocumentController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
-        client = ClientBuilder.newClient();
-        
-        List<User> user =  client.target("http://localhost:8080/testverktygbackend/webapi/users")
-            .request(MediaType.APPLICATION_JSON).get(new GenericType<List<User>> (){});
-            
-            System.out.println(user.get(0).getEMail());
+       Server server = new Server();
+       
+       System.out.println(server.getUsers().get(0).getEMail());
+       
+       
  
             
     }    
