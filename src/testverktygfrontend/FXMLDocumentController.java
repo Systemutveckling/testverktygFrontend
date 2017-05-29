@@ -41,11 +41,13 @@ public class FXMLDocumentController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
        Server server = new Server();
        
        System.out.println(server.getUsers().get(0).getEMail());
        
-       
+
+
  
             
     }    

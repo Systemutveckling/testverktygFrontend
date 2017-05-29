@@ -11,6 +11,7 @@
     <jar href="lib/asm-all-repackaged-2.2.0-b21.jar" size="318566" download="eager" />
     <jar href="lib/cglib-2.2.0-b21.jar" size="282554" download="eager" />
     <jar href="lib/eclipselink.jar" size="8482035" download="eager" />
+    <jar href="lib/genson-1.4.jar" size="386145" download="eager" />
     <jar href="lib/guava-14.0.1.jar" size="2168963" download="eager" />
     <jar href="lib/hk2-api-2.2.0-b21.jar" size="130695" download="eager" />
     <jar href="lib/hk2-locator-2.2.0-b21.jar" size="146252" download="eager" />
@@ -31,7 +32,7 @@
     <jar href="lib/osgi-resource-locator-1.0.1.jar" size="20303" download="eager" />
     <jar href="lib/persistence-api-1.0.jar" size="53400" download="eager" />
     <jar href="lib/validation-api-1.1.0.Final.jar" size="65320" download="eager" />
-    <jar href="testverktygFrontend.jar" size="12201" download="eager" />
+    <jar href="testverktygFrontend.jar" size="12268" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="testverktygFrontend" >
     <param name="requiredFXVersion" value="8.0+"/>
