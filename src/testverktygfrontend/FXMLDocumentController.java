@@ -46,7 +46,7 @@ public class FXMLDocumentController implements Initializable {
         
         List<User> user =  client.target("http://localhost:8080/testverktygbackend/webapi/users")
             .request(MediaType.APPLICATION_JSON).get(new GenericType<List<User>> (){});
-       
+            
             System.out.println(user.get(0).getEMail());
  
             
