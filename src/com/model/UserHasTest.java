@@ -59,9 +59,9 @@ public class UserHasTest implements Serializable {
         this.isDone = isDone;
     }
 
-    public Course getCourseId() {
-        return courseId;
-    }
+//    public Course getCourseId() {
+//        return courseId;
+//    }
 
     public void setCourseId(Course courseId) {
         this.courseId = courseId;

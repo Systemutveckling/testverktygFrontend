@@ -71,7 +71,7 @@ public class User implements Serializable {
         this.authorization = authorization;
     }
 
-    @XmlTransient
+   
     public List<Course> getCourseList() {
         return courseList;
     }
