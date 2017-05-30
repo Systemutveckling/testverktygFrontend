@@ -23,7 +23,7 @@ public class Server {
     }
     
     public List<User> getUsers(){
-     List<User> user =  client.target("http://localhost:8080/testverktygbackend/webapi/users")
+     List<User> user =  client.target("http://localhost:8080/testverktygbackend2/webapi/users")
             .request(MediaType.APPLICATION_JSON).get(new GenericType<List<User>> (){});
             
             return user;
