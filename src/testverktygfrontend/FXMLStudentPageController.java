@@ -5,6 +5,7 @@
  */
 package testverktygfrontend;
 
+import com.logic.Logic;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -19,7 +20,8 @@ import javafx.scene.control.ListView;
  * @author ramonachantaf
  */
 public class FXMLStudentPageController implements Initializable {
-
+    
+    Logic logic = Logic.getInstanceOf();
     @FXML
     private Label userName;
     @FXML
@@ -36,7 +38,10 @@ public class FXMLStudentPageController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        //Sätter userName label till studentens mail
+        userName.setText(logic.getUser().getEMail());
+        
     }    
+      
     
 }

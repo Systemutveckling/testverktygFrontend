@@ -8,5 +8,13 @@
             <file>file:/Users/hampus/Desktop/testverktygFrontend/src/com/serverconnection/Server.java</file>
             <file>file:/Users/hampus/Desktop/testverktygFrontend/src/testverktygfrontend/TestverktygFrontend.java</file>
         </group>
+        <group name="NetBeansProjects">
+            <file>file:/Users/ramonachantaf/Desktop/testverktygFrontend/src/com/logic/Logic.java</file>
+            <file>file:/Users/ramonachantaf/Desktop/testverktygFrontend/src/testverktygfrontend/FXMLStudentPage.fxml</file>
+            <file>file:/Users/ramonachantaf/Desktop/testverktygFrontend/src/testverktygfrontend/FXMLDocument.fxml</file>
+            <file>file:/Users/ramonachantaf/Desktop/testverktygFrontend/src/testverktygfrontend/FXMLStudentPageController.java</file>
+            <file>file:/Users/ramonachantaf/Desktop/testverktygFrontend/src/testverktygfrontend/FXMLDocumentController.java</file>
+            <file>file:/Users/ramonachantaf/Desktop/testverktygFrontend/src/com/serverconnection/Server.java</file>
+        </group>
     </open-files>
 </project-private>
