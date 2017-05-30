@@ -14,7 +14,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.GenericType;
@@ -27,29 +29,28 @@ import javax.ws.rs.core.MediaType;
  */
 public class FXMLDocumentController implements Initializable {
     
+    Logic logic = Logic.getInstanceOf();
+    @FXML
+    private Button button;
+    @FXML
+    private TextField username;
+    @FXML
+    private TextField password;
     
     
     @FXML
-    private Label label;
+    private void loginAction(ActionEvent event) {
+        if(logic.login(username.getText(), password.getText()).getAuthorization() == 0){
+            System.out.println("Elev!");
+        } else if(logic.login(username.getText(), password.getText()).getAuthorization() == 1) {
+            System.out.println("Lärare!");
+        }  
     
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-       
-            
-            
-        label.setText("Hello World!");
     }
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-       
-       Logic.getInstanceOf().getFirstUser();
-       
-
-
- 
-            
+     
+                
     }    
     
 }

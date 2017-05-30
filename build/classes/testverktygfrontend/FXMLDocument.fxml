@@ -6,9 +6,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="292.0" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="testverktygfrontend.FXMLDocumentController">
     <children>
-        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" />
+        <Button fx:id="button" layoutX="126.0" layoutY="168.0" onAction="#loginAction" text="Log in" />
+      <TextField fx:id="username" layoutX="77.0" layoutY="54.0" />
+      <TextField fx:id="password" layoutX="77.0" layoutY="107.0" />
+      <Label layoutX="126.0" layoutY="29.0" text="Username" />
+      <Label layoutX="131.0" layoutY="90.0" text="Password" />
     </children>
 </AnchorPane>
