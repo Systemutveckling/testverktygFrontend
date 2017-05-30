@@ -20,10 +20,8 @@ public class Test implements Serializable {
  
     private Integer id;
 
-
     private String name;
-
-  
+    
     private String description;
     
     private Integer timeLimit;

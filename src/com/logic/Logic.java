@@ -5,7 +5,9 @@
  */
 package com.logic;
 
+import com.model.Test;
 import com.serverconnection.Server;
+import java.util.List;
 
 /**
  *
@@ -28,6 +30,12 @@ public class Logic {
     }
     
     public void getFirstUser(){
+       
         System.out.println(server.getUsers().get(0).getEMail());
     }
+    
+    public void saveCreatedTestToDb(Test test,List qandaList){
+        server.saveCreatedTestToDb(test, qandaList);
+    }
+    
 }

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="611.0" prefWidth="1223.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.createtest.FXMLCreateTestController">
+   <children>
+      <VBox layoutX="180.0" layoutY="83.0">
+         <children>
+            <Label text="Namn" />
+            <TextField fx:id="txtFieldTestName" prefHeight="31.0" prefWidth="402.0" promptText="namn" />
+            <Label text="Beskrivning">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin></Label>
+            <TextArea fx:id="txtAreaTestDescription" prefHeight="178.0" prefWidth="402.0" promptText="beskrivning" />
+            <HBox>
+               <children>
+                  <Label text="Tidsgräns på testet" />
+                  <Label fx:id="lblTime">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="Minuter">
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <Slider fx:id="sliderTimeLimit" max="240.0" minorTickCount="5" prefHeight="18.0" prefWidth="410.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></Slider>
+            <Label text="Ska studenten kunna se resultatet direkt?">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin></Label>
+            <RadioButton mnemonicParsing="false" selected="true" text="Ja">
+               <toggleGroup>
+                  <ToggleGroup fx:id="toggleGroupSeeResult" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton mnemonicParsing="false" text="Nej" toggleGroup="$toggleGroupSeeResult">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin></RadioButton>
+            <HBox>
+               <children>
+                  <Button fx:id="btnPreviewTest" mnemonicParsing="false" onAction="#previewTest" prefWidth="120.0" text="Granska testet" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="btnSaveTest" alignment="CENTER" mnemonicParsing="false" onAction="#saveTest" prefWidth="120.0" text="Spara testet" />
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="649.0" layoutY="83.0">
+         <children>
+            <Label fx:id="lblQuestionCount" />
+            <TextField fx:id="txtFieldQuestion" prefHeight="31.0" prefWidth="402.0" promptText="fråga" />
+            <Label text="Bild (url)">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin></Label>
+            <TextField fx:id="txtFieldImageUrl" prefHeight="31.0" prefWidth="402.0" promptText="bild" />
+            <Label text="Svarsalternativ (Markera vilket som är rätt svar)">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin></Label>
+            <VBox fx:id="vBoxAnswerAltenatives" spacing="10.0" />
+            <VBox alignment="CENTER_RIGHT" spacing="20.0">
+               <children>
+                  <HBox>
+                     <children>
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button fx:id="btnNewAnswerAltenative" alignment="CENTER" mnemonicParsing="false" onAction="#newAnswerAlternative" prefWidth="150.0" text="Nytt svarsalternativ" />
+                     </children>
+                  </HBox>
+                  <Button fx:id="btnNewQuestion" mnemonicParsing="false" onAction="#newQuestion" prefWidth="150.0" text="Ny fråga" />
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </VBox>
+         </children>
+      </VBox>
+      <Label layoutX="562.0" layoutY="36.0" text="Skapa nytt test" />
+   </children>
+</AnchorPane>
