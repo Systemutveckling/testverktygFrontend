@@ -5,6 +5,7 @@
  */
 package com.logic;
 
+import com.model.User;
 import com.serverconnection.Server;
 
 /**
@@ -16,18 +17,30 @@ public class Logic {
     
     private Server server = new Server();
     
+    User user; 
+    
     public static Logic getInstanceOf() {
         if (p == null) {
             p = new Logic();
         }
         return p;
     }
-
     private Logic() {
-
+    user = new User();
     }
     
-    public void getFirstUser(){
-        System.out.println(server.getUsers().get(0).getEMail());
+
+    public User login(String username, String password){
+        
+    User loggedInUser = server.login(username, password);
+    
+        this.user = loggedInUser;
+        
+       return loggedInUser;
     }
+    
+    public User getUser(){
+    return this.user;
+    }
+    
 }
