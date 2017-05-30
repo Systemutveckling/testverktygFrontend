@@ -5,10 +5,10 @@
  */
 package com.model;
 
-
 import com.model.User;
 import java.io.Serializable;
-
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 /**
  *
@@ -27,6 +27,19 @@ public class UserHasTest implements Serializable {
     private Test testId;
 
     private User userId;
+    private final StringProperty gradeProp = new SimpleStringProperty();
+
+    public String getGradeProp() {
+        return gradeProp.get();
+    }
+
+    public void setGradeProp(String value) {
+        gradeProp.set(value);
+    }
+
+    public StringProperty gradePropProperty() {
+        return gradeProp;
+    }
 
     public UserHasTest() {
     }
@@ -49,6 +62,7 @@ public class UserHasTest implements Serializable {
 
     public void setGrade(String grade) {
         this.grade = grade;
+        setGradeProp(grade);
     }
 
     public Short getIsDone() {
@@ -78,7 +92,6 @@ public class UserHasTest implements Serializable {
     /*public User getUserId() {
         return userId;
     }*/
-
     public void setUserId(User userId) {
         this.userId = userId;
     }
