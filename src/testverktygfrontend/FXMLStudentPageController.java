@@ -7,19 +7,24 @@ package testverktygfrontend;
 
 import com.logic.Logic;
 import com.model.Course;
-import com.model.User;
 import com.model.UserHasTest;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -69,8 +74,17 @@ public class FXMLStudentPageController implements Initializable {
         }
 
     }
-
     
+     @FXML
+    private void logOutAction(ActionEvent event) throws IOException {
+           Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+            Scene one = new Scene(root);
+            Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stg.setScene(one);
+            stg.show();
+    
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Sätter userName label till studentens mail

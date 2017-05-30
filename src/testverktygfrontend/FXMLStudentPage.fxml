@@ -101,7 +101,7 @@
          <left>
             <VBox prefHeight="516.0" prefWidth="128.0" style="-fx-background-color: #242b38;" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="logOut" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="logga ut" textAlignment="CENTER">
+                  <Button fx:id="logOut" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#logOutAction" text="logga ut" textAlignment="CENTER">
                      <VBox.margin>
                         <Insets left="30.0" right="30.0" top="460.0" />
                      </VBox.margin>
