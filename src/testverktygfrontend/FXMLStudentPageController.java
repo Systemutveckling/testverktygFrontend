@@ -7,6 +7,9 @@ package testverktygfrontend;
 
 import com.logic.Logic;
 import com.model.Course;
+import com.model.User;
+import com.model.UserHasTest;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -16,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -42,6 +46,30 @@ public class FXMLStudentPageController implements Initializable {
     
     
     ObservableList<String> courseList = FXCollections.observableArrayList();
+    ObservableList<String> testToDoList = FXCollections.observableArrayList();
+    ObservableList<String> testDoneList = FXCollections.observableArrayList();
+    
+    @FXML
+    private void listEvent(MouseEvent event) throws IOException {
+        if (!(courses.getSelectionModel().getSelectedIndex() == -1)) {
+            testToDoList.clear();
+            testDoneList.clear();
+            for (UserHasTest userTest : logic.getUser().getUserHasTestList()) {
+                if (userTest.getCourseId().getName().equals(courses.getSelectionModel().getSelectedItem())) {
+                    if (userTest.getIsDone() == 0) {
+                        testToDoList.add(userTest.getTestId().getName());
+                        testsToDo.setItems(testToDoList);
+                    } else {
+                        testDoneList.add(userTest.getTestId().getName());
+                        testsDone.setItems(testDoneList);
+
+                    }
+                }
+            }
+        }
+
+    }
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

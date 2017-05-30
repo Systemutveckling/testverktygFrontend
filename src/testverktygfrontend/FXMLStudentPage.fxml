@@ -90,7 +90,7 @@
                         <Insets left="20.0" right="20.0" top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <ListView fx:id="courses" prefHeight="328.0" prefWidth="192.0">
+                  <ListView fx:id="courses" onMouseClicked="#listEvent" prefHeight="328.0" prefWidth="192.0">
                      <VBox.margin>
                         <Insets left="20.0" right="20.0" top="10.0" />
                      </VBox.margin>

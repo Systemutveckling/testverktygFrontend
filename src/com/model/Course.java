@@ -49,7 +49,7 @@ public class Course implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
+    
     public List<User> getUserList() {
         return userList;
     }
@@ -58,7 +58,7 @@ public class Course implements Serializable {
         this.userList = userList;
     }
 
-    @XmlTransient
+    
     public List<UserHasTest> getUserHasTestList() {
         return userHasTestList;
     }
