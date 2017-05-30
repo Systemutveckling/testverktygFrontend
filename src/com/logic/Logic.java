@@ -5,17 +5,24 @@
  */
 package com.logic;
 
+import com.model.User;
+import com.model.UserHasTest;
 import com.serverconnection.Server;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author hampus
  */
 public class Logic {
+
     private static Logic p = null;
-    
+
     private Server server = new Server();
-    
+
+    User user;
+
     public static Logic getInstanceOf() {
         if (p == null) {
             p = new Logic();
@@ -24,10 +31,20 @@ public class Logic {
     }
 
     private Logic() {
+        user = new User();
+    }
 
+    public User login(String username, String password) {
+
+        User loggedInUser = server.login(username, password);
+
+        this.user = loggedInUser;
+
+        return loggedInUser;
     }
-    
-    public void getFirstUser(){
-        System.out.println(server.getUsers().get(0).getEMail());
+
+    public User getUser() {
+        return this.user;
     }
+
 }

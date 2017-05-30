@@ -9,6 +9,8 @@ import com.model.User;
 import com.model.UserHasTest;
 import java.io.Serializable;
 import java.util.List;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -21,10 +23,23 @@ public class Course implements Serializable {
     private Integer id;
 
     private String name;
-    
+
     private List<User> userList;
-    
+
     private List<UserHasTest> userHasTestList;
+    private final StringProperty nameProp = new SimpleStringProperty();
+
+    public String getNameProp() {
+        return nameProp.get();
+    }
+
+    public void setNameProp(String value) {
+        nameProp.set(value);
+    }
+
+    public StringProperty namePropProperty() {
+        return nameProp;
+    }
 
     public Course() {
     }
@@ -47,6 +62,7 @@ public class Course implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+        setNameProp(name);
     }
 
     @XmlTransient

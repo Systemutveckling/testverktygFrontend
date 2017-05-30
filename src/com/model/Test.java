@@ -7,6 +7,10 @@ package com.model;
 
 import java.io.Serializable;
 import java.util.List;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -33,7 +37,46 @@ public class Test implements Serializable {
     private List<UserHasTest> userHasTestList;
     
     private List<Question> questionList;
+    private final StringProperty nameProp = new SimpleStringProperty();
+    private final StringProperty descriptionProp = new SimpleStringProperty();
+    private final IntegerProperty timeLimitProp = new SimpleIntegerProperty();
 
+    public int getTimeLimitProp() {
+        return timeLimitProp.get();
+    }
+
+    public void setTimeLimitProp(int value) {
+        timeLimitProp.set(value);
+    }
+
+    public IntegerProperty timeLimitPropProperty() {
+        return timeLimitProp;
+    }
+    
+    public String getDescriptionProp() {
+        return descriptionProp.get();
+    }
+
+    public void setDescriptionProp(String value) {
+        descriptionProp.set(value);
+    }
+
+    public StringProperty descriptionPropProperty() {
+        return descriptionProp;
+    }
+    
+    public String getNameProp() {
+        return nameProp.get();
+    }
+
+    public void setNameProp(String value) {
+        nameProp.set(value);
+    }
+
+    public StringProperty namePropProperty() {
+        return nameProp;
+    }
+    
     public Test() {
     }
 
@@ -55,6 +98,7 @@ public class Test implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+        setNameProp(name);
     }
 
     public String getDescription() {
@@ -63,6 +107,7 @@ public class Test implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+        setDescriptionProp(description);
     }
 
     public Integer getTimeLimit() {
@@ -71,6 +116,7 @@ public class Test implements Serializable {
 
     public void setTimeLimit(Integer timeLimit) {
         this.timeLimit = timeLimit;
+        setTimeLimitProp(timeLimit);
     }
 
     public Short getSeeResult() {
