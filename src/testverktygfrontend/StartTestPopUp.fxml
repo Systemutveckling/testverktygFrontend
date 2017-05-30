@@ -14,7 +14,7 @@
          </font>
       </Label>
       <Label layoutX="152.0" layoutY="130.0" prefHeight="17.0" prefWidth="163.0" text="&quot;NAMNET PÅ PROVET&quot;" />
-      <Button layoutX="110.0" layoutY="189.0" mnemonicParsing="false" text="Starta" />
-      <Button layoutX="273.0" layoutY="189.0" mnemonicParsing="false" text="Avbryt" />
+      <Button fx:id="btnStart" layoutX="110.0" layoutY="189.0" mnemonicParsing="false" text="Starta" />
+      <Button fx:id="btnAvbryt" layoutX="273.0" layoutY="189.0" mnemonicParsing="false" text="Avbryt" />
    </children>
 </AnchorPane>
