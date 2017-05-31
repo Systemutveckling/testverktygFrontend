@@ -48,7 +48,7 @@ public class FXMLStudentPageController implements Initializable {
     @FXML
     private ListView testsDone;
     @FXML
-    private Button btnStart;
+    private Button btnStart,showTest;
 
     /**
      * Initializes the controller class.
@@ -138,6 +138,7 @@ public class FXMLStudentPageController implements Initializable {
         }
       
         btnStart.setDisable(true);
+        showTest.setDisable(true);
     }    
       
     

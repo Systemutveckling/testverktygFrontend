@@ -83,55 +83,55 @@ and open the template in the editor.
 
 .tab-pane .tab:selected
 {
-    -fx-background-color: #3c3c3c;
+    -fx-background-color: #0f3340;
 }
 
 .tab .tab-label { 
     -fx-alignment: CENTER;
-    -fx-text-fill: #e74a43;
+    -fx-text-fill: #f26a46;
     -fx-font-size: 12px;
     -fx-font-weight: bold;
 }
 
 .tab:selected .tab-label { 
     -fx-alignment: CENTER;
-    -fx-text-fill: #f2c40f;
+    -fx-text-fill: #f26a46;
 }
 
-.list-view .list-cell:even {
+.list-view .list-cell {
 -fx-background-color:#d7dbe2;
 -fx-text-fill: #3c3c3c;
 -fx-border-color: #d7dbe2;
 -fx-font-weight: bold;
  -fx-font-size: 12px;
 }
-.list-view .list-cell:odd {
+/*.list-view .list-cell:odd {
 -fx-background-color: white;
 -fx-text-fill: #3c3c3c;
 -fx-border-color: #d7dbe2;
 -fx-font-weight: bold;
  -fx-font-size: 12px;
-}
+}*/
 
 .list-view .list-cell:filled:selected {
     -fx-background-color: #5b5c5e;
      -fx-text-fill: #dbdde0;
 }
 
-#testsDone .list-cell:even {
+#testsDone .list-cell {
 -fx-background-color:#d7dbe2;
 -fx-text-fill: #4a7720;
 -fx-border-color: #d7dbe2;
 -fx-font-weight: bold;
  -fx-font-size: 12px;
 }
-#testsDone .list-cell:odd {
+/*#testsDone .list-cell:odd {
 -fx-background-color: white;
 -fx-text-fill:#4a7720;
 -fx-border-color: #d7dbe2;
 -fx-font-weight: bold;
  -fx-font-size: 12px;
-}
+}*/
 
 #courseLabelImg{
     -fx-background-image: url("all-course.png");
@@ -141,16 +141,16 @@ and open the template in the editor.
 }
 
 #btnStart{
-    -fx-background-color: #3c3c3c;
-    -fx-text-fill: #f2c40f;
+    -fx-background-color: #0f3340;
+    -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-background-radius:0;
      -fx-cursor: hand;
 }
 
 #btnStart:hover{
-    -fx-background-color: #5b5c5e;
-    -fx-text-fill: #f2c40f;
+    -fx-background-color: #0d303d;
+    -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-background-radius:0;
      -fx-cursor: hand;
@@ -177,3 +177,20 @@ and open the template in the editor.
    -fx-font-size: 22px; 
      -fx-text-fill:#b2aaaa;
 }
+
+#showTest{
+    -fx-background-color: #ea6b4f;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius:0;
+     -fx-cursor: hand;
+}
+
+#showTest:hover{
+    -fx-background-color: #c15840;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius:0;
+     -fx-cursor: hand;
+}
+

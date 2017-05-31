@@ -22,7 +22,7 @@
             <Font name="Avenir Book" size="17.0" />
          </font></Label>
       <Label layoutX="129.0" layoutY="152.0" text="Längd på provet : " />
-      <Label layoutY="-6.0" prefHeight="100.0" prefWidth="466.0" style="-fx-background-color: #3c3c3c;" textFill="#c36d6d" />
+      <Label layoutY="-6.0" prefHeight="100.0" prefWidth="466.0" style="-fx-background-color: #142f3e;" textFill="#c36d6d" />
       <Label layoutX="290.0" layoutY="152.0" text="minuter" />
       <Label fx:id="startTestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="97.0" layoutY="50.0" prefHeight="17.0" prefWidth="272.0" stylesheets="@newCascadeStyleSheet.css" text="Vill du starta provet?" textFill="#b2aaaa">
          <font>

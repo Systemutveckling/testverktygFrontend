@@ -57,7 +57,7 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <ListView fx:id="testsToDo" onMouseClicked="#getButtonAction" prefHeight="310.0" prefWidth="242.0" />
+                                    <ListView fx:id="testsToDo" onMouseClicked="#getButtonAction" prefHeight="327.0" prefWidth="242.0" />
                                  </children>
                               </AnchorPane>
                         </content>
@@ -78,7 +78,15 @@
                   </TabPane>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btnStart" mnemonicParsing="false" onAction="#startTestAction" stylesheets="@newCascadeStyleSheet.css" text="Starta test" />
+                        <Button fx:id="btnStart" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#startTestAction" stylesheets="@newCascadeStyleSheet.css" text="Starta test">
+                           <HBox.margin>
+                              <Insets left="58.0" top="10.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="showTest" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" stylesheets="@newCascadeStyleSheet.css" text="Visa test">
+                           <HBox.margin>
+                              <Insets left="20.0" top="10.0" />
+                           </HBox.margin>
+                        </Button>
                      </children>
                   </HBox>
                </children>
@@ -93,7 +101,7 @@
                   <HBox prefHeight="41.0" prefWidth="215.0">
                      <children>
                         <Label fx:id="courseLabelImg" prefHeight="44.0" prefWidth="56.0" stylesheets="@newCascadeStyleSheet.css" />
-                        <Label text="MINA KURSER" textFill="#e74a43">
+                        <Label text="MINA KURSER" textFill="#f26a46">
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
@@ -115,7 +123,7 @@
             </VBox>
          </center>
          <left>
-            <VBox prefHeight="516.0" prefWidth="128.0" style="-fx-background-color: #3c3c3c;" BorderPane.alignment="CENTER">
+            <VBox prefHeight="516.0" prefWidth="128.0" style="-fx-background-color: linear-gradient(to bottom, #ff7f50, #10374b);" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="logOut" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#logOutAction" prefHeight="44.0" prefWidth="86.0" stylesheets="@newCascadeStyleSheet.css" text="LOGGA UT" textAlignment="CENTER">
                      <VBox.margin>
