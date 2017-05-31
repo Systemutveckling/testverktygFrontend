@@ -47,7 +47,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void loginAction(ActionEvent event) throws IOException {
         if(logic.login(username.getText(), password.getText()).getAuthorization() == 0){
-            Parent root = FXMLLoader.load(getClass().getResource("FXMLStudentPage.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("studentPage/FXMLStudentPage.fxml"));
             Scene one = new Scene(root);
             Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stg.setScene(one);
