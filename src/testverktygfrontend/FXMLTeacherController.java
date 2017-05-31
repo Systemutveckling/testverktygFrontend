@@ -34,7 +34,7 @@ public class FXMLTeacherController implements Initializable {
     @FXML
     private Label användarnamn;
 
-    ObservableList<String> courses = FXCollections.observableArrayList();
+    ObservableList<Course> courses = FXCollections.observableArrayList();
     ObservableList<String> students = FXCollections.observableArrayList();
     ObservableList<String> tests = FXCollections.observableArrayList();
     ObservableList<String> testsNotDone = FXCollections.observableArrayList();
@@ -110,8 +110,8 @@ public class FXMLTeacherController implements Initializable {
         användarnamn.setText(logic.getUser().getEMail());
 
         for (Course c : logic.getUser().getCourseList()) {
-            System.out.println(c.getId());
-            courses.add(c.getName());
+            
+            courses.add(c);
         }
 
         courseListView.setItems(courses);
