@@ -99,8 +99,8 @@ public class User implements Serializable {
         this.authorization = authorization;
         setAuthorizationProp(authorization);
     }
-    
-    @XmlTransient
+
+   
     public List<Course> getCourseList() {
         return courseList;
     }
