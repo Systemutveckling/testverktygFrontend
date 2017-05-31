@@ -81,7 +81,6 @@ public class Test implements Serializable {
         this.seeResult = seeResult;
     }
 
-    @XmlTransient
     public List<UserHasTest> getUserHasTestList() {
         return userHasTestList;
     }

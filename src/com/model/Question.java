@@ -77,7 +77,6 @@ public class Question implements Serializable {
         this.testId = testId;
     }
 
-    @XmlTransient
     public List<Studentanswer> getStudentanswerList() {
         return studentanswerList;
     }
