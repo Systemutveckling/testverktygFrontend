@@ -46,5 +46,10 @@ public class Logic {
     public User getUser() {
         return this.user;
     }
+    
+    public List<UserHasTest> getUserTests(int userId){
+        return server.getUserTests(userId);
+    }
+        
 
 }

@@ -74,7 +74,7 @@ public class Course implements Serializable {
         this.userList = userList;
     }
 
-    
+    @XmlTransient
     public List<UserHasTest> getUserHasTestList() {
         return userHasTestList;
     }
