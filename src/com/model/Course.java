@@ -5,14 +5,12 @@
  */
 package com.model;
 
-import com.model.User;
-import com.model.UserHasTest;
+
 import java.io.Serializable;
 import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *

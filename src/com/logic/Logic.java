@@ -5,11 +5,9 @@
  */
 package com.logic;
 
+import com.model.Test;
 import com.model.User;
-import com.model.UserHasTest;
 import com.serverconnection.Server;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -22,6 +20,7 @@ public class Logic {
     private Server server = new Server();
 
     User user;
+    private Test test;
 
     public static Logic getInstanceOf() {
         if (p == null) {
@@ -46,5 +45,19 @@ public class Logic {
     public User getUser() {
         return this.user;
     }
+    
+    public void saveCreatedTestToDb(Test test){
+        server.saveCreatedTestToDb(test);
+    }
+
+    public Test getTest() {
+        return test;
+    }
+
+    public void setTest(Test test) {
+        this.test = test;
+    }
+    
+    
 
 }
