@@ -61,7 +61,8 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
      
-                
+              username.setText("Anna@gmail.com");    
+              password.setText("12345");
     }    
     
 }

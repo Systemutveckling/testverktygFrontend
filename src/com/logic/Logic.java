@@ -5,6 +5,7 @@
  */
 package com.logic;
 
+import com.model.Test;
 import com.model.User;
 import com.model.UserHasTest;
 import com.serverconnection.Server;
@@ -22,7 +23,8 @@ public class Logic {
     private Server server = new Server();
 
     User user;
-
+    
+    private Test test;
     public static Logic getInstanceOf() {
         if (p == null) {
             p = new Logic();
@@ -46,5 +48,11 @@ public class Logic {
     public User getUser() {
         return this.user;
     }
-
+    public void setPickedTest(Test test){
+        this.test = test;
+    }
+    
+    public Test getPickedTest(){
+        return test;
+    }
 }
