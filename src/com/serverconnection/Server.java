@@ -24,7 +24,7 @@ public class Server {
     }
     
     public List<User> getUsers(){
-     List<User> user =  client.target("http://localhost:8080/testverktygbackend2/webapi/users")
+     List<User> user =  client.target("http://localhost:8080/testverktygbackend/webapi/users")
             .request(MediaType.APPLICATION_JSON).get(new GenericType<List<User>> (){});
             
             return user;
@@ -37,7 +37,7 @@ public class Server {
         user.setPassword(password);
         
         
-        User s = client.target("http://localhost:8080/testverktygbackend2/webapi/users/login")
+        User s = client.target("http://localhost:8080/testverktygbackend/webapi/users/login")
                .request(MediaType.APPLICATION_JSON).post(Entity.json(user), User.class);
                   
         if(s.getEMail() == null){
