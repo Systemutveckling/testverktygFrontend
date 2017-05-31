@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="589.0" prefWidth="566.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.FXMLStudentPageController">
+   <children>
+      <BorderPane layoutX="152.0" layoutY="137.0" prefHeight="589.0" prefWidth="504.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox prefHeight="77.0" prefWidth="612.0" style="-fx-border-color: #848891;" BorderPane.alignment="CENTER">
+               <children>
+                  <GridPane prefHeight="88.0" prefWidth="574.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="162.0" minWidth="10.0" prefWidth="162.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="334.0" minWidth="10.0" prefWidth="287.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="MIN PROFIL " GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="60.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="STUDENT">
+                           <GridPane.margin>
+                              <Insets left="60.0" top="20.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="Apple SD Gothic Neo Regular" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="userName" prefHeight="17.0" prefWidth="199.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ImageView fitHeight="55.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+               </children>
+            </HBox>
+         </top>
+         <right>
+            <VBox prefHeight="489.0" prefWidth="257.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TabPane prefHeight="342.0" prefWidth="242.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="Tester att göra">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ListView fx:id="testsToDo" prefHeight="310.0" prefWidth="242.0" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab text="Gjorda tester">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ListView fx:id="testsDone" layoutY="-1.0" prefHeight="311.0" prefWidth="242.0" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                    </tabs>
+                     <VBox.margin>
+                        <Insets right="15.0" top="10.0" />
+                     </VBox.margin>
+                  </TabPane>
+               </children>
+            </VBox>
+         </right>
+         <center>
+            <VBox prefHeight="489.0" prefWidth="184.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <children>
+                  <Label text="MINA KURSER">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ListView fx:id="courses" onMouseClicked="#listEvent" prefHeight="328.0" prefWidth="192.0">
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" top="10.0" />
+                     </VBox.margin>
+                  </ListView>
+               </children>
+            </VBox>
+         </center>
+         <left>
+            <VBox prefHeight="516.0" prefWidth="128.0" style="-fx-background-color: #242b38;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="logOut" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#logOutAction" text="logga ut" textAlignment="CENTER">
+                     <VBox.margin>
+                        <Insets left="30.0" right="30.0" top="460.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>
