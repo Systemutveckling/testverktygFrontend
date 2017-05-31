@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="611.0" prefWidth="1223.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.createtest.FXMLCreateTestController">
+<AnchorPane id="AnchorPane" prefHeight="837.0" prefWidth="1223.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.createtest.FXMLCreateTestController">
    <children>
       <VBox layoutX="180.0" layoutY="83.0">
          <children>
@@ -61,9 +61,7 @@
                </VBox.margin></RadioButton>
             <HBox>
                <children>
-                  <Button fx:id="btnPreviewTest" mnemonicParsing="false" onAction="#previewTest" prefWidth="120.0" text="Granska testet" />
                   <Region HBox.hgrow="ALWAYS" />
-                  <Button fx:id="btnSaveTest" alignment="CENTER" mnemonicParsing="false" onAction="#saveTest" prefWidth="120.0" text="Spara testet" />
                </children>
                <VBox.margin>
                   <Insets top="20.0" />
@@ -89,11 +87,11 @@
                <children>
                   <HBox>
                      <children>
+                        <Button fx:id="btnNewQuestion" mnemonicParsing="false" onAction="#newQuestion" prefWidth="150.0" text="Ny fråga" />
                         <Region HBox.hgrow="ALWAYS" />
                         <Button fx:id="btnNewAnswerAltenative" alignment="CENTER" mnemonicParsing="false" onAction="#newAnswerAlternative" prefWidth="150.0" text="Nytt svarsalternativ" />
                      </children>
                   </HBox>
-                  <Button fx:id="btnNewQuestion" mnemonicParsing="false" onAction="#newQuestion" prefWidth="150.0" text="Ny fråga" />
                </children>
                <VBox.margin>
                   <Insets top="20.0" />
@@ -102,5 +100,7 @@
          </children>
       </VBox>
       <Label layoutX="562.0" layoutY="36.0" text="Skapa nytt test" />
+      <TextArea fx:id="textAreaPreviewTest" editable="false" layoutX="173.0" layoutY="555.0" prefHeight="200.0" prefWidth="878.0" wrapText="true" />
+      <Button fx:id="btnSaveTest" alignment="CENTER" layoutX="931.0" layoutY="766.0" mnemonicParsing="false" onAction="#saveTestToDb" prefWidth="120.0" text="Spara testet" />
    </children>
 </AnchorPane>

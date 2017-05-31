@@ -13,18 +13,18 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -41,6 +41,7 @@ public class FXMLCreateTestController implements Initializable {
     private List<TextField> answerAlternativesList;
     private List<RadioButton> correctAnswerRadioButtonList;
 
+    private Test test;
     private List qandaList;
     private int questionCount;
 
@@ -57,14 +58,12 @@ public class FXMLCreateTestController implements Initializable {
     @FXML
     private Button btnSaveTest;
     @FXML
-    private Button btnPreviewTest;
-    @FXML
     private Label lblQuestionCount;
     @FXML
     private TextField txtFieldQuestion;
     @FXML
     private TextField txtFieldImageUrl;
-    @FXML
+
     private ToggleGroup toggleGroupCorrectAnswer;
     @FXML
     private Button btnNewAnswerAltenative;
@@ -72,6 +71,8 @@ public class FXMLCreateTestController implements Initializable {
     private Button btnNewQuestion;
     @FXML
     private VBox vBoxAnswerAltenatives;
+    @FXML
+    private TextArea textAreaPreviewTest;
 
     /**
      * Initializes the controller class.
@@ -99,26 +100,17 @@ public class FXMLCreateTestController implements Initializable {
     }
 
     @FXML
-    private void saveTest(ActionEvent event) {
-        //Skapar ett nytt testobjekt från användarens inmatade värden
-        Test test = new Test();
-        test.setName(txtFieldTestName.getText());
-        test.setDescription(txtAreaTestDescription.getText());
-        String substringTime = lblTime.getText().substring(0, lblTime.getText().indexOf("."));
-        test.setTimeLimit(Integer.parseInt(substringTime));
-        RadioButton selectedRadioButton = (RadioButton) toggleGroupSeeResult.getSelectedToggle();
-        if (selectedRadioButton.getText().equals("Ja")) {
-            test.setSeeResult(Short.valueOf("1"));
-        } else {
-            test.setSeeResult(Short.valueOf("0"));
-        }
+    private void saveTestToDb(ActionEvent event) {
 
-        // Sparar den sista frågan användaren skrev in    
-        saveQuestionsAndAnswers();
+        // Sparar den sista frågan användaren skrev in
+        if (!txtFieldQuestion.getText().isEmpty()
+                && !answerAlternativesList.get(0).getText().isEmpty()) {
+            saveQuestionsAndAnswers();
+        }
 
         // Sparar allt detta till databasen
         l.saveCreatedTestToDb(test, qandaList);
-        
+
         // Rensa alla inmatningar
         questionCount = 1;
         lblQuestionCount.setText("Fråga " + questionCount);
@@ -133,7 +125,23 @@ public class FXMLCreateTestController implements Initializable {
         newAnswerAlternative(event);
     }
 
+    private void saveTest() {
+        //Skapar ett nytt testobjekt från användarens inmatade värden
+        test = new Test();
+        test.setName(txtFieldTestName.getText());
+        test.setDescription(txtAreaTestDescription.getText());
+        String substringTime = lblTime.getText().substring(0, lblTime.getText().indexOf("."));
+        test.setTimeLimit(Integer.parseInt(substringTime));
+        RadioButton selectedRadioButton = (RadioButton) toggleGroupSeeResult.getSelectedToggle();
+        if (selectedRadioButton.getText().equals("Ja")) {
+            test.setSeeResult(Short.valueOf("1"));
+        } else {
+            test.setSeeResult(Short.valueOf("0"));
+        }
+    }
+
     private void saveQuestionsAndAnswers() {
+
         Question question = new Question();
         question.setQuestion(txtFieldQuestion.getText());
         question.setImgUrl(txtFieldImageUrl.getText());
@@ -163,8 +171,38 @@ public class FXMLCreateTestController implements Initializable {
         System.out.println("Size of qandaList: " + qandaList.size());
     }
 
-    @FXML
     private void previewTest(ActionEvent event) {
+
+        String contentText = "";
+        String seeResult;
+        if(test.getSeeResult()== 1){
+            seeResult = "Ja";
+        }
+        else{
+            seeResult = "Nej";
+        }
+        
+        contentText += "Namn: " + test.getName()
+                + "\nBeskrivning: " + test.getDescription()
+                + "\nTidsgräns: " + test.getTimeLimit()
+                + "\nSe resultatet direkt: " + seeResult +  "\n";
+        int questionIndex = 1;
+        int answerIndex = 1;
+
+        for (Object obj : qandaList) {
+            if (obj instanceof Question) {
+                Question q = (Question) obj;
+                contentText += "\n" + "Fråga " + questionIndex + "\n" + q.getQuestion() + "\n";
+                questionIndex++;
+                answerIndex = 1;
+            } else {
+                Answer a = (Answer) obj;
+                contentText += answerIndex + ". " + a.getAnswer() + "\n";
+                answerIndex++;
+            }
+        }
+
+        textAreaPreviewTest.setText(contentText);
     }
 
     @FXML
@@ -194,6 +232,9 @@ public class FXMLCreateTestController implements Initializable {
 
     @FXML
     private void newQuestion(ActionEvent event) {
+        if (qandaList.isEmpty()) {
+            saveTest();
+        }
         saveQuestionsAndAnswers();
         questionCount++;
         lblQuestionCount.setText("Fråga " + questionCount);
@@ -203,7 +244,24 @@ public class FXMLCreateTestController implements Initializable {
         answerAlternativesList.clear();
         correctAnswerRadioButtonList.clear();
         newAnswerAlternative(event);
+        previewTest(event);
 
+    }
+
+    public Test getTest() {
+        return test;
+    }
+
+    public void setTest(Test test) {
+        this.test = test;
+    }
+
+    public List getQandaList() {
+        return qandaList;
+    }
+
+    public void setQandaList(List qandaList) {
+        this.qandaList = qandaList;
     }
 
 }
