@@ -11,16 +11,23 @@
 
 <AnchorPane id="AnchorPane" prefHeight="276.0" prefWidth="466.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.studentPage.StartTestPopUpController">
    <children>
-      <Label layoutX="110.0" layoutY="80.0" prefHeight="17.0" prefWidth="272.0" text="Vill du starta provet?">
+      <Label fx:id="testName" alignment="CENTER" contentDisplay="CENTER" layoutX="147.0" layoutY="111.0" prefHeight="27.0" prefWidth="173.0" textAlignment="CENTER" textFill="#ff5100">
          <font>
-            <Font size="24.0" />
+            <Font name="QuicksandBook-Regular" size="19.0" />
+         </font></Label>
+      <Button fx:id="btnStart" layoutX="121.0" layoutY="189.0" mnemonicParsing="false" stylesheets="@newCascadeStyleSheet.css" text="Starta" />
+      <Button fx:id="btnAvbryt" layoutX="284.0" layoutY="189.0" mnemonicParsing="false" onAction="#cancelPop" stylesheets="@newCascadeStyleSheet.css" text="Avbryt" />
+      <Label fx:id="testTime" alignment="CENTER" layoutX="242.0" layoutY="142.0" prefHeight="36.0" prefWidth="43.0" textFill="#d93e00">
+         <font>
+            <Font name="Avenir Book" size="17.0" />
+         </font></Label>
+      <Label layoutX="129.0" layoutY="152.0" text="Längd på provet : " />
+      <Label layoutY="-6.0" prefHeight="100.0" prefWidth="466.0" style="-fx-background-color: #3c3c3c;" textFill="#c36d6d" />
+      <Label layoutX="290.0" layoutY="152.0" text="minuter" />
+      <Label fx:id="startTestLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="97.0" layoutY="50.0" prefHeight="17.0" prefWidth="272.0" stylesheets="@newCascadeStyleSheet.css" text="Vill du starta provet?" textFill="#b2aaaa">
+         <font>
+            <Font name="QuicksandBook-Regular" size="25.0" />
          </font>
       </Label>
-      <Label fx:id="testName" alignment="CENTER" contentDisplay="CENTER" layoutX="147.0" layoutY="121.0" prefHeight="17.0" prefWidth="173.0" textAlignment="CENTER" />
-      <Button fx:id="btnStart" layoutX="110.0" layoutY="189.0" mnemonicParsing="false" text="Starta" />
-      <Button fx:id="btnAvbryt" layoutX="273.0" layoutY="189.0" mnemonicParsing="false" onAction="#cancelPop" text="Avbryt" />
-      <Label fx:id="testTime" layoutX="197.0" layoutY="148.0" prefHeight="17.0" prefWidth="43.0" />
-      <Label layoutX="164.0" layoutY="148.0" text="tid : " />
-      <Label layoutX="245.0" layoutY="148.0" text="minuter" />
    </children>
 </AnchorPane>

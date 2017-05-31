@@ -84,7 +84,7 @@ public class FXMLStudentPageController implements Initializable {
     
      @FXML
     private void logOutAction(ActionEvent event) throws IOException {
-           Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+           Parent root = FXMLLoader.load(getClass().getResource("/testverktygfrontend/FXMLDocument.fxml"));
             Scene one = new Scene(root);
             Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stg.setScene(one);

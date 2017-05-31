@@ -78,7 +78,7 @@
                   </TabPane>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btnStart" mnemonicParsing="false" onAction="#startTestAction" text="Starta test" />
+                        <Button fx:id="btnStart" mnemonicParsing="false" onAction="#startTestAction" stylesheets="@newCascadeStyleSheet.css" text="Starta test" />
                      </children>
                   </HBox>
                </children>

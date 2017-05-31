@@ -113,6 +113,11 @@ and open the template in the editor.
  -fx-font-size: 12px;
 }
 
+.list-view .list-cell:filled:selected {
+    -fx-background-color: #5b5c5e;
+     -fx-text-fill: #dbdde0;
+}
+
 #testsDone .list-cell:even {
 -fx-background-color:#d7dbe2;
 -fx-text-fill: #4a7720;
@@ -135,3 +140,40 @@ and open the template in the editor.
       -fx-background-repeat: no-repeat;
 }
 
+#btnStart{
+    -fx-background-color: #3c3c3c;
+    -fx-text-fill: #f2c40f;
+    -fx-font-weight: bold;
+    -fx-background-radius:0;
+     -fx-cursor: hand;
+}
+
+#btnStart:hover{
+    -fx-background-color: #5b5c5e;
+    -fx-text-fill: #f2c40f;
+    -fx-font-weight: bold;
+    -fx-background-radius:0;
+     -fx-cursor: hand;
+}
+
+#btnAvbryt{
+    -fx-background-color: #3c3c3c;
+    -fx-text-fill: #f2c40f;
+    -fx-font-weight: bold;
+    -fx-background-radius:0;
+     -fx-cursor: hand;
+}
+
+#btnAvbryt:hover{
+    -fx-background-color: #5b5c5e;
+    -fx-text-fill: #f2c40f;
+    -fx-font-weight: bold;
+    -fx-background-radius:0;
+     -fx-cursor: hand;
+}
+
+#startTestLabel{
+       -fx-font-family: "Avenir Book";
+   -fx-font-size: 22px; 
+     -fx-text-fill:#b2aaaa;
+}
