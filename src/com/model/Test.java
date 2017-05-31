@@ -97,5 +97,10 @@ public class Test implements Serializable {
     public void setQuestionList(List<Question> questionList) {
         this.questionList = questionList;
     }
+
+    @Override
+    public String toString() {
+        return  name ;
+    }
     
 }

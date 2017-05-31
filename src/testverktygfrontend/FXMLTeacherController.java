@@ -7,6 +7,7 @@ package testverktygfrontend;
 
 import com.logic.Logic;
 import com.model.Course;
+import com.model.Test;
 import com.model.User;
 import com.model.UserHasTest;
 import java.io.IOException;
@@ -35,9 +36,9 @@ public class FXMLTeacherController implements Initializable {
     private Label användarnamn;
 
     ObservableList<Course> courses = FXCollections.observableArrayList();
-    ObservableList<String> students = FXCollections.observableArrayList();
-    ObservableList<String> tests = FXCollections.observableArrayList();
-    ObservableList<String> testsNotDone = FXCollections.observableArrayList();
+    ObservableList<User> students = FXCollections.observableArrayList();
+    ObservableList<Test> tests = FXCollections.observableArrayList();
+    ObservableList<Test> testsNotDone = FXCollections.observableArrayList();
 
     @FXML
     private ListView courseListView;
@@ -58,8 +59,8 @@ public class FXMLTeacherController implements Initializable {
             students.clear();
             for (User c : logic.getUsers()) {
                 for (Course d : c.getCourseList()) {
-                    if (d.getName().equals(courseListView.getSelectionModel().getSelectedItem()) && c.getAuthorization() == 0) {
-                        students.add(c.getEMail());
+                    if (d.getName().equals(courseListView.getSelectionModel().getSelectedItem().toString()) && c.getAuthorization() == 0) {
+                        students.add(c);
                         System.out.println(c.getEMail());
                     }
                 }
@@ -88,10 +89,12 @@ public class FXMLTeacherController implements Initializable {
             for (UserHasTest d : fakeStudentList.get(studentList.getSelectionModel().getSelectedIndex()).getUserHasTestList()) {
 
                 if (d.getIsDone() == 0) {
-                    testsNotDone.add(d.getTestId().getName());
+                    testsNotDone.add(d.getTestId());
+                    
+                    System.out.println(d.getGrade());
                 } else if (d.getIsDone() == 1) {
-
-                    tests.add(d.getTestId().getName());
+                        tests.add(d.getTestId());
+                    
                 }
 
             }
