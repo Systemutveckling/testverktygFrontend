@@ -59,14 +59,14 @@ public class StatisticsPageController implements Initializable {
     Logic logic = Logic.getInstanceOf();
     Server server = new Server();
     List<User> users = server.getUsers();
-        List<User> usersInClass = new ArrayList<User>();List<UserHasTest> tests = logic.getUserTests(usersInClass.get(i).getId());
+    List<User> usersInClass = new ArrayList<User>();
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        
+
         for (User u : users) {
             for (Course c : u.getCourseList()) {
                 if (c.getId() == courseId) {
@@ -75,7 +75,6 @@ public class StatisticsPageController implements Initializable {
                 }
             }
         }
-        
 
         for (int i = 0; i < usersInClass.size(); i++) {
             List<UserHasTest> tests = logic.getUserTests(usersInClass.get(i).getId());
@@ -107,7 +106,7 @@ public class StatisticsPageController implements Initializable {
         courseLabel.setText(courseName);
 
     }
-    
+
     //Metoden kopierad från https://stackoverflow.com/questions/14119475/javafx-2-2-adding-a-mouse-event-to-a-bar-in-a-barchart-or-stockedbarchart
     //Modifierad av Conrad
     private void setupHover(XYChart.Series<String, Number> series) {
@@ -119,7 +118,7 @@ public class StatisticsPageController implements Initializable {
                 @Override
                 public void handle(MouseEvent e) {
                     n.setEffect(glow);
-                    Tooltip t = new Tooltip(dt.getXValue()+": "+String.valueOf(dt.getYValue()+"%"));
+                    Tooltip t = new Tooltip(dt.getXValue() + ": " + String.valueOf(dt.getYValue() + "%"));
                     hackTooltipStartTiming(t);
                     t.install(n, t);
                 }
@@ -140,23 +139,23 @@ public class StatisticsPageController implements Initializable {
         }
 
     }
-    
+
     //Metoden kopierad från https://stackoverflow.com/questions/26854301/control-javafx-tooltip-delay
     public static void hackTooltipStartTiming(Tooltip tooltip) {
-    try {
-        Field fieldBehavior = tooltip.getClass().getDeclaredField("BEHAVIOR");
-        fieldBehavior.setAccessible(true);
-        Object objBehavior = fieldBehavior.get(tooltip);
+        try {
+            Field fieldBehavior = tooltip.getClass().getDeclaredField("BEHAVIOR");
+            fieldBehavior.setAccessible(true);
+            Object objBehavior = fieldBehavior.get(tooltip);
 
-        Field fieldTimer = objBehavior.getClass().getDeclaredField("activationTimer");
-        fieldTimer.setAccessible(true);
-        Timeline objTimer = (Timeline) fieldTimer.get(objBehavior);
+            Field fieldTimer = objBehavior.getClass().getDeclaredField("activationTimer");
+            fieldTimer.setAccessible(true);
+            Timeline objTimer = (Timeline) fieldTimer.get(objBehavior);
 
-        objTimer.getKeyFrames().clear();
-        objTimer.getKeyFrames().add(new KeyFrame(new Duration(250)));
-    } catch (Exception e) {
-        e.printStackTrace();
+            objTimer.getKeyFrames().clear();
+            objTimer.getKeyFrames().add(new KeyFrame(new Duration(250)));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-}
 
 }
