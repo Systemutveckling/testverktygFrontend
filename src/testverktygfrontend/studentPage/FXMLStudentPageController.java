@@ -7,6 +7,7 @@ package testverktygfrontend.studentPage;
 
 import com.logic.Logic;
 import com.model.Course;
+import com.model.Test;
 import com.model.UserHasTest;
 import java.io.IOException;
 import java.net.URL;
@@ -24,7 +25,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  * FXML Controller class
@@ -44,15 +47,17 @@ public class FXMLStudentPageController implements Initializable {
     private ListView testsToDo;
     @FXML
     private ListView testsDone;
+    @FXML
+    private Button btnStart,showTest;
 
     /**
      * Initializes the controller class.
      */
     
     
-    ObservableList<String> courseList = FXCollections.observableArrayList();
-    ObservableList<String> testToDoList = FXCollections.observableArrayList();
-    ObservableList<String> testDoneList = FXCollections.observableArrayList();
+    ObservableList<Course> courseList = FXCollections.observableArrayList();
+    ObservableList<Test> testToDoList = FXCollections.observableArrayList();
+    ObservableList<Test> testDoneList = FXCollections.observableArrayList();
     
     @FXML
     private void listEvent(MouseEvent event) throws IOException {
@@ -60,12 +65,14 @@ public class FXMLStudentPageController implements Initializable {
             testToDoList.clear();
             testDoneList.clear();
             for (UserHasTest userTest : logic.getUser().getUserHasTestList()) {
-                if (userTest.getCourseId().getName().equals(courses.getSelectionModel().getSelectedItem())) {
+                if (userTest.getCourseId().getName().equals(courses.getSelectionModel().getSelectedItem().toString())) {
                     if (userTest.getIsDone() == 0) {
-                        testToDoList.add(userTest.getTestId().getName());
+                        testToDoList.add(userTest.getTestId());
+                        
                         testsToDo.setItems(testToDoList);
                     } else {
-                        testDoneList.add(userTest.getTestId().getName());
+                        testDoneList.add(userTest.getTestId());
+                        logic.setPickedTest(userTest.getTestId());
                         testsDone.setItems(testDoneList);
 
                     }
@@ -77,13 +84,47 @@ public class FXMLStudentPageController implements Initializable {
     
      @FXML
     private void logOutAction(ActionEvent event) throws IOException {
-           Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+           Parent root = FXMLLoader.load(getClass().getResource("/testverktygfrontend/FXMLDocument.fxml"));
             Scene one = new Scene(root);
             Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stg.setScene(one);
             stg.show();
     
     }
+    
+    
+     @FXML
+    private void getButtonAction(MouseEvent event) throws IOException {
+         if (testsToDo.getSelectionModel().getSelectedIndex() != -1) {
+
+         } 
+             //gör att knappen blir klickbar
+             btnStart.setDisable(false);
+             //Hämtar det objektet man klickar på i listview
+             Test a = (Test) testsToDo.getSelectionModel().getSelectedItem();
+             logic.setPickedTest(a);
+         
+    }
+    
+     @FXML
+    private void startTestAction(ActionEvent event) throws IOException {
+//        logic.setPickedTest(testsToDo.getSelectionModel().getSelectedItem());
+        Stage stage;
+        Parent root;
+        stage = new Stage();
+        stage.setTitle("Starta testet");
+        stage.setResizable(false);
+        root = FXMLLoader.load(getClass().getResource("StartTestPopUp.fxml"));
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initOwner(btnStart.getScene().getWindow());
+        stage.setOnCloseRequest((WindowEvent we) -> {
+            stage.close();
+        });
+        stage.showAndWait();
+    
+    }
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -92,9 +133,12 @@ public class FXMLStudentPageController implements Initializable {
         
         //Hämtar listan på kurser som en student har och visar den i Listviewn
         for (Course c : logic.getUser().getCourseList()) {
-            courseList.add(c.getName());
+            courseList.add(c);
             courses.setItems(courseList);
         }
+      
+        btnStart.setDisable(true);
+        showTest.setDisable(true);
     }    
       
     

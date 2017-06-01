@@ -21,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.ws.rs.client.Client;
@@ -41,7 +42,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextField username;
     @FXML
-    private TextField password;
+    private PasswordField password;
     
     
     @FXML
@@ -54,6 +55,11 @@ public class FXMLDocumentController implements Initializable {
             stg.show();
             System.out.println("Elev!");
         } else if(logic.login(username.getText(), password.getText()).getAuthorization() == 1) {
+            Parent root = FXMLLoader.load(getClass().getResource("teacherPage/FXMLTeacher.fxml"));
+            Scene one = new Scene(root);
+            Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stg.setScene(one);
+            stg.show();
             System.out.println("Lärare!");
         }  
     
@@ -61,7 +67,6 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
      
-                
     }    
     
 }

@@ -1,0 +1,196 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2017-maj-31, 10:58:32
+    Author     : ramonachantaf
+*/
+
+#logOut{
+    -fx-background-image: url("logout.png");
+    -fx-background-size: 18 18;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: none;
+    -fx-text-fill: #b9bbbf;
+    -fx-font-family: "Quicksand Book";
+    -fx-background-position: center;
+    -fx-cursor: hand;
+    
+}
+
+#logOut:hover{
+    -fx-background-image: url("logouthover.png");
+    -fx-background-size: 18 18;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: none;
+    -fx-text-fill: white;
+    -fx-font-family: "Quicksand Book";
+    -fx-background-position: center;
+    -fx-cursor: hand;
+}
+
+#topHBox{
+    -fx-background-color: #dbdde0;
+}
+
+#userLabelImg{
+    -fx-background-image: url("User-1.png");
+    -fx-background-size: 50 50;
+    -fx-background-position: center;
+      -fx-background-repeat: no-repeat;
+}
+
+#studentLabel{
+    -fx-text-fill: #e74a43;
+  -fx-font-family: "Avenir Book";
+   -fx-font-size: 21px;
+}
+
+#profileLabel{
+   -fx-text-fill: #e74a43;
+   -fx-font-family: "Avenir Book";
+   -fx-font-size: 13px; 
+}
+
+#userName{
+     -fx-font-family: "Avenir Book";
+   -fx-font-size: 13px; 
+    -fx-text-fill: #88898c;
+}
+
+
+/*Style för tab pane*/
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;
+}
+
+.tab-pane
+{
+    -fx-tab-min-width:90px;
+}
+
+.tab{
+    -fx-background-insets: 0 1 0 1,0,0;
+}
+.tab-pane .tab
+{
+    -fx-background-color: #e6e6e6;
+
+}
+
+.tab-pane .tab:selected
+{
+    -fx-background-color: #0f3340;
+}
+
+.tab .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: #f26a46;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: #f26a46;
+}
+
+.list-view .list-cell {
+-fx-background-color:#d7dbe2;
+-fx-text-fill: #3c3c3c;
+-fx-border-color: #d7dbe2;
+-fx-font-weight: bold;
+ -fx-font-size: 12px;
+}
+/*.list-view .list-cell:odd {
+-fx-background-color: white;
+-fx-text-fill: #3c3c3c;
+-fx-border-color: #d7dbe2;
+-fx-font-weight: bold;
+ -fx-font-size: 12px;
+}*/
+
+.list-view .list-cell:filled:selected {
+    -fx-background-color: #5b5c5e;
+     -fx-text-fill: #dbdde0;
+}
+
+#testsDone .list-cell {
+-fx-background-color:#d7dbe2;
+-fx-text-fill: #4a7720;
+-fx-border-color: #d7dbe2;
+-fx-font-weight: bold;
+ -fx-font-size: 12px;
+}
+/*#testsDone .list-cell:odd {
+-fx-background-color: white;
+-fx-text-fill:#4a7720;
+-fx-border-color: #d7dbe2;
+-fx-font-weight: bold;
+ -fx-font-size: 12px;
+}*/
+
+#courseLabelImg{
+    -fx-background-image: url("all-course.png");
+    -fx-background-size: 40 40;
+    -fx-background-position: center;
+      -fx-background-repeat: no-repeat;
+}
+
+#btnStart{
+    -fx-background-color: #0f3340;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius:0;
+     -fx-cursor: hand;
+}
+
+#btnStart:hover{
+    -fx-background-color: #0d303d;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius:0;
+     -fx-cursor: hand;
+}
+
+#btnAvbryt{
+    -fx-background-color: #3c3c3c;
+    -fx-text-fill: #f2c40f;
+    -fx-font-weight: bold;
+    -fx-background-radius:0;
+     -fx-cursor: hand;
+}
+
+#btnAvbryt:hover{
+    -fx-background-color: #5b5c5e;
+    -fx-text-fill: #f2c40f;
+    -fx-font-weight: bold;
+    -fx-background-radius:0;
+     -fx-cursor: hand;
+}
+
+#startTestLabel{
+       -fx-font-family: "Avenir Book";
+   -fx-font-size: 22px; 
+     -fx-text-fill:#b2aaaa;
+}
+
+#showTest{
+    -fx-background-color: #ea6b4f;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius:0;
+     -fx-cursor: hand;
+}
+
+#showTest:hover{
+    -fx-background-color: #c15840;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius:0;
+     -fx-cursor: hand;
+}
+

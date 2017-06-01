@@ -13,7 +13,7 @@
     <jar href="lib\asm-all-repackaged-2.2.0-b21.jar" size="318566" download="eager" />
     <jar href="lib\cglib-2.2.0-b21.jar" size="282554" download="eager" />
     <jar href="lib\eclipselink.jar" size="8478776" download="eager" />
-    <jar href="lib\genson-0.97.jar" size="292408" download="eager" />
+    <jar href="lib\genson-1.4.jar" size="386145" download="eager" />
     <jar href="lib\gmbal-api-only.jar" size="21663" download="eager" />
     <jar href="lib\guava-14.0.1.jar" size="2168920" download="eager" />
     <jar href="lib\ha-api.jar" size="36681" download="eager" />
@@ -56,7 +56,7 @@
     <jar href="lib\streambuffer.jar" size="63934" download="eager" />
     <jar href="lib\validation-api-1.1.0.Final.jar" size="65320" download="eager" />
     <jar href="lib\woodstox-core-asl.jar" size="472263" download="eager" />
-    <jar href="testverktygFrontend.jar" size="20808" download="eager" />
+    <jar href="testverktygFrontend.jar" size="126219" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="testverktygFrontend" >
     <param name="requiredFXVersion" value="8.0+"/>
