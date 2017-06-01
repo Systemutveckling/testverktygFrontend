@@ -13,9 +13,13 @@
    <children>
       <BorderPane layoutX="200.0" layoutY="135.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <HBox alignment="CENTER_LEFT" spacing="15.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="600.0" spacing="15.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Kursnamn">
+                  <Region prefHeight="91.0" prefWidth="50.0" />
+                  <Label fx:id="courseLabel" prefHeight="67.0" prefWidth="175.0" text="Kursnamn">
+                      <tooltip>
+                <Tooltip text="This is a button. Click on it." />
+            </tooltip>
                      <padding>
                         <Insets left="15.0" />
                      </padding>
@@ -30,16 +34,17 @@
             </HBox>
          </top>
          <left>
-            <Region prefHeight="582.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+            <Region prefHeight="582.0" prefWidth="50.0" BorderPane.alignment="CENTER" />
          </left>
          <right>
-            <Region prefHeight="582.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+            <Region prefHeight="582.0" prefWidth="50.0" BorderPane.alignment="CENTER" />
          </right>
          <center>
             <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="CENTER_LEFT">
                      <children>
+                        <Region prefHeight="30.0" prefWidth="75.0" />
                         <Label text="Prov ">
                            <font>
                               <Font size="20.0" />
@@ -54,6 +59,7 @@
                   </HBox>
                   <HBox alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="10.0">
                      <children>
+                        <Region prefHeight="30.0" prefWidth="100.0" />
                         <Label text="Statistik">
                            <font>
                               <Font size="14.0" />
@@ -61,12 +67,18 @@
                         </Label>
                      </children>
                   </HBox>
-                  <BarChart fx:id="barChart" title="Medelvärde 50%">
+                  <BarChart fx:id="barChart" prefHeight="470.0" prefWidth="500.0" styleClass="bar1" title="Medelvärde 50%">
                     <xAxis>
-                      <CategoryAxis side="BOTTOM" fx:id="xAxis" />
+                      <CategoryAxis label="Elever" fx:id="xAxis">
+                           <tickLabelFont>
+                              <Font size="12.0" />
+                           </tickLabelFont></CategoryAxis>
                     </xAxis>
                     <yAxis>
-                      <NumberAxis fx:id="yAxis" side="LEFT" />
+                      <NumberAxis fx:id="yAxis" autoRanging="false" label="Betyg" minorTickLength="10.0" side="LEFT" tickUnit="10.0">
+                           <tickLabelFont>
+                              <Font size="15.0" />
+                           </tickLabelFont></NumberAxis>
                     </yAxis>
                   </BarChart>
                </children>
