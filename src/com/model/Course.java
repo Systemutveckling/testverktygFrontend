@@ -80,4 +80,11 @@ public class Course implements Serializable {
     public void setUserHasTestList(List<UserHasTest> userHasTestList) {
         this.userHasTestList = userHasTestList;
     }
+
+    @Override
+    public String toString() {
+        return  name;
+    }
+    
+    
 }

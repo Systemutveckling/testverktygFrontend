@@ -1,0 +1,65 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2017-maj-31, 22:10:21
+    Author     : ramonachantaf
+*/
+
+
+#userLabel{
+    -fx-background-image: url("email.png");
+    -fx-font-family:"quicksand";
+    -fx-font-size:13px;
+    -fx-text-fill: #d3cfe6;
+    -fx-background-size: 25 25;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: none;
+}
+
+#passwordLabel{
+    -fx-background-image: url("password.png");
+    -fx-font-family:"quicksand";
+    -fx-font-size:13px;
+    -fx-text-fill: #d3cfe6;
+    -fx-background-size: 20 20;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: none;
+}
+
+.text-field {
+    -fx-background-color: #91483a;
+    -fx-background-radius: none;
+    -fx-text-fill: #d3cfe6;
+    -fx-font-family:"quicksand";
+    -fx-font-size:12px;
+}
+ 
+.password-field{
+     -fx-background-color: #91483a;
+     -fx-text-fill: #d3cfe6;
+}
+
+#button{
+    -fx-background-color: #103446;
+     -fx-background-radius: none;
+       -fx-text-fill: #ff7f50;
+       -fx-font-family:"quicksand";
+       -fx-font-weight:bold;
+       -fx-cursor: hand;
+}
+
+#button:hover{
+    -fx-background-color: #1d4559;
+     -fx-background-radius: none;
+       -fx-text-fill: #ff7f50;
+       -fx-font-family:"quicksand";
+       -fx-font-weight:bold;
+       -fx-cursor: hand;
+}
+
+.pane{
+    -fx-background-color: linear-gradient(to bottom, #ff7f50, #6a5acd);
+}

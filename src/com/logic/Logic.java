@@ -21,6 +21,7 @@ public class Logic {
 
     User user;
     private Test createdTempTest;
+    private Test test;
 
     public static Logic getInstanceOf() {
         if (p == null) {
@@ -60,4 +61,11 @@ public class Logic {
     
     
 
+    public void setPickedTest(Test test){
+        this.test = test;
+    }
+    
+    public Test getPickedTest(){
+        return test;
+    }
 }
