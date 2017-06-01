@@ -125,5 +125,12 @@ public class User implements Serializable {
     public void setStudentanswerList(List<Studentanswer> studentanswerList) {
         this.studentanswerList = studentanswerList;
     }
+
+    @Override
+    public String toString() {
+        return eMail;
+    }
+    
+    
     
 }

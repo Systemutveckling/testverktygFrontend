@@ -55,6 +55,11 @@ public class FXMLDocumentController implements Initializable {
             stg.show();
             System.out.println("Elev!");
         } else if(logic.login(username.getText(), password.getText()).getAuthorization() == 1) {
+            Parent root = FXMLLoader.load(getClass().getResource("teacherPage/FXMLTeacher.fxml"));
+            Scene one = new Scene(root);
+            Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stg.setScene(one);
+            stg.show();
             System.out.println("Lärare!");
         }  
     
@@ -62,8 +67,6 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
      
-              username.setText("Anna@gmail.com");    
-              password.setText("12345");
     }    
     
 }
