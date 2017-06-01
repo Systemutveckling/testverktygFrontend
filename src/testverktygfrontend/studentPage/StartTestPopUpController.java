@@ -6,12 +6,15 @@
 package testverktygfrontend.studentPage;
 
 import com.logic.Logic;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -32,6 +35,8 @@ public class StartTestPopUpController implements Initializable {
     private Button btnAvbryt;
     @FXML
     private Label testTime;
+    @FXML
+    private Label startTestLabel;
 
     /**
      * Initializes the controller class.
@@ -50,5 +55,13 @@ public class StartTestPopUpController implements Initializable {
         testName.setText("'' "+logic.getPickedTest().getName()+" ''");
         testTime.setText(logic.getPickedTest().getTimeLimit().toString());
     }    
+
+    @FXML
+    private void startTest(ActionEvent event) throws IOException {
+        Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene sc = new Scene(FXMLLoader.load(getClass().getResource("newpackage/FXML.fxml")));
+        stg.setScene(sc);
+        stg.show();
+    }
     
 }
