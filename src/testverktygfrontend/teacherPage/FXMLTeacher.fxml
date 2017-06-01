@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -7,69 +8,110 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.FXMLTeacherController">
+<AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.teacherPage.FXMLTeacherController">
    <children>
-      <TabPane layoutX="347.0" layoutY="96.0" prefHeight="215.0" prefWidth="232.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Elever">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+      <BorderPane prefHeight="635.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <left>
+            <Region prefHeight="635.0" prefWidth="50.0" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <Region prefHeight="635.0" prefWidth="50.0" BorderPane.alignment="CENTER" />
+         </right>
+         <center>
+            <HBox alignment="CENTER" spacing="50.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="TOP_CENTER" spacing="10.0">
                      <children>
-                        <ListView fx:id="studentList" layoutX="-3.0" layoutY="-1.0" onMouseClicked="#seeTests" prefHeight="197.0" prefWidth="241.0" />
+                        <Region prefHeight="60.0" prefWidth="200.0" />
+                        <Label prefHeight="27.0" prefWidth="138.0" text="Kurser">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <ListView fx:id="courseListView" onMouseClicked="#seeCourse" prefHeight="319.0" prefWidth="200.0" />
+                        <Button mnemonicParsing="false" onAction="#createTest" text="Skapa prov" />
                      </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="Statistik">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" spacing="10.0">
                      <children>
-                        <ListView layoutY="-18.0" prefHeight="200.0" prefWidth="232.0" />
+                        <TabPane prefHeight="215.0" prefWidth="232.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Elever">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <ListView fx:id="studentList" layoutX="-3.0" layoutY="-1.0" onMouseClicked="#seeTests" prefHeight="197.0" prefWidth="241.0" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab text="Statistik">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <ListView layoutY="-18.0" prefHeight="200.0" prefWidth="232.0" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                        <Separator prefHeight="3.0" prefWidth="223.0" />
+                        <TabPane prefHeight="229.0" prefWidth="223.0" tabClosingPolicy="UNAVAILABLE">
+                          <tabs>
+                            <Tab text="Gjorda tester">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <ListView fx:id="testDoneList" layoutX="-2.0" layoutY="-2.0" onMouseClicked="#getTest" prefHeight="200.0" prefWidth="230.0" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab text="Ogjorda tester">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="204.0" prefWidth="211.0">
+                                       <children>
+                                          <ListView fx:id="testNotDoneList" layoutX="-5.0" layoutY="-2.0" onMouseClicked="#getTest" prefHeight="200.0" prefWidth="232.0" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                          </tabs>
+                        </TabPane>
+                        <HBox alignment="CENTER" spacing="50.0">
+                           <children>
+                              <Button fx:id="statisticButton" mnemonicParsing="false" onAction="#goToStatistics" prefWidth="100.0" text="statistik" />
+                              <Button layoutX="94.0" layoutY="10.0" mnemonicParsing="false" prefWidth="100.0" text="Testresultat" />
+                           </children>
+                        </HBox>
                      </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-        </tabs>
-      </TabPane>
-      <TabPane layoutX="351.0" layoutY="359.0" prefHeight="229.0" prefWidth="223.0" tabClosingPolicy="UNAVAILABLE">
-        <tabs>
-          <Tab text="Gjorda tester">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <ListView fx:id="testDoneList" layoutX="-2.0" layoutY="-2.0" prefHeight="200.0" prefWidth="230.0" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-          <Tab text="Ogjorda tester">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="204.0" prefWidth="211.0">
-                     <children>
-                        <ListView fx:id="testNotDoneList" layoutX="-5.0" layoutY="-2.0" prefHeight="200.0" prefWidth="232.0" />
-                     </children>
-                  </AnchorPane>
-            </content>
-          </Tab>
-        </tabs>
-      </TabPane>
-      <Button layoutX="94.0" layoutY="516.0" mnemonicParsing="false" onAction="#createTest" text="Skapa prov" />
-      <Button layoutX="513.0" layoutY="11.0" mnemonicParsing="false" onAction="#logOut" text="Logga ut" />
-      <Label layoutX="37.0" layoutY="83.0" prefHeight="27.0" prefWidth="138.0" text="Kurser">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <ListView fx:id="courseListView" layoutX="37.0" layoutY="126.0" onMouseClicked="#seeCourse" prefHeight="319.0" prefWidth="200.0" />
-      <Separator layoutX="351.0" layoutY="334.0" prefHeight="3.0" prefWidth="223.0" />
-      <Separator layoutX="351.0" layoutY="608.0" prefHeight="3.0" prefWidth="223.0" />
-      <Label fx:id="användarnamn" layoutX="38.0" layoutY="7.0" prefHeight="36.0" prefWidth="200.0" text="Användarnamn">
-         <font>
-            <Font name="Damascus Regular" size="24.0" />
-         </font>
-      </Label>
-      <Separator layoutY="48.0" prefHeight="3.0" prefWidth="600.0" />
+                  </VBox>
+               </children>
+            </HBox>
+         </center>
+         <top>
+            <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="användarnamn" prefHeight="36.0" prefWidth="200.0" text="Användarnamn">
+                     <font>
+                        <Font name="Damascus Regular" size="24.0" />
+                     </font>
+                  </Label>
+                  <Region prefHeight="36.0" prefWidth="197.0" />
+                  <Button mnemonicParsing="false" onAction="#logOut" text="Logga ut" />
+               </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+            </HBox>
+         </top>
+      </BorderPane>
    </children>
 </AnchorPane>
