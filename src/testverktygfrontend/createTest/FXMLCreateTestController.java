@@ -44,7 +44,6 @@ public class FXMLCreateTestController implements Initializable {
     private List<RadioButton> correctAnswerRadioButtonList;
     private List<HBox> answerAltenativesContainer;
 
-
     private int questionCount;
 
     @FXML
@@ -109,7 +108,6 @@ public class FXMLCreateTestController implements Initializable {
     private void saveTestToDb(ActionEvent event) {
 
         // Sparar den sista frågan användaren skrev in
-
         // Sparar allt detta till databasen
         l.saveCreatedTestToDb(l.getCreatedTempTest());
 
@@ -129,7 +127,7 @@ public class FXMLCreateTestController implements Initializable {
     }
 
     private void saveTest() {
-        
+
         l.setCreatedTempTest(new Test());
         //Skapar ett nytt testobjekt från användarens inmatade värden
         l.getCreatedTempTest().setName(txtFieldTestName.getText());
@@ -142,7 +140,7 @@ public class FXMLCreateTestController implements Initializable {
         } else {
             l.getCreatedTempTest().setSeeResult(Short.valueOf("0"));
         }
-        
+
         List<Question> tempQuestionList = new ArrayList<>();
         l.getCreatedTempTest().setQuestionList(tempQuestionList);
     }
@@ -153,9 +151,9 @@ public class FXMLCreateTestController implements Initializable {
         question.setQuestion(txtFieldQuestion.getText());
         question.setImgUrl(txtFieldImageUrl.getText());
         l.getCreatedTempTest().getQuestionList().add(question);
-        
+
         List<Answer> tempListAnswer = new ArrayList<>();
-        l.getCreatedTempTest().getQuestionList().get(questionCount-1).setAnswerList(tempListAnswer);
+        l.getCreatedTempTest().getQuestionList().get(questionCount - 1).setAnswerList(tempListAnswer);
 
         int correctAnswerRadioButtonIndex = 0;
 
@@ -174,7 +172,7 @@ public class FXMLCreateTestController implements Initializable {
                 answer.setIsCorrect(Short.valueOf("0"));
             }
 
-            l.getCreatedTempTest().getQuestionList().get(questionCount-1).getAnswerList().add(answer);
+            l.getCreatedTempTest().getQuestionList().get(questionCount - 1).getAnswerList().add(answer);
 
         }
 
@@ -182,50 +180,20 @@ public class FXMLCreateTestController implements Initializable {
 
     @FXML
     private void previewTest(ActionEvent event) throws IOException {
-        
+
         Stage s = new Stage();
         Scene sc = new Scene(FXMLLoader.load(getClass().getResource("previewtest/FXMLPreviewTest.fxml")));
         s.setScene(sc);
         s.show();
-        
+
         System.out.println("Test" + l.getCreatedTempTest().getName());
-        
-        for(Question q:l.getCreatedTempTest().getQuestionList()){
+
+        for (Question q : l.getCreatedTempTest().getQuestionList()) {
             System.out.println("Q: " + q.getQuestion());
-            for(Answer a: q.getAnswerList()){
+            for (Answer a : q.getAnswerList()) {
                 System.out.println("A: " + a.getAnswer());
             }
         }
-/*
-        String contentText = "";
-        String seeResult;
-        if(test.getSeeResult()== 1){
-            seeResult = "Ja";
-        }
-        else{
-            seeResult = "Nej";
-        }
-        
-        contentText += "Namn: " + test.getName()
-                + "\nBeskrivning: " + test.getDescription()
-                + "\nTidsgräns: " + test.getTimeLimit()
-                + "\nSe resultatet direkt: " + seeResult +  "\n";
-        int questionIndex = 1;
-        int answerIndex = 1;
-
-        for (Object obj : qandaList) {
-            if (obj instanceof Question) {
-                Question q = (Question) obj;
-                contentText += "\n" + "Fråga " + questionIndex + "\n" + q.getQuestion() + "\n";
-                questionIndex++;
-                answerIndex = 1;
-            } else {
-                Answer a = (Answer) obj;
-                contentText += answerIndex + ". " + a.getAnswer() + "\n";
-                answerIndex++;
-            }
-        }
-*/
     }
 
     @FXML
@@ -246,33 +214,39 @@ public class FXMLCreateTestController implements Initializable {
             hbox.setSpacing(20);
             hbox.setAlignment(Pos.CENTER_LEFT);
 
-            hbox.getChildren().addAll(correctAnswerRadioButtonList.get(size - 1),answerAlternativesList.get(size - 1));
-            
+            hbox.getChildren().addAll(correctAnswerRadioButtonList.get(size - 1), answerAlternativesList.get(size - 1));
+
             answerAltenativesContainer.add(hbox);
             vBoxAnswerAltenatives.getChildren().add(hbox);
         } else {
             System.out.println("Max 6 svarsalternativ, annars blir GUI:t fult! :)");
         }
     }
-    
+
     @FXML
     private void removeAnswerAlternative(ActionEvent event) {
-        // Tar bort senaste svarsalternativet både från GUI:t och från listorna
         int sizeContainer = answerAltenativesContainer.size();
-        vBoxAnswerAltenatives.getChildren().remove(answerAltenativesContainer.get(sizeContainer - 1));
-        answerAltenativesContainer.remove(sizeContainer-1);
-        
-        // Tar bort textfältet och radioknappen från sina listorna så att man ska kunna lägga till igen
-        int sizeAnswerTextField = answerAlternativesList.size();
-        answerAlternativesList.remove(sizeAnswerTextField-1);
-        
-        int sizeIsCorrect = correctAnswerRadioButtonList.size();
-        correctAnswerRadioButtonList.remove(sizeIsCorrect-1);
+
+        if (sizeContainer > 1) {
+            // Tar bort senaste svarsalternativet både från GUI:t och från listorna
+            vBoxAnswerAltenatives.getChildren().remove(answerAltenativesContainer.get(sizeContainer - 1));
+            answerAltenativesContainer.remove(sizeContainer - 1);
+
+            // Tar bort textfältet och radioknappen från sina listorna så att man ska kunna lägga till igen
+            int sizeAnswerTextField = answerAlternativesList.size();
+            answerAlternativesList.remove(sizeAnswerTextField - 1);
+
+            int sizeIsCorrect = correctAnswerRadioButtonList.size();
+            correctAnswerRadioButtonList.remove(sizeIsCorrect - 1);
+        }
+        else{
+            System.out.println("Måste vara ett svarsalternativ!");
+        }
     }
 
     @FXML
     private void newQuestion(ActionEvent event) {
-       
+
         questionCount++;
         lblQuestionCount.setText("Fråga " + questionCount);
         txtFieldQuestion.clear();
@@ -287,13 +261,10 @@ public class FXMLCreateTestController implements Initializable {
 
     @FXML
     private void saveQuestion(ActionEvent event) {
-         if (l.getCreatedTempTest() == null) {
+        if (l.getCreatedTempTest() == null) {
             saveTest();
         }
         saveQuestionsAndAnswers();
     }
-   
-
-    
 
 }
