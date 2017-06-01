@@ -20,7 +20,7 @@ public class Logic {
     private Server server = new Server();
 
     User user;
-    private Test test;
+    private Test createdTempTest;
 
     public static Logic getInstanceOf() {
         if (p == null) {
@@ -46,16 +46,16 @@ public class Logic {
         return this.user;
     }
     
-    public void saveCreatedTestToDb(Test test){
-        server.saveCreatedTestToDb(test);
+    public void saveCreatedTestToDb(Test createdTempTest){
+        server.saveCreatedTestToDb(createdTempTest);
     }
 
-    public Test getTest() {
-        return test;
+    public Test getCreatedTempTest() {
+        return createdTempTest;
     }
 
-    public void setTest(Test test) {
-        this.test = test;
+    public void setCreatedTempTest(Test createdTempTest) {
+        this.createdTempTest = createdTempTest;
     }
     
     

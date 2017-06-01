@@ -14,7 +14,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
-import testverktygfrontend.createtest.FXMLCreateTestController;
 
 /**
  * FXML Controller class
@@ -34,7 +33,7 @@ public class FXMLPreviewTestController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         int questionIndex = 1;
         int answerIndex = 1;
-        for (Question q : l.getTest().getQuestionList()) {
+        for (Question q : l.getCreatedTempTest().getQuestionList()) {
             Label lblQuestionIndex = new Label("Fråga " + questionIndex);
             vBoxQandA.getChildren().add(lblQuestionIndex);
             questionIndex++;

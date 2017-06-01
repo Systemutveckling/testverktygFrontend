@@ -111,7 +111,7 @@ public class FXMLCreateTestController implements Initializable {
         // Sparar den sista frågan användaren skrev in
 
         // Sparar allt detta till databasen
-        l.saveCreatedTestToDb(l.getTest());
+        l.saveCreatedTestToDb(l.getCreatedTempTest());
 
         // Rensa alla inmatningar
         questionCount = 1;
@@ -130,21 +130,21 @@ public class FXMLCreateTestController implements Initializable {
 
     private void saveTest() {
         
-        l.setTest(new Test());
+        l.setCreatedTempTest(new Test());
         //Skapar ett nytt testobjekt från användarens inmatade värden
-        l.getTest().setName(txtFieldTestName.getText());
-        l.getTest().setDescription(txtAreaTestDescription.getText());
+        l.getCreatedTempTest().setName(txtFieldTestName.getText());
+        l.getCreatedTempTest().setDescription(txtAreaTestDescription.getText());
         String substringTime = lblTime.getText().substring(0, lblTime.getText().indexOf("."));
-        l.getTest().setTimeLimit(Integer.parseInt(substringTime));
+        l.getCreatedTempTest().setTimeLimit(Integer.parseInt(substringTime));
         RadioButton selectedRadioButton = (RadioButton) toggleGroupSeeResult.getSelectedToggle();
         if (selectedRadioButton.getText().equals("Ja")) {
-            l.getTest().setSeeResult(Short.valueOf("1"));
+            l.getCreatedTempTest().setSeeResult(Short.valueOf("1"));
         } else {
-            l.getTest().setSeeResult(Short.valueOf("0"));
+            l.getCreatedTempTest().setSeeResult(Short.valueOf("0"));
         }
         
         List<Question> tempQuestionList = new ArrayList<>();
-        l.getTest().setQuestionList(tempQuestionList);
+        l.getCreatedTempTest().setQuestionList(tempQuestionList);
     }
 
     private void saveQuestionsAndAnswers() {
@@ -152,10 +152,10 @@ public class FXMLCreateTestController implements Initializable {
         Question question = new Question();
         question.setQuestion(txtFieldQuestion.getText());
         question.setImgUrl(txtFieldImageUrl.getText());
-        l.getTest().getQuestionList().add(question);
+        l.getCreatedTempTest().getQuestionList().add(question);
         
         List<Answer> tempListAnswer = new ArrayList<>();
-        l.getTest().getQuestionList().get(questionCount-1).setAnswerList(tempListAnswer);
+        l.getCreatedTempTest().getQuestionList().get(questionCount-1).setAnswerList(tempListAnswer);
 
         int correctAnswerRadioButtonIndex = 0;
 
@@ -174,7 +174,7 @@ public class FXMLCreateTestController implements Initializable {
                 answer.setIsCorrect(Short.valueOf("0"));
             }
 
-            l.getTest().getQuestionList().get(questionCount-1).getAnswerList().add(answer);
+            l.getCreatedTempTest().getQuestionList().get(questionCount-1).getAnswerList().add(answer);
 
         }
 
@@ -188,9 +188,9 @@ public class FXMLCreateTestController implements Initializable {
         s.setScene(sc);
         s.show();
         
-        System.out.println("Test" + l.getTest().getName());
+        System.out.println("Test" + l.getCreatedTempTest().getName());
         
-        for(Question q:l.getTest().getQuestionList()){
+        for(Question q:l.getCreatedTempTest().getQuestionList()){
             System.out.println("Q: " + q.getQuestion());
             for(Answer a: q.getAnswerList()){
                 System.out.println("A: " + a.getAnswer());
@@ -287,7 +287,7 @@ public class FXMLCreateTestController implements Initializable {
 
     @FXML
     private void saveQuestion(ActionEvent event) {
-         if (l.getTest() == null) {
+         if (l.getCreatedTempTest() == null) {
             saveTest();
         }
         saveQuestionsAndAnswers();
