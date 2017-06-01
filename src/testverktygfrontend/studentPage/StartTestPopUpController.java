@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -59,7 +60,7 @@ public class StartTestPopUpController implements Initializable {
     @FXML
     private void startTest(ActionEvent event) throws IOException {
         Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene sc = new Scene(FXMLLoader.load(getClass().getResource("newpackage/FXML.fxml")));
+        Scene sc = new Scene(FXMLLoader.load(getClass().getResource("FXMLDoingTest.fxml")));
         stg.setScene(sc);
         stg.show();
     }
