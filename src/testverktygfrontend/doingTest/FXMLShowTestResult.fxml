@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="testverktygfrontend.doingTest.FXMLShowTestResultController">
+   <children>
+      <Label layoutX="227.0" layoutY="57.0" text="Du har skickat in testet!" />
+      <StackPane layoutX="200.0" layoutY="94.0" prefHeight="150.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="showResult" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="visa resultat" textAlignment="CENTER" />
+            <Label fx:id="showText" prefHeight="101.0" prefWidth="200.0" text="Läraren behöver rätta provet,&#10;du kommer få resultatet&#10;om några dagar!" visible="false" />
+         </children>
+      </StackPane>
+      <Label fx:id="show" layoutX="187.0" layoutY="318.0" prefHeight="17.0" prefWidth="257.0" />
+   </children>
+</AnchorPane>

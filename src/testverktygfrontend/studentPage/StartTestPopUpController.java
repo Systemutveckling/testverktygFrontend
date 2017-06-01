@@ -18,6 +18,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 /**
@@ -38,7 +40,10 @@ public class StartTestPopUpController implements Initializable {
     private Label testTime;
     @FXML
     private Label startTestLabel;
-
+    
+    @FXML
+    private Button result;
+    
     /**
      * Initializes the controller class.
      */
@@ -63,6 +68,18 @@ public class StartTestPopUpController implements Initializable {
         Scene sc = new Scene(FXMLLoader.load(getClass().getResource("FXMLDoingTest.fxml")));
         stg.setScene(sc);
         stg.show();
+    }
+    
+    //flytta ut den här till sista sidan på testet
+    @FXML
+    private void showResult(ActionEvent event) throws IOException {
+       
+        Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene sc = new Scene(FXMLLoader.load(getClass().getResource("/testverktygfrontend/doingTest/FXMLShowTestResult.fxml")));
+        stg.setScene(sc);
+        stg.show();
+        
+        
     }
     
 }

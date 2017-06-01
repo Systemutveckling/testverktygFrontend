@@ -29,7 +29,7 @@ public class Server {
     }
 
     public List<User> getUsers() {
-        List<User> user = client.target("http://localhost:8080/testverktygBackend/webapi/users")
+        List<User> user = client.target("http://localhost:8080/testverktygbackend/webapi/users")
                 .request(MediaType.APPLICATION_JSON).get(new GenericType<List<User>>() {
         });
 
@@ -42,7 +42,7 @@ public class Server {
         user.setEMail(email);
         user.setPassword(password);
 
-        User s = client.target("http://localhost:8080/testverktygBackend/webapi/users/login")
+        User s = client.target("http://localhost:8080/testverktygbackend/webapi/users/login")
                 .request(MediaType.APPLICATION_JSON).post(Entity.json(user), User.class);
 
         if (s.getEMail() == null) {
@@ -65,7 +65,7 @@ public class Server {
         testToDb.setSeeResult(test.getSeeResult());
      
         // Sparar testet till databasen. Får tillbaka objektet med rätt id
-        Test testFromDb = client.target("http://localhost:8080/testverktygBackend/webapi/tests")
+        Test testFromDb = client.target("http://localhost:8080/testverktygbackend/webapi/tests")
                 .request(MediaType.APPLICATION_JSON)
                 .post(Entity.entity(testToDb, "application/json;charset=utf-8"), Test.class);
 
@@ -76,7 +76,7 @@ public class Server {
             questionToDb.setTestId(testFromDb);
 
             // Sparar frågor till databasen. Får tillbaka objekt med rätt id
-            Question questionFromDb = client.target("http://localhost:8080/testverktygBackend/webapi/tests")
+            Question questionFromDb = client.target("http://localhost:8080/testverktygbackend/webapi/tests")
                     .path(String.valueOf(testFromDb.getId()))
                     .path("questions")
                     .request(MediaType.APPLICATION_JSON)
@@ -89,7 +89,7 @@ public class Server {
                 answerToDb.setQuestionId(questionToDb);
                 
                  // Sparar svarsalternativ till databasen. Får tillbaka objekt med rätt id
-                Answer answerFromDb = client.target("http://localhost:8080/testverktygBackend/webapi/tests")
+                Answer answerFromDb = client.target("http://localhost:8080/testverktygbackend/webapi/tests")
                         .path(String.valueOf(testFromDb.getId()))
                         .path("questions")
                         .path(String.valueOf(questionFromDb.getId()))
