@@ -71,15 +71,15 @@ public class StartTestPopUpController implements Initializable {
     }
     
     //flytta ut den här till sista sidan på testet
-    @FXML
-    private void showResult(ActionEvent event) throws IOException {
-       
-        Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene sc = new Scene(FXMLLoader.load(getClass().getResource("/testverktygfrontend/doingTest/FXMLShowTestResult.fxml")));
-        stg.setScene(sc);
-        stg.show();
-        
-        
-    }
+//    @FXML
+//    private void showResult(ActionEvent event) throws IOException {
+//       
+//        Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        Scene sc = new Scene(FXMLLoader.load(getClass().getResource("/testverktygfrontend/doingTest/FXMLShowTestResult.fxml")));
+//        stg.setScene(sc);
+//        stg.show();
+//        
+//        
+//    }
     
 }

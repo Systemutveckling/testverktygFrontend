@@ -8,6 +8,7 @@ package com.serverconnection;
 import com.model.Answer;
 import com.model.Question;
 import com.model.Test;
+import com.model.Testresult;
 import com.model.User;
 import java.util.List;
 import javax.ws.rs.client.Client;
@@ -121,5 +122,12 @@ public class Server {
             }
         }*/
     }
+    
+    public List <Testresult> getResultFromTest(int studentId, int testId) {
+        List<Testresult> result = client.target("http://localhost:8080/testverktygbackend/webapi/users/students/"+studentId+"/tests/"+testId+"/testresult")
+                .request(MediaType.APPLICATION_JSON).get(new GenericType<List<Testresult>>() {
+        });
 
+        return result;
+    }
 }

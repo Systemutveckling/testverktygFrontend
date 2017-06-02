@@ -66,7 +66,7 @@
                         <content>
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="333.0" prefWidth="242.0">
                                  <children>
-                                    <ListView fx:id="testsDone" layoutY="-1.0" prefHeight="328.0" prefWidth="242.0" />
+                                    <ListView fx:id="testsDone" layoutY="-1.0" onMouseClicked="#showButtonResult" prefHeight="328.0" prefWidth="242.0" />
                                  </children>
                               </AnchorPane>
                         </content>
@@ -82,7 +82,7 @@
                            <HBox.margin>
                               <Insets left="58.0" top="10.0" />
                            </HBox.margin></Button>
-                        <Button fx:id="showTest" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" stylesheets="@newCascadeStyleSheet.css" text="Visa test">
+                        <Button fx:id="showTest" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#showResultAction" onMouseClicked="#showResultAction" stylesheets="@newCascadeStyleSheet.css" text="Visa test">
                            <HBox.margin>
                               <Insets left="20.0" top="10.0" />
                            </HBox.margin>

@@ -67,5 +67,19 @@ public class Testresult implements Serializable {
     public void setIsCorrect(Short isCorrect) {
         this.isCorrect = isCorrect;
     }
+
+    @Override
+    public String toString() {
+        String s;
+        if(isCorrect == 0){
+            
+        }
+        
+        return  question + "\n" + answer;
+    }
+
+  
     
+   
+
 }

@@ -8,6 +8,7 @@ package testverktygfrontend.studentPage;
 import com.logic.Logic;
 import com.model.Course;
 import com.model.Test;
+import com.model.Testresult;
 import com.model.UserHasTest;
 import java.io.IOException;
 import java.net.URL;
@@ -105,7 +106,18 @@ public class FXMLStudentPageController implements Initializable {
              logic.setPickedTest(a);
          
     }
-    
+      @FXML
+    private void showButtonResult(MouseEvent event) throws IOException {
+         if (testsDone.getSelectionModel().getSelectedIndex() != -1) {
+
+         } 
+             //gör att knappen blir klickbar
+             showTest.setDisable(false);
+             //Hämtar det objektet man klickar på i listview
+//             Test b = (Test) testsDone.getSelectionModel().getSelectedItem();
+//             logic.setResultFromTest(b);
+         
+    }
      @FXML
     private void startTestAction(ActionEvent event) throws IOException {
 //        logic.setPickedTest(testsToDo.getSelectionModel().getSelectedItem());
@@ -122,6 +134,16 @@ public class FXMLStudentPageController implements Initializable {
             stage.close();
         });
         stage.showAndWait();
+    
+    }
+    
+    //visar resultat på ett redan gjord test
+     @FXML
+    private void showResultAction(ActionEvent event) throws IOException {
+        Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene sc = new Scene(FXMLLoader.load(getClass().getResource("/testverktygfrontend/doingTest/FXMLShowTestResult.fxml")));
+        stg.setScene(sc);
+        stg.show();
     
     }
     

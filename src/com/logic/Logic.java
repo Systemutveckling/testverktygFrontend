@@ -5,7 +5,9 @@
  */
 package com.logic;
 
+import com.model.Question;
 import com.model.Test;
+import com.model.Testresult;
 import com.model.User;
 import com.serverconnection.Server;
 import java.util.List;
@@ -23,7 +25,7 @@ public class Logic {
     User user;
     private Test createdTempTest;
     private Test test;
-
+    private Testresult testresult;
     public static Logic getInstanceOf() {
         if (p == null) {
             p = new Logic();
@@ -73,4 +75,13 @@ public class Logic {
     public Test getPickedTest(){
         return test;
     }
+    
+//  //la till detta
+//    public void setResultFromTest(Test test){
+//        this.test=test;
+//    }
+//    
+//   public Testresult getResultFromTest(){
+//        return testresult;
+//    }
 }

@@ -7,16 +7,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="testverktygfrontend.doingTest.FXMLShowTestResultController">
+<AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.doingTest.FXMLShowTestResultController">
    <children>
       <Label layoutX="227.0" layoutY="57.0" text="Du har skickat in testet!" />
       <StackPane layoutX="200.0" layoutY="94.0" prefHeight="150.0" prefWidth="200.0">
          <children>
-            <Button fx:id="showResult" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="visa resultat" textAlignment="CENTER" />
+            <Button fx:id="showResult" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#showResult" text="visa resultat" textAlignment="CENTER" />
             <Label fx:id="showText" prefHeight="101.0" prefWidth="200.0" text="Läraren behöver rätta provet,&#10;du kommer få resultatet&#10;om några dagar!" visible="false" />
          </children>
       </StackPane>
-      <Label fx:id="show" layoutX="187.0" layoutY="318.0" prefHeight="17.0" prefWidth="257.0" />
+      <Label fx:id="show" layoutX="146.0" layoutY="272.0" prefHeight="63.0" prefWidth="298.0" />
+      <VBox layoutX="38.0" layoutY="211.0" prefHeight="390.0" prefWidth="525.0">
+         <children>
+            <ListView fx:id="resultView" prefHeight="391.0" prefWidth="525.0" visible="false" />
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
