@@ -47,6 +47,8 @@ import javafx.util.Duration;
 public class StatisticsPageController implements Initializable {
 
     @FXML
+    private Label profileLabel;
+    @FXML
     private Label provLabel;
     @FXML
     private Label courseLabel;
@@ -82,6 +84,14 @@ public class StatisticsPageController implements Initializable {
 
     }
 
+    @FXML
+    private void logOut(ActionEvent event) throws IOException {
+        Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene sc = new Scene(FXMLLoader.load(getClass().getResource("/testverktygfrontend/FXMLDocument.fxml")));
+        stg.setScene(sc);
+        stg.show();
+    }
+
     /**
      * Initializes the controller class.
      */
@@ -91,6 +101,8 @@ public class StatisticsPageController implements Initializable {
         avarageGrade = 0;
         testId = logic.getPickedTest().getId();
         courseId = logic.getCourse().getId();
+        profileLabel.setText(logic.getUser().getEMail());
+
         for (User u : users) {
             for (Course c : u.getCourseList()) {
                 if (c.getId() == courseId && u.getAuthorization() == 0) {

@@ -40,7 +40,7 @@ public class FXMLTeacherController implements Initializable {
     Logic logic = Logic.getInstanceOf();
 
     @FXML
-    private Label användarnamn;
+    private Label profileLabel;
 
     ObservableList<Course> courses = FXCollections.observableArrayList();
     ObservableList<User> students = FXCollections.observableArrayList();
@@ -131,7 +131,7 @@ public class FXMLTeacherController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        användarnamn.setText(logic.getUser().getEMail());
+        profileLabel.setText(logic.getUser().getEMail());
 
         for (Course c : logic.getUser().getCourseList()) {
 
@@ -166,6 +166,16 @@ public class FXMLTeacherController implements Initializable {
         Scene sc = new Scene(FXMLLoader.load(getClass().getResource("/testverktygfrontend/FXMLDocument.fxml")));
         stg.setScene(sc);
         stg.show();
+    }
+    
+    @FXML
+    private void back(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/testverktygfrontend/FXMLDocument.fxml"));
+        Scene one = new Scene(root);
+        Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stg.setScene(one);
+        stg.show();
+
     }
 
 }
