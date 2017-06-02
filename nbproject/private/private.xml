@@ -15,11 +15,12 @@
             <file>file:/Users/ramonachantaf/Desktop/testverktygFrontend/src/com/serverconnection/Server.java</file>
         </group>
         <group>
+            <file>file:/C:/Users/SoftyLaptop/Documents/NetBeansProjects/testverktygFrontend/src/testverktygfrontend/Statistic/newCascadeStyleSheet.css</file>
             <file>file:/C:/Users/SoftyLaptop/Documents/NetBeansProjects/testverktygFrontend/src/com/serverconnection/Server.java</file>
-            <file>file:/C:/Users/SoftyLaptop/Documents/NetBeansProjects/testverktygFrontend/src/com/logic/Logic.java</file>
-            <file>file:/C:/Users/SoftyLaptop/Documents/NetBeansProjects/testverktygFrontend/src/testverktygfrontend/TestverktygFrontend.java</file>
-            <file>file:/C:/Users/SoftyLaptop/Documents/NetBeansProjects/testverktygFrontend/src/com/model/Answer.java</file>
-            <file>file:/C:/Users/SoftyLaptop/Documents/NetBeansProjects/testverktygFrontend/nbproject/jfx-impl.xml</file>
+            <file>file:/C:/Users/SoftyLaptop/Documents/NetBeansProjects/testverktygFrontend/src/testverktygfrontend/teacherPage/FXMLTeacherController.java</file>
+            <file>file:/C:/Users/SoftyLaptop/Documents/NetBeansProjects/testverktygFrontend/src/testverktygfrontend/teacherPage/newCascadeStyleSheet.css</file>
+            <file>file:/C:/Users/SoftyLaptop/Documents/NetBeansProjects/testverktygFrontend/src/testverktygfrontend/FXMLDocumentController.java</file>
+            <file>file:/C:/Users/SoftyLaptop/Documents/NetBeansProjects/testverktygFrontend/src/testverktygfrontend/Statistic/StatisticsPageController.java</file>
         </group>
     </open-files>
 </project-private>

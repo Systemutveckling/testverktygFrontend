@@ -107,23 +107,29 @@ public class FXMLCreateTestController implements Initializable {
     @FXML
     private void saveTestToDb(ActionEvent event) {
 
-        // Sparar den sista frågan användaren skrev in
-        // Sparar allt detta till databasen
-        l.saveCreatedTestToDb(l.getCreatedTempTest());
+        if (l.getCreatedTempTest() == null) {
+            System.out.println("Du måste spara minst en fråga innan du kan spara testet");
+        } else {
+            // Sparar den sista frågan användaren skrev in
+            // Sparar allt detta till databasen
+            int testId = l.saveCreatedTestToDb(l.getCreatedTempTest());
 
-        // Rensa alla inmatningar
-        questionCount = 1;
-        lblQuestionCount.setText("Fråga " + questionCount);
-        txtFieldQuestion.clear();
-        txtFieldImageUrl.clear();
-        txtFieldTestName.clear();
-        txtAreaTestDescription.clear();
-        sliderTimeLimit.adjustValue(0);
-        vBoxAnswerAltenatives.getChildren().clear();
-        answerAlternativesList.clear();
-        correctAnswerRadioButtonList.clear();
-        answerAltenativesContainer.clear();
-        newAnswerAlternative(event);
+            l.addCreatedTestToCourseAndUser(l.getChoosenCourseToCreateTestTo().getId(), testId);
+
+            // Rensa alla inmatningar
+            questionCount = 1;
+            lblQuestionCount.setText("Fråga " + questionCount);
+            txtFieldQuestion.clear();
+            txtFieldImageUrl.clear();
+            txtFieldTestName.clear();
+            txtAreaTestDescription.clear();
+            sliderTimeLimit.adjustValue(0);
+            vBoxAnswerAltenatives.getChildren().clear();
+            answerAlternativesList.clear();
+            correctAnswerRadioButtonList.clear();
+            answerAltenativesContainer.clear();
+            newAnswerAlternative(event);
+        }
     }
 
     private void saveTest() {
@@ -238,8 +244,7 @@ public class FXMLCreateTestController implements Initializable {
 
             int sizeIsCorrect = correctAnswerRadioButtonList.size();
             correctAnswerRadioButtonList.remove(sizeIsCorrect - 1);
-        }
-        else{
+        } else {
             System.out.println("Måste vara ett svarsalternativ!");
         }
     }

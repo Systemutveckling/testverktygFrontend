@@ -144,6 +144,8 @@ public class FXMLTeacherController implements Initializable {
 
     @FXML
     private void createTest(ActionEvent event) throws IOException {
+        int index = courseListView.getSelectionModel().getSelectedIndex();
+        logic.setChoosenCourseToCreateTestTo(courses.get(index));
         Stage s = new Stage();
         Scene sc = new Scene(FXMLLoader.load(getClass().getResource("createtest/FXMLCreateTest.fxml")));
         s.setScene(sc);

@@ -1,0 +1,74 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2017-jun-02, 14:02:34
+    Author     : Andreas Vettefors (contact@vettefors.se)
+*/
+
+
+
+.label{
+
+}
+
+
+
+.text-field {
+    -fx-background-color: #91483a;
+    -fx-background-radius: none;
+    -fx-text-fill: #d3cfe6;
+    -fx-font-family:"quicksand";
+    -fx-font-size:12px;
+}
+
+
+
+
+#button{
+    -fx-background-color: #103446;
+    -fx-background-radius: none;
+    -fx-text-fill: #ff7f50;
+    -fx-font-family:"quicksand";
+    -fx-font-weight:bold;
+    -fx-cursor: hand;
+}
+
+
+
+
+#txtAreaTestDescription{
+    -fx-background-color: #91483a;
+    -fx-background-radius: none;
+    -fx-text-fill: #d3cfe6;
+    -fx-font-family:"quicksand";
+    -fx-font-size:12px;
+}
+
+
+
+#txtAreaTestDescription .content{
+    -fx-background-color: #91483a;
+}
+
+
+
+#createTestButton{
+    -fx-background-color: #103446;
+    -fx-background-radius: none;
+    -fx-text-fill: #ff7f50;
+    -fx-font-family:"quicksand";
+    -fx-font-weight:bold;
+    -fx-cursor: hand;
+}
+
+#createTestButton:hover{
+    -fx-background-color: #1d4559;
+    -fx-background-radius: none;
+    -fx-text-fill: #ff7f50;
+    -fx-font-family:"quicksand";
+    -fx-font-weight:bold;
+    -fx-cursor: hand;
+}
