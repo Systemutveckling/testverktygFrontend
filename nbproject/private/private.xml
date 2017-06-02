@@ -17,7 +17,9 @@
         <group>
             <file>file:/C:/Users/conta/Documents/NetBeansProjects/testverktygFrontend/src/testverktygfrontend/teacherPage/FXMLTeacherController.java</file>
             <file>file:/C:/Users/conta/Documents/NetBeansProjects/testverktygFrontend/src/testverktygfrontend/studentPage/FXMLStudentPageController.java</file>
+            <file>file:/C:/Users/conta/Documents/NetBeansProjects/testverktygFrontend/src/com/logic/Logic.java</file>
             <file>file:/C:/Users/conta/Documents/NetBeansProjects/testverktygFrontend/src/testverktygfrontend/FXMLDocumentController.java</file>
+            <file>file:/C:/Users/conta/Documents/NetBeansProjects/testverktygFrontend/src/com/serverconnection/Server.java</file>
         </group>
     </open-files>
 </project-private>

@@ -8,6 +8,7 @@ package com.logic;
 import com.model.Course;
 import com.model.Test;
 import com.model.User;
+import com.model.UserHasTest;
 import com.serverconnection.Server;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class Logic {
     private Course choosenCourseToCreateTestTo;
     private Test createdTempTest;
     private Test test;
+    private Course course;
 
     public static Logic getInstanceOf() {
         if (p == null) {
@@ -49,10 +51,11 @@ public class Logic {
     public User getUser() {
         return this.user;
     }
-    
-    public List<User> getUsers(){
+
+    public List<User> getUsers() {
         return server.getUsers();
     }
+
     
     public int saveCreatedTestToDb(Test createdTempTest){
         return server.saveCreatedTestToDb(createdTempTest);
@@ -60,6 +63,10 @@ public class Logic {
     
     public void addCreatedTestToCourseAndUser(int courseId,int testId){
         server.addCreatedTestToCourseAndUser(courseId, testId);
+    }
+
+    public List<UserHasTest> getUserTests(int userId) {
+        return server.getUserTests(userId);
     }
 
     public Test getCreatedTempTest() {
@@ -78,11 +85,21 @@ public class Logic {
         this.choosenCourseToCreateTestTo = choosenCourseToCreateTestTo;
     }
    
-    public void setPickedTest(Test test){
+
+    public void setPickedTest(Test test) {
         this.test = test;
     }
-    
-    public Test getPickedTest(){
+
+    public Test getPickedTest() {
         return test;
     }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
 }
