@@ -58,7 +58,9 @@ public class FXMLTeacherController implements Initializable {
     @FXML
     private ListView testNotDoneList;
     @FXML
-    private Button statisticButton;
+    private Button btnStart;
+    @FXML
+    private Button logOut;
 
     @FXML
     private void seeCourse(MouseEvent event) throws IOException {
@@ -161,7 +163,7 @@ public class FXMLTeacherController implements Initializable {
     @FXML
     private void logOut(ActionEvent event) throws IOException {
         Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene sc = new Scene(FXMLLoader.load(getClass().getResource("FXMLDocument.fxml")));
+        Scene sc = new Scene(FXMLLoader.load(getClass().getResource("/testverktygfrontend/FXMLDocument.fxml")));
         stg.setScene(sc);
         stg.show();
     }
