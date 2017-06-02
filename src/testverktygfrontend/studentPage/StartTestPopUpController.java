@@ -60,7 +60,7 @@ public class StartTestPopUpController implements Initializable {
     @FXML
     private void startTest(ActionEvent event) throws IOException {
         Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene sc = new Scene(FXMLLoader.load(getClass().getResource("FXMLDoingTest.fxml")));
+        Scene sc = new Scene(FXMLLoader.load(getClass().getResource("/testverktygfrontend/doingTest/FXMLDoingTest.fxml")));
         stg.setScene(sc);
         stg.show();
     }

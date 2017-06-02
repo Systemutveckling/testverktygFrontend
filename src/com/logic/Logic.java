@@ -5,6 +5,7 @@
  */
 package com.logic;
 
+import com.model.Course;
 import com.model.Test;
 import com.model.User;
 import com.serverconnection.Server;
@@ -21,6 +22,7 @@ public class Logic {
     private Server server = new Server();
 
     User user;
+    private Course choosenCourseToCreateTestTo;
     private Test createdTempTest;
     private Test test;
 
@@ -52,8 +54,12 @@ public class Logic {
         return server.getUsers();
     }
     
-    public void saveCreatedTestToDb(Test createdTempTest){
-        server.saveCreatedTestToDb(createdTempTest);
+    public int saveCreatedTestToDb(Test createdTempTest){
+        return server.saveCreatedTestToDb(createdTempTest);
+    }
+    
+    public void addCreatedTestToCourseAndUser(int courseId,int testId){
+        server.addCreatedTestToCourseAndUser(courseId, testId);
     }
 
     public Test getCreatedTempTest() {
@@ -63,9 +69,15 @@ public class Logic {
     public void setCreatedTempTest(Test createdTempTest) {
         this.createdTempTest = createdTempTest;
     }
-    
-    
 
+    public Course getChoosenCourseToCreateTestTo() {
+        return choosenCourseToCreateTestTo;
+    }
+
+    public void setChoosenCourseToCreateTestTo(Course choosenCourseToCreateTestTo) {
+        this.choosenCourseToCreateTestTo = choosenCourseToCreateTestTo;
+    }
+   
     public void setPickedTest(Test test){
         this.test = test;
     }

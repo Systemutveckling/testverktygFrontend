@@ -7,7 +7,6 @@ package com.model;
 
 import java.io.Serializable;
 
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *

@@ -55,7 +55,7 @@ public class Server {
 
     }
 
-    public void saveCreatedTestToDb(Test test) {
+    public int saveCreatedTestToDb(Test test) {
 
         // För att kunna spara rätt i databasen så delar jag upp testobjektet i delar
         Test testToDb = new Test();
@@ -63,7 +63,7 @@ public class Server {
         testToDb.setDescription(test.getDescription());
         testToDb.setTimeLimit(test.getTimeLimit());
         testToDb.setSeeResult(test.getSeeResult());
-     
+
         // Sparar testet till databasen. Får tillbaka objektet med rätt id
         Test testFromDb = client.target("http://localhost:8080/testverktygBackend/webapi/tests")
                 .request(MediaType.APPLICATION_JSON)
@@ -87,8 +87,8 @@ public class Server {
                 answerToDb.setAnswer(a.getAnswer());
                 answerToDb.setIsCorrect(a.getIsCorrect());
                 answerToDb.setQuestionId(questionToDb);
-                
-                 // Sparar svarsalternativ till databasen. Får tillbaka objekt med rätt id
+
+                // Sparar svarsalternativ till databasen. Får tillbaka objekt med rätt id
                 Answer answerFromDb = client.target("http://localhost:8080/testverktygBackend/webapi/tests")
                         .path(String.valueOf(testFromDb.getId()))
                         .path("questions")
@@ -101,25 +101,26 @@ public class Server {
 
         }
 
-        /*
-        Answer dbAnswer = new Answer();
-        for (int i = 0; i < qandaList.size(); i++) {
-            if (qandaList.get(i) instanceof Question) {
-                dbQuestion = client.target("http://localhost:8080/testverktygBackend/webapi/tests")
-                        .path(String.valueOf(dbTest.getId()))
-                        .path("questions")
-                        .request(MediaType.APPLICATION_JSON)
-                        .post(Entity.entity(qandaList.get(i), "application/json;charset=utf-8"), Question.class);
-            } else {
-                dbAnswer = client.target("http://localhost:8080/testverktygBackend/webapi/tests")
-                        .path(String.valueOf(dbTest.getId()))
-                        .path("questions")
-                        .path(String.valueOf(dbQuestion.getId()))
-                        .path("answers")
-                        .request(MediaType.APPLICATION_JSON)
-                        .post(Entity.entity(qandaList.get(i), "application/json;charset=utf-8"), Answer.class);
-            }
-        }*/
+        return testFromDb.getId();
+    }
+ 
+    public void addCreatedTestToCourseAndUser(int courseId,int testId){
+        List<User> studentsInCourse = client.target("http://localhost:8080/testverktygBackend/webapi/courses")
+                .path(String.valueOf(courseId))
+                .path("students")
+                .request(MediaType.APPLICATION_JSON).get(new GenericType<List<User>>() {
+        });
+        
+        studentsInCourse.forEach((u) -> {
+            client.target("http://localhost:8080/testverktygBackend/webapi/courses")
+                    .path(String.valueOf(courseId))
+                    .path("tests")
+                    .path(String.valueOf(testId))
+                    .path("user")
+                    .path(String.valueOf(u.getId()))
+                    .request(MediaType.APPLICATION_JSON)
+                    .post(Entity.json(""));
+        });
     }
 
 }
