@@ -1,0 +1,82 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2017-jun-03, 20:23:39
+    Author     : Andreas Vettefors (contact@vettefors.se)
+*/
+
+.label{
+    -fx-font-family:"quicksand";
+    -fx-font-size:13px;
+    -fx-text-fill: #d3cfe6;
+    -fx-background-size: 20 20;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: none;
+}
+
+#previewTestTitleLabel{
+    -fx-font-size:35px;
+}
+
+.text-field {
+    -fx-background-color: #91483a;
+    -fx-background-radius: none;
+    -fx-text-fill: #d3cfe6;
+    -fx-font-family:"quicksand";
+    -fx-font-size:12px;
+}
+
+#previewTestButton{
+    -fx-background-color: #103446;
+    -fx-background-radius: none;
+    -fx-text-fill: #ff7f50;
+    -fx-font-family:"quicksand";
+    -fx-font-weight:bold;
+    -fx-cursor: hand;
+}
+
+#previewTestButton:hover{
+    -fx-background-color: #1d4559;
+    -fx-background-radius: none;
+    -fx-text-fill: #ff7f50;
+    -fx-font-family:"quicksand";
+    -fx-font-weight:bold;
+    -fx-cursor: hand;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:vertical{
+    -fx-background-color: #103446;
+
+}
+
+.scroll-pane .scroll-bar:vertical .thumb{
+    -fx-background-color: #1d4559;
+}
+
+.scroll-pane .scroll-bar:vertical .increment-button .increment-arrow{
+    -fx-background-color:  #ff7f50;
+
+}
+.scroll-pane .scroll-bar:vertical .increment-button:hover{
+    -fx-background-color: #1d4559;
+}
+
+
+.scroll-pane .scroll-bar:vertical .decrement-button .decrement-arrow{
+    -fx-background-color:  #ff7f50;
+}
+
+.scroll-pane .scroll-bar:vertical .decrement-button:hover{
+    -fx-background-color: #1d4559;
+}

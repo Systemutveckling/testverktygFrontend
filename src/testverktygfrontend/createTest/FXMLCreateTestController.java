@@ -186,20 +186,11 @@ public class FXMLCreateTestController implements Initializable {
 
     @FXML
     private void previewTest(ActionEvent event) throws IOException {
-
         Stage s = new Stage();
         Scene sc = new Scene(FXMLLoader.load(getClass().getResource("previewtest/FXMLPreviewTest.fxml")));
         s.setScene(sc);
         s.show();
 
-        System.out.println("Test" + l.getCreatedTempTest().getName());
-
-        for (Question q : l.getCreatedTempTest().getQuestionList()) {
-            System.out.println("Q: " + q.getQuestion());
-            for (Answer a : q.getAnswerList()) {
-                System.out.println("A: " + a.getAnswer());
-            }
-        }
     }
 
     @FXML
@@ -270,6 +261,7 @@ public class FXMLCreateTestController implements Initializable {
             saveTest();
         }
         saveQuestionsAndAnswers();
+        newQuestion(event);
     }
 
 }

@@ -11,10 +11,17 @@ and open the template in the editor.
 
 
 .label{
-
+    -fx-font-family:"quicksand";
+    -fx-font-size:13px;
+    -fx-text-fill: #d3cfe6;
+    -fx-background-size: 20 20;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: none;
 }
 
-
+#createTestTitleLabel{
+    -fx-font-size:35px;
+}
 
 .text-field {
     -fx-background-color: #91483a;
@@ -23,9 +30,6 @@ and open the template in the editor.
     -fx-font-family:"quicksand";
     -fx-font-size:12px;
 }
-
-
-
 
 #button{
     -fx-background-color: #103446;
@@ -36,9 +40,6 @@ and open the template in the editor.
     -fx-cursor: hand;
 }
 
-
-
-
 #txtAreaTestDescription{
     -fx-background-color: #91483a;
     -fx-background-radius: none;
@@ -47,13 +48,9 @@ and open the template in the editor.
     -fx-font-size:12px;
 }
 
-
-
 #txtAreaTestDescription .content{
     -fx-background-color: #91483a;
 }
-
-
 
 #createTestButton{
     -fx-background-color: #103446;
@@ -72,3 +69,68 @@ and open the template in the editor.
     -fx-font-weight:bold;
     -fx-cursor: hand;
 }
+
+.separator:horizontal .line{
+    -fx-background-color: #ff7f50;
+    -fx-border-color: #ff7f50;
+    -fx-opacity: 50%;
+}
+
+.radio-button{
+    -fx-font-family:"quicksand";
+    -fx-font-size:13px;
+    -fx-text-fill: #d3cfe6;
+}
+.radio-button .radio {
+    -fx-border-width: 1px;
+    -fx-border-color: #103446;
+
+    -fx-background-color: #103446;
+    -fx-background-image: null;
+    -fx-border-radius: 15px;
+    -fx-padding: 5px;
+}
+.radio-button .radio:selected {
+    -fx-background-color: #103446;
+    -fx-background-image: null;
+}
+.radio-button -radio:armed {
+    -fx-background-color: #103446;
+    -fx-background-image: null;
+}
+.radio-button -radio:determinate {
+    -fx-background-color: #103446;
+    -fx-background-image: null;
+}
+.radio-button -radio:indeterminate {
+    -fx-background-color: #103446;
+    -fx-background-image: null;
+}
+.radio-button .dot {
+    -fx-background-radius: 15px;
+    -fx-padding: 3px;
+}
+
+.radio-button:selected .radio .dot{
+    -fx-background-color: #ff7f50;
+}
+
+.slider .track{
+    -fx-background-color: #103446;
+    -fx-pref-height:2;
+}
+
+.slider .thumb {
+    -fx-background-color: #103446;
+    -fx-pref-height:18;
+    -fx-pref-width:18;
+}
+
+.slider .thumb:pressed {
+    -fx-background-color: #1d4559;
+}
+
+.slider .thumb:hover {
+    -fx-background-color: #1d4559;
+}
+

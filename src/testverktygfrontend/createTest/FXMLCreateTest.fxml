@@ -15,7 +15,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="622.0" prefWidth="1103.0" style="-fx-background-color: linear-gradient(to bottom, #ff7f50, #10374b);" stylesheets="@createtest.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.createtest.FXMLCreateTestController">
    <children>
-      <Label layoutX="502.0" layoutY="35.0" text="Skapa nytt test" />
+      <Label id="createTestTitleLabel" layoutX="437.0" layoutY="21.0" text="Skapa nytt test" />
       <VBox layoutX="112.0" layoutY="83.0">
          <children>
             <Label text="Namn" />
@@ -62,12 +62,12 @@
                </VBox.margin></RadioButton>
             <HBox>
                <children>
-                  <Button id="createTestButton" fx:id="btnPreviewTest" mnemonicParsing="false" onAction="#previewTest" prefWidth="150.0" text="Granska testet" />
+                  <Button id="createTestButton" fx:id="btnPreviewTest" alignment="CENTER" mnemonicParsing="false" onAction="#previewTest" prefWidth="150.0" text="Granska testet" />
                   <Region HBox.hgrow="ALWAYS" />
                   <Button id="createTestButton" fx:id="btnSaveTest" alignment="CENTER" mnemonicParsing="false" onAction="#saveTestToDb" prefWidth="150.0" text="Spara testet" />
                </children>
                <VBox.margin>
-                  <Insets top="43.0" />
+                  <Insets top="40.0" />
                </VBox.margin>
             </HBox>
          </children>
@@ -90,18 +90,13 @@
                <children>
                   <HBox>
                      <children>
-                        <Button id="createTestButton" fx:id="btnSaveQuestion" mnemonicParsing="false" onAction="#saveQuestion" prefWidth="150.0" text="Spara fråga" />
+                        <Button id="createTestButton" fx:id="btnSaveQuestion" alignment="CENTER" mnemonicParsing="false" onAction="#saveQuestion" prefWidth="150.0" text="Spara fråga" />
                         <Region HBox.hgrow="ALWAYS" />
                         <Button id="createTestButton" fx:id="btnNewAnswerAlternative" alignment="CENTER" mnemonicParsing="false" onAction="#newAnswerAlternative" prefHeight="31.0" prefWidth="40.0" text="+ ">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin></Button>
-                        <Button id="createTestButton" fx:id="btnRemoveAnswerAltenative" mnemonicParsing="false" onAction="#removeAnswerAlternative" prefWidth="40.0" text="-" />
-                     </children>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <Button id="createTestButton" fx:id="btnNewQuestion" mnemonicParsing="false" onAction="#newQuestion" prefWidth="150.0" text="Ny fråga" />
+                        <Button id="createTestButton" fx:id="btnRemoveAnswerAltenative" alignment="CENTER" mnemonicParsing="false" onAction="#removeAnswerAlternative" prefWidth="40.0" text="-" />
                      </children>
                   </HBox>
                </children>
