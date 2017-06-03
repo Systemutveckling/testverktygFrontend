@@ -72,10 +72,12 @@ public class Testresult implements Serializable {
     public String toString() {
         String s;
         if(isCorrect == 0){
-            
+           s ="Fel";
+        }else {
+            s ="Rätt";
         }
         
-        return  question + "\n" + answer;
+        return  "- "+question + "\n" +"Ditt svar: "+ answer + "\t"+ s;
     }
 
   
