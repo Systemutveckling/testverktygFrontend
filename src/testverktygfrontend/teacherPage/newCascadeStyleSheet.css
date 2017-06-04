@@ -65,6 +65,12 @@ and open the template in the editor.
     -fx-font-size: 13px; 
 }
 
+#pageLabel{
+    -fx-text-fill: #e74a43;
+    -fx-font-family: "Avenir Book";
+    -fx-font-size: 13px; 
+}
+
 #userName{
     -fx-font-family: "Avenir Book";
     -fx-font-size: 13px; 
