@@ -40,17 +40,18 @@ public class FXMLShowTestResultController implements Initializable {
     Logic logic = Logic.getInstanceOf();
     Server server = new Server();
     @FXML
-    private Label showText, userName;
+    private Label showText, userName,procentage;
     @FXML
     private Button showResult, myPage;
     @FXML
-    private Label show, testName, testI, points, totalPoang;
+    private Label show, testName, testI, points, totalPoang, resultLabel;
     @FXML
     private ListView resultView;
     @FXML
     private VBox vBox, resultBox;
     @FXML
     private ScrollPane scroll;
+    
     /**
      * Initializes the controller class.
      */
@@ -95,6 +96,9 @@ public class FXMLShowTestResultController implements Initializable {
             questionCounter++;
         }
         points.setText(count + "/" + result.size());
+        double procent = (double)count/result.size();
+        double resultProcent = procent *100;
+        procentage.setText(String.valueOf(Math.round(resultProcent))+"%");
         showResult.setDisable(true);
     }
 

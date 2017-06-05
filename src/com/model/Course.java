@@ -5,12 +5,10 @@
  */
 package com.model;
 
-
 import java.io.Serializable;
 import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-
 
 /**
  *
@@ -63,7 +61,6 @@ public class Course implements Serializable {
         setNameProp(name);
     }
 
-    
     public List<User> getUserList() {
         return userList;
     }
@@ -72,7 +69,6 @@ public class Course implements Serializable {
         this.userList = userList;
     }
 
-    
     public List<UserHasTest> getUserHasTestList() {
         return userHasTestList;
     }
@@ -83,8 +79,7 @@ public class Course implements Serializable {
 
     @Override
     public String toString() {
-        return  name;
+        return name;
     }
-    
-    
+
 }

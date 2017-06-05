@@ -13,14 +13,19 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
@@ -69,14 +74,20 @@ public class FXMLCreateTestController implements Initializable {
     @FXML
     private Button btnNewAnswerAlternative;
     @FXML
-    private Button btnNewQuestion;
-    @FXML
     private VBox vBoxAnswerAltenatives;
 
     @FXML
     private Button btnSaveQuestion;
     @FXML
     private Button btnRemoveAnswerAltenative;
+    @FXML
+    private Label lblLeftWarning;
+    @FXML
+    private Button btnPreviewTest;
+    @FXML
+    private Label lblRightWarning;
+    @FXML
+    private Label lblCreateTestCourseName;
 
     /**
      * Initializes the controller class.
@@ -84,6 +95,12 @@ public class FXMLCreateTestController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        l.setCreatedTempTest(new Test());
+        List<Question> tempQuestionList = new ArrayList<>();
+        l.getCreatedTempTest().setQuestionList(tempQuestionList);
+
+        lblCreateTestCourseName.setText("Skapa ett test för kursen " + l.getChoosenCourseToCreateTestTo().getName());
+        
         toggleGroupCorrectAnswer = new ToggleGroup();
         questionCount = 1;
 
@@ -106,29 +123,63 @@ public class FXMLCreateTestController implements Initializable {
 
     @FXML
     private void saveTestToDb(ActionEvent event) {
+        
+        if (l.getCreatedTempTest().getQuestionList().isEmpty()) {
+            lblLeftWarning.setText("Du måste spara minst en fråga innan du kan spara testet");
+        } else if (txtFieldTestName.getText().isEmpty()) {
+             lblLeftWarning.setText("Du måste ange namn på testet för att få spara");
+        } else if (sliderTimeLimit.getValue() == 0) {
+             lblLeftWarning.setText("Ska studenterna verkligen få så lite tid på sig att svara på testet");
+        } else {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle(null);
+            alert.setHeaderText(null);
+            alert.setContentText("Är du säker på att du vill spara testet?");
 
-        // Sparar den sista frågan användaren skrev in
-        // Sparar allt detta till databasen
-        l.saveCreatedTestToDb(l.getCreatedTempTest());
+            ButtonType btnYes = new ButtonType("Ja");
+            ButtonType btnNo = new ButtonType("Nej");
 
-        // Rensa alla inmatningar
-        questionCount = 1;
-        lblQuestionCount.setText("Fråga " + questionCount);
-        txtFieldQuestion.clear();
-        txtFieldImageUrl.clear();
-        txtFieldTestName.clear();
-        txtAreaTestDescription.clear();
-        sliderTimeLimit.adjustValue(0);
-        vBoxAnswerAltenatives.getChildren().clear();
-        answerAlternativesList.clear();
-        correctAnswerRadioButtonList.clear();
-        answerAltenativesContainer.clear();
-        newAnswerAlternative(event);
+            alert.getButtonTypes().setAll(btnYes, btnNo);
+
+            DialogPane dialogPane = alert.getDialogPane();
+            //dialogPane.getStylesheets().add(
+            //      getClass().getResource("style.css").toExternalForm());
+
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.get() == btnYes) {
+
+                // Spara testet en sista gång om man skulle ändrat något
+                saveTest();
+
+                // Sparar allt till databasen
+                int testId = l.saveCreatedTestToDb(l.getCreatedTempTest());
+
+                // Sparar även testet så man vet vilken kurs och vilken student det tillhör
+                l.addCreatedTestToCourseAndUser(l.getChoosenCourseToCreateTestTo().getId(), testId);
+
+                // Stänger sidan när man skapat ett test
+                Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stg.close();
+                // Rensa alla inmatningar
+                /*questionCount = 1;
+                lblQuestionCount.setText("Fråga " + questionCount);
+                txtFieldQuestion.clear();
+                txtFieldImageUrl.clear();
+                txtFieldTestName.clear();
+                txtAreaTestDescription.clear();
+                sliderTimeLimit.adjustValue(0);
+                vBoxAnswerAltenatives.getChildren().clear();
+                answerAlternativesList.clear();
+                correctAnswerRadioButtonList.clear();
+                answerAltenativesContainer.clear();
+                newAnswerAlternative(event);*/
+            }
+        }
     }
 
     private void saveTest() {
 
-        l.setCreatedTempTest(new Test());
         //Skapar ett nytt testobjekt från användarens inmatade värden
         l.getCreatedTempTest().setName(txtFieldTestName.getText());
         l.getCreatedTempTest().setDescription(txtAreaTestDescription.getText());
@@ -140,9 +191,6 @@ public class FXMLCreateTestController implements Initializable {
         } else {
             l.getCreatedTempTest().setSeeResult(Short.valueOf("0"));
         }
-
-        List<Question> tempQuestionList = new ArrayList<>();
-        l.getCreatedTempTest().setQuestionList(tempQuestionList);
     }
 
     private void saveQuestionsAndAnswers() {
@@ -181,25 +229,23 @@ public class FXMLCreateTestController implements Initializable {
     @FXML
     private void previewTest(ActionEvent event) throws IOException {
 
-        Stage s = new Stage();
-        Scene sc = new Scene(FXMLLoader.load(getClass().getResource("previewtest/FXMLPreviewTest.fxml")));
-        s.setScene(sc);
-        s.show();
-
-        System.out.println("Test" + l.getCreatedTempTest().getName());
-
-        for (Question q : l.getCreatedTempTest().getQuestionList()) {
-            System.out.println("Q: " + q.getQuestion());
-            for (Answer a : q.getAnswerList()) {
-                System.out.println("A: " + a.getAnswer());
-            }
+        if (l.getCreatedTempTest().getQuestionList().isEmpty()) {
+            lblLeftWarning.setText("Du måste spara minst en fråga innan du kan granska testet");
+        } else {
+            lblLeftWarning.setText("");
+            Stage s = new Stage();
+            Scene sc = new Scene(FXMLLoader.load(getClass().getResource("previewtest/FXMLPreviewTest.fxml")));
+            s.setScene(sc);
+            s.show();
         }
+
     }
 
     @FXML
     private void newAnswerAlternative(ActionEvent event) {
 
         if (answerAlternativesList.size() < 6) {
+            lblRightWarning.setText("");
             TextField answerAltenative = new TextField();
             answerAltenative.setPrefWidth(355);
             answerAlternativesList.add(answerAltenative);
@@ -219,7 +265,7 @@ public class FXMLCreateTestController implements Initializable {
             answerAltenativesContainer.add(hbox);
             vBoxAnswerAltenatives.getChildren().add(hbox);
         } else {
-            System.out.println("Max 6 svarsalternativ, annars blir GUI:t fult! :)");
+            lblRightWarning.setText("Max 6 svarsalternativ");
         }
     }
 
@@ -228,6 +274,7 @@ public class FXMLCreateTestController implements Initializable {
         int sizeContainer = answerAltenativesContainer.size();
 
         if (sizeContainer > 1) {
+            lblRightWarning.setText("");
             // Tar bort senaste svarsalternativet både från GUI:t och från listorna
             vBoxAnswerAltenatives.getChildren().remove(answerAltenativesContainer.get(sizeContainer - 1));
             answerAltenativesContainer.remove(sizeContainer - 1);
@@ -238,13 +285,11 @@ public class FXMLCreateTestController implements Initializable {
 
             int sizeIsCorrect = correctAnswerRadioButtonList.size();
             correctAnswerRadioButtonList.remove(sizeIsCorrect - 1);
-        }
-        else{
-            System.out.println("Måste vara ett svarsalternativ!");
+        } else {
+            lblRightWarning.setText("Måste finnas minst ett svarsalternativ");
         }
     }
 
-    @FXML
     private void newQuestion(ActionEvent event) {
 
         questionCount++;
@@ -255,16 +300,29 @@ public class FXMLCreateTestController implements Initializable {
         answerAlternativesList.clear();
         correctAnswerRadioButtonList.clear();
         newAnswerAlternative(event);
+        lblRightWarning.setText("");
         //previewTest(event);
 
     }
 
     @FXML
     private void saveQuestion(ActionEvent event) {
-        if (l.getCreatedTempTest() == null) {
-            saveTest();
+        boolean someAnswerAltenativeIsEmpty = false;
+        for (TextField t : answerAlternativesList) {
+            if (t.getText().isEmpty()) {
+                someAnswerAltenativeIsEmpty = true;
+                break;
+            }
         }
-        saveQuestionsAndAnswers();
+
+        if (txtFieldQuestion.getText().isEmpty()
+                || someAnswerAltenativeIsEmpty) {
+            lblRightWarning.setText("Frågan och svarsalternativen får inte vara tomma");
+        } else {
+
+            saveQuestionsAndAnswers();
+            newQuestion(event);
+        }
     }
 
 }

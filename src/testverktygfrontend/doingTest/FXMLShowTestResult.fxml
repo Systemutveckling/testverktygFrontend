@@ -19,14 +19,17 @@
                      <StackPane.margin>
                         <Insets top="60.0" />
                      </StackPane.margin></Button>
-                  <Label fx:id="showText" prefHeight="101.0" prefWidth="306.0" stylesheets="@newCascadeTestResult.css" text="Läraren behöver rätta provet,du kommer få &#10;resultatet om några dagar!" textAlignment="CENTER" visible="false" />
+                  <Label fx:id="showText" prefHeight="101.0" prefWidth="306.0" stylesheets="@newCascadeTestResult.css" text="Läraren behöver rätta provet,du kommer få &#10;resultatet om några dagar!" textAlignment="CENTER" visible="false">
+                     <StackPane.margin>
+                        <Insets top="50.0" />
+                     </StackPane.margin></Label>
                </children>
             </StackPane>
          </children>
       </VBox>
       <Label fx:id="show" layoutX="146.0" layoutY="272.0" prefHeight="63.0" prefWidth="298.0" />
       <Button fx:id="myPage" layoutX="513.0" layoutY="580.0" mnemonicParsing="false" onAction="#goToMyPage" stylesheets="@newCascadeTestResult.css" text="min sida" AnchorPane.topAnchor="580.0" />
-      <ScrollPane fx:id="scroll" layoutX="17.0" layoutY="284.0" prefHeight="288.0" prefWidth="604.0" stylesheets="@newCascadeTestResult.css" visible="false" AnchorPane.topAnchor="284.0">
+      <ScrollPane fx:id="scroll" layoutX="17.0" layoutY="315.0" prefHeight="257.0" prefWidth="604.0" stylesheets="@newCascadeTestResult.css" visible="false" AnchorPane.topAnchor="315.0">
          <content>
             <VBox fx:id="vBox" prefHeight="321.0" prefWidth="530.0">
                <padding>
@@ -68,7 +71,7 @@
             </GridPane>
          </children>
       </HBox>
-      <VBox fx:id="resultBox" layoutX="24.0" layoutY="228.0" prefHeight="63.0" prefWidth="477.0" visible="false">
+      <VBox fx:id="resultBox" layoutX="24.0" layoutY="228.0" prefHeight="77.0" prefWidth="477.0" visible="false">
          <children>
             <HBox prefHeight="23.0" prefWidth="475.0">
                <children>
@@ -92,6 +95,20 @@
                      </HBox.margin>
                   </Label>
                   <Label fx:id="points" prefHeight="35.0" prefWidth="119.0" stylesheets="@newCascadeTestResult.css" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="resultLabel" stylesheets="@newCascadeTestResult.css" text="RESULTAT">
+                     <HBox.margin>
+                        <Insets top="9.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="procentage" prefHeight="18.0" prefWidth="105.0" stylesheets="@newCascadeTestResult.css">
+                     <HBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
                </children>
             </HBox>
          </children>
