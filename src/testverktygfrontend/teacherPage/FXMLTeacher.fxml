@@ -125,38 +125,6 @@
                </children>
             </HBox>
          </center>
-         <top>
-            <HBox fx:id="topHBox" alignment="CENTER" spacing="10.0" stylesheets="@../studentPage/newCascadeStyleSheet.css" BorderPane.alignment="CENTER">
-               <children>
-                  <Label fx:id="userLabelImg" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0">
-                     <HBox.margin>
-                        <Insets left="5.0" right="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <VBox alignment="CENTER">
-                     <children>
-                        <Label fx:id="studentLabel" text="LÄRARE">
-                           <font>
-                              <Font name="Avenir Book" size="21.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="profileLabel" stylesheets="@../studentPage/newCascadeStyleSheet.css" text="MIN PROFIL " />
-                     </children>
-                  </VBox>
-                  <Region prefHeight="75.0" prefWidth="18.0" />
-                  <Label text="Hem" />
-                  <Region prefHeight="75.0" prefWidth="230.0" />
-                  <Button fx:id="logOut" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#logOut" prefHeight="44.0" prefWidth="86.0" stylesheets="@../studentPage/newCascadeStyleSheet.css" text="LOGGA UT" textAlignment="CENTER">
-                     <padding>
-                        <Insets top="40.0" />
-                     </padding>
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="30.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
-         </top>
          <left>
             <VBox alignment="BOTTOM_CENTER" prefHeight="516.0" prefWidth="128.0" spacing="20.0" style="-fx-background-color: linear-gradient(to bottom, #ff7f50, #10374b);" BorderPane.alignment="CENTER">
                <children>
@@ -171,6 +139,39 @@
                </children>
             </VBox>
          </left>
+         <top>
+            <HBox fx:id="topHBox" alignment="CENTER_LEFT" spacing="20.0" stylesheets="@newCascadeStyleSheet.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Region prefHeight="75.0" prefWidth="0.0" />
+                  <Label fx:id="userLabelImg" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" />
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="studentLabel" text="LÄRARE">
+                           <font>
+                              <Font name="Avenir Book" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="profileLabel" stylesheets="@../studentPage/newCascadeStyleSheet.css" text="MIN PROFIL " />
+                     </children>
+                  </VBox>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label fx:id="pageLabel" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="70.0" text="HEM" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Button fx:id="logOut" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#logOut" stylesheets="@../studentPage/newCascadeStyleSheet.css" text="LOGGA UT" textAlignment="CENTER">
+                           <padding>
+                              <Insets top="40.0" />
+                           </padding>
+                        </Button>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+         </top>
       </BorderPane>
    </children>
 </AnchorPane>

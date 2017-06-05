@@ -5,9 +5,25 @@
  */
 package testverktygfrontend.doingTest;
 
+import com.logic.Logic;
+import com.model.Answer;
+import com.model.Question;
+import com.model.Studentanswer;
+import com.model.Test;
+import com.model.UserHasTest;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 /**
  * FXML Controller class
@@ -16,12 +32,167 @@ import javafx.fxml.Initializable;
  */
 public class FXMLDoingTestController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private Label nameOnTest;
+    @FXML
+    private Label label;
+    @FXML
+    private Label questionsLeft;
+    @FXML
+    private Label arrowLeft;
+    @FXML
+    private Label arrowRight;
+    @FXML
+    private Label countDownLabel;
+    @FXML
+    private VBox vbox;
+    Logic logic = Logic.getInstanceOf();
+    Test test = logic.getPickedTest();
+
+    private ToggleGroup toggleGroupCorrectAnswer = new ToggleGroup();
+    private List<RadioButton> correctAnswerRadioButtonList = new ArrayList();
+    private List<HBox> answerAltenativesContainer = new ArrayList();
+    private HBox hBoxAnswerAltenatives = new HBox();
+    private RadioButton correctAnswerRadioButton;
+    private List<Studentanswer> studentAnswer = new ArrayList();
+    private boolean testDone = false;
+
+    int questionId = 0;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+        nameOnTest.setText(test.getName());
+        showQuestion();
+        showAnswer();
+
+    }
+
+    @FXML
+    private void backward(MouseEvent event) {
+        questionId--;
+
+        if (questionId >= 0 && questionId < test.getQuestionList().size()) {
+
+            showQuestion();
+            showAnswer();
+
+        }
+        if (studentAnswer.size() > 0) {
+            for (RadioButton rb : correctAnswerRadioButtonList) {
+                for (Studentanswer sa : studentAnswer) {
+                    if (rb.getText().equals(sa.getAnswerId().getAnswer())) {
+                        rb.setSelected(true);
+                    }
+                }
+            }
+            studentAnswer.remove((studentAnswer.size() - 1));
+        }
+
+    }
+
+    @FXML
+    private void forward(MouseEvent event) {
+        questionId++;
+        if (testDone) {
+
+        } else {
+            savePickedAnswer();
+            try {
+                showQuestion();
+                showAnswer();
+            } catch (Exception e) {
+                List<UserHasTest> userTests = logic.getUserTests(logic.getUser().getId());
+                for (UserHasTest uht : userTests) {
+                    if (uht.getTestId().getId() == test.getId()) {
+                        uht.setGrade(gradeCalc());
+                        uht.setIsDone((short)1);
+                        logic.updateStudentTestStatus(uht);
+                    }
+                }
+                System.out.println("!!");
+                System.out.println("VISA TESTRESULTAT");
+                System.out.println("!!");
+                for (Studentanswer sa : studentAnswer) {
+                    //logic.saveStudentAnswer(sa);
+                }
+            }
+
+        }
+
+    }
+
+    public void savePickedAnswer() {
+        Studentanswer sa = new Studentanswer();
+        int answerId = 0;
+        for (int i = 0; i < correctAnswerRadioButtonList.size(); i++) {
+            if (correctAnswerRadioButtonList.get(i).isSelected()) {
+                String string = correctAnswerRadioButtonList.get(i).getStyleClass().get(1);
+                String stringSplit[] = string.split("radio-button");
+
+                String split = stringSplit[0];
+
+                answerId = Integer.parseInt(split);
+            }
+        }
+        for (Question q : test.getQuestionList()) {
+            for (Answer a : q.getAnswerList()) {
+                if (a.getId() == answerId) {
+                    sa.setAnswerId(a);
+                    sa.setQuestionId(q);
+                    sa.setUserId(logic.getUser());
+                    studentAnswer.add(sa);
+                }
+            }
+        }
+
+        if (questionId == test.getQuestionList().size()) {
+
+            testDone = true;
+        }
+
+    }
+
+    public void showQuestion() {
+        label.setText(test.getQuestionList().get(questionId).getQuestion());
+        questionsLeft.setText(String.valueOf(questionId + 1) + "/" + test.getQuestionList().size());
+
+    }
+
+    public void showAnswer() {
+
+        correctAnswerRadioButtonList.clear();
+        vbox.getChildren().clear();
+        List<Answer> answer = test.getQuestionList().get(questionId).getAnswerList();
+
+        for (int i = 0; i < answer.size(); i++) {
+            correctAnswerRadioButton = new RadioButton();
+
+            correctAnswerRadioButton.setToggleGroup(toggleGroupCorrectAnswer);
+
+            //int size = correctAnswerRadioButtonList.size();
+            String id = String.valueOf(answer.get(i).getId());
+            correctAnswerRadioButton.getStyleClass().add(id);
+            correctAnswerRadioButton.setText(answer.get(i).getAnswer());
+            vbox.setSpacing(20);
+            vbox.setAlignment(Pos.CENTER_LEFT);
+            correctAnswerRadioButtonList.add(correctAnswerRadioButton);
+
+            //vbox.getChildren().add(correctAnswerRadioButtonList.get(size - 1));
+            vbox.getChildren().add(correctAnswerRadioButton);
+        }
+
+    }
+
+    public String gradeCalc() {
+        int amountOfCorrects = 0;
+        for (Studentanswer sa : studentAnswer) {
+            if (sa.getAnswerId().getIsCorrect()==1) {
+                amountOfCorrects++;
+            }
+        }
+
+        int percent = (int) ((amountOfCorrects * 100.0f) / studentAnswer.size());
+        
+        return Integer.toString(percent);
+    }
 }
