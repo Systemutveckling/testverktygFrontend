@@ -7,6 +7,7 @@ package com.serverconnection;
 
 import com.model.Answer;
 import com.model.Question;
+import com.model.Studentanswer;
 import com.model.Test;
 import com.model.User;
 import com.model.UserHasTest;
@@ -38,10 +39,23 @@ public class Server {
     }
 
     public List<UserHasTest> getUserTests(int userId) {
+
         List<UserHasTest> tests = client.target("http://localhost:8080/testverktygbackend/webapi/users/students/"+userId+"/tests")
+
                 .request(MediaType.APPLICATION_JSON).get(new GenericType<List<UserHasTest>>() {
         });
         return tests;
+    }
+    
+    public void saveStudentAnswer(){
+        /*
+        Studentanswer stud = new Studentanswer();
+        stud.setAnswerId(stud);
+        stud.setQuestionId(1);
+        User s = client.target("http://localhost:8080/testverktygbackend/webapi/users/studentanswers?studentId=6&questionId=1&answerId=1")
+
+                .request(MediaType.APPLICATION_JSON).post(Entity.json(user), User.class);
+    */
     }
 
     public User login(String email, String password) {
@@ -50,7 +64,9 @@ public class Server {
         user.setEMail(email);
         user.setPassword(password);
 
+
         User s = client.target("http://localhost:8080/testverktygbackend/webapi/users/login")
+
                 .request(MediaType.APPLICATION_JSON).post(Entity.json(user), User.class);
 
         if (s.getEMail() == null) {
@@ -73,7 +89,9 @@ public class Server {
         testToDb.setSeeResult(test.getSeeResult());
 
         // Sparar testet till databasen. Får tillbaka objektet med rätt id
+
         Test testFromDb = client.target("http://localhost:8080/testverktygbackend/webapi/tests")
+
                 .request(MediaType.APPLICATION_JSON)
                 .post(Entity.entity(testToDb, "application/json;charset=utf-8"), Test.class);
 
@@ -84,7 +102,9 @@ public class Server {
             questionToDb.setTestId(testFromDb);
 
             // Sparar frågor till databasen. Får tillbaka objekt med rätt id
+
             Question questionFromDb = client.target("http://localhost:8080/testverktygbackend/webapi/tests")
+
                     .path(String.valueOf(testFromDb.getId()))
                     .path("questions")
                     .request(MediaType.APPLICATION_JSON)
