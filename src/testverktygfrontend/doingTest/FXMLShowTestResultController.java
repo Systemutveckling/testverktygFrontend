@@ -6,17 +6,13 @@
 package testverktygfrontend.doingTest;
 
 import com.logic.Logic;
-import com.model.Test;
 import com.model.Testresult;
 import com.serverconnection.Server;
-import java.awt.Color;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,8 +24,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
-import static javafx.scene.input.KeyCode.R;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import static javafx.scene.paint.Color.GREEN;
 import static javafx.scene.paint.Color.RED;
@@ -48,9 +42,9 @@ public class FXMLShowTestResultController implements Initializable {
     @FXML
     private Label showText, userName;
     @FXML
-    private Button showResult,myPage;
+    private Button showResult, myPage;
     @FXML
-    private Label show, testName, testI,points,totalPoang;
+    private Label show, testName, testI, points, totalPoang;
     @FXML
     private ListView resultView;
     @FXML
@@ -60,59 +54,50 @@ public class FXMLShowTestResultController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
-//    ObservableList<Testresult> resultList = FXCollections.observableArrayList();
+
     List<Testresult> result = server.getResultFromTest(logic.getUser().getId(), logic.getPickedTest().getId());
-     
-     @FXML
+
+    @FXML
     private void showResult(ActionEvent event) throws IOException {
         scroll.setVisible(true);
         resultBox.setVisible(true);
-        
         testName.setText(logic.getPickedTest().getName());
 
         int count = 0;
         int questionCounter = 1;
-        String correction="";
-   
+        String correction = "";
+
         for (Testresult resultTest : result) {
-           Label question = new Label();
-            Label answer  =new Label();
+            Label question = new Label();
+            Label answer = new Label();
             Label empty = new Label();
-            if(resultTest.getIsCorrect()== 1){
-                 correction="Rätt";
-                 answer.setTextFill(GREEN);
-                 
-            }else{
-                 correction="Fel";
-                 answer.setTextFill(RED);
+            if (resultTest.getIsCorrect() == 1) {
+                correction = "Rätt";
+                answer.setTextFill(GREEN);
+            } else {
+                correction = "Fel";
+                answer.setTextFill(RED);
             }
-         
-            question.setText("Fråga "+questionCounter+". "+resultTest.getQuestion());
-            answer.setText("Ditt svar: "+resultTest.getAnswer()+"\t"+correction);
+
+            question.setText("Fråga " + questionCounter + ". " + resultTest.getQuestion());
+            answer.setText("Ditt svar: " + resultTest.getAnswer() + "\t" + correction);
             empty.setText("");
             answer.setFont(new Font("Quicksand", 13));
             question.setFont(new Font("Quicksand", 13));
-            
+
             vBox.getChildren().add(question);
             vBox.getChildren().add(answer);
             vBox.getChildren().add(empty);
-//            vBox.getChildren().add(hBox);
-             
-//            resultList.add(resultTest);
+
             if (resultTest.getIsCorrect() == 1) {
                 count++;
             }
             questionCounter++;
         }
         points.setText(count + "/" + result.size());
-//        resultView.setItems(resultList);
-//        resultView.setVisible(true);
-        
-    
-    showResult.setDisable(true);
+        showResult.setDisable(true);
     }
-            
+
     @FXML
     private void goToMyPage(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/testverktygfrontend/studentPage/FXMLStudentPage.fxml"));
@@ -121,9 +106,10 @@ public class FXMLShowTestResultController implements Initializable {
         stg.setScene(one);
         stg.show();
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
- userName.setText(logic.getUser().getEMail());
+        userName.setText(logic.getUser().getEMail());
         if (logic.getPickedTest().getSeeResult() == 0) {
             showText.setVisible(false);
             showResult.setVisible(true);
@@ -132,6 +118,6 @@ public class FXMLShowTestResultController implements Initializable {
             showText.setVisible(true);
 
         }
-    }  
-    
+    }
+
 }
