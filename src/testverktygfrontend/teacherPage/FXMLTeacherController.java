@@ -144,12 +144,14 @@ public class FXMLTeacherController implements Initializable {
 
     @FXML
     private void createTest(ActionEvent event) throws IOException {
+        if (!(courseListView.getSelectionModel().getSelectedIndex() == -1)) {
         int index = courseListView.getSelectionModel().getSelectedIndex();
         logic.setChoosenCourseToCreateTestTo(courses.get(index));
         Stage s = new Stage();
         Scene sc = new Scene(FXMLLoader.load(getClass().getResource("/testverktygfrontend/createtest/FXMLCreateTest.fxml")));
         s.setScene(sc);
         s.show();
+        }
     }
 
     @FXML
