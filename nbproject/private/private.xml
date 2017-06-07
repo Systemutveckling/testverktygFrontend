@@ -29,9 +29,12 @@
             <file>file:/Users/ramonachantaf/Desktop/testverktygFrontend/src/testverktygfrontend/doingTest/FXMLShowTestResultController.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/SoftyLaptop/Documents/NetBeansProjects/testverktygFrontend/src/testverktygfrontend/doingTest/FXMLDoingTestController.java</file>
-            <file>file:/C:/Users/SoftyLaptop/Documents/NetBeansProjects/testverktygFrontend/src/testverktygfrontend/doingTest/FXMLShowTestResultController.java</file>
-            <file>file:/C:/Users/SoftyLaptop/Documents/NetBeansProjects/testverktygFrontend/src/testverktygfrontend/Statistic/StatisticsPageController.java</file>
+            <file>file:/C:/Users/conra/Documents/NetBeansProjects/testverktygFrontend/src/com/model/Course.java</file>
+            <file>file:/C:/Users/conra/Documents/NetBeansProjects/testverktygFrontend/src/com/model/Question.java</file>
+            <file>file:/C:/Users/conra/Documents/NetBeansProjects/testverktygFrontend/src/com/model/UserHasTest.java</file>
+            <file>file:/C:/Users/conra/Documents/NetBeansProjects/testverktygFrontend/src/testverktygfrontend/teacherPage/FXMLTeacherController.java</file>
+            <file>file:/C:/Users/conra/Documents/NetBeansProjects/testverktygFrontend/src/com/model/Testresult.java</file>
+            <file>file:/C:/Users/conra/Documents/NetBeansProjects/testverktygFrontend/src/com/model/Answer.java</file>
         </group>
     </open-files>
 </project-private>

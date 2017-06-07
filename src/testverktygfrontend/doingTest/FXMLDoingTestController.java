@@ -88,7 +88,9 @@ public class FXMLDoingTestController implements Initializable {
 
     int questionId = 0;
 
-    int secondsLeft = test.getTimeLimit();
+    //int secondsLeft = logic.getPickedTest().getTimeLimit();
+    int secondsLeft = 6;
+
     @FXML
     private Button quittest;
     @FXML
@@ -103,12 +105,16 @@ public class FXMLDoingTestController implements Initializable {
         studentAnswer.clear();
         nameOnTest.setText(test.getName());
 
-        startCounter();
         counterLogic();
+        startCounter();
 
         showQuestion();
         showAnswer();
         quittest.setVisible(false);
+
+        if (questionId == 0) {
+            left.setVisible(false);
+        }
 
     }
 
@@ -133,20 +139,28 @@ public class FXMLDoingTestController implements Initializable {
             quittest.setText("Avsluta test");
             left.setVisible(false);
             right.setVisible(false);
-            for (Studentanswer sa : studentAnswer) {
+            /* ETT FÖRSÖK FÖR ATT FÅ FEL PÅ RESTERANDE SVAR
+            int answerSize = studentAnswer.size();
+            if(answerSize<=studentAnswer.size()){
+                int size = studentAnswer.size();
+                size-=answerSize;
+                for(int i = 0; i > size; i++){
+                    Studentanswer sa = new Studentanswer();
+                    for(int j =size; j > test.getQuestionList().size();j++){
+                        for(Answer a : test.getQuestionList().get(j).getAnswerList()){
+                            if(a.getIsCorrect()==0){
+                                sa.setAnswerId(a);
+                                sa.setQuestionId(test.getQuestionList().get(j));
+                                sa.setUserId(logic.getUser());
+                            }
+                        }
+                    }
+                    
+                    studentAnswer.add(sa);
+                }
 
             }
-            quittest.setOnAction((event) -> {
-                try {
-                    Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                    Scene sc = new Scene(FXMLLoader.load(getClass().getResource("FXMLShowTestResult.fxml")));
-                    stg.setScene(sc);
-                    stg.show();
-
-                } catch (IOException iOException) {
-                }
-            });
-
+*/
             testComplete();
             timeline.stop();
 
@@ -155,15 +169,33 @@ public class FXMLDoingTestController implements Initializable {
             hours = secondsLeft / 3600;
             minutes = (secondsLeft % 3600) / 60;
             seconds = secondsLeft % 60;
-            countDownLabel.setText(String.valueOf( hours +" h  " + minutes   + " min  "+  seconds+" sek "));
+            countDownLabel.setText(String.valueOf(hours + " h  " + minutes + " min  " + seconds + " sek "));
         }
         return secondsLeft;
 
     }
 
     @FXML
+    private void showTestResult(ActionEvent event) throws IOException {
+        logic.setUserStudent(logic.getUser());
+        testComplete();
+        Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene sc = new Scene(FXMLLoader.load(getClass().getResource("FXMLShowTestResult.fxml")));
+        stg.setScene(sc);
+        stg.show();
+
+    }
+
+    @FXML
     private void backward(MouseEvent event) {
+        testDone = false;
         questionId--;
+        if (questionId <= 0) {
+            left.setVisible(false);
+        } else {
+            quittest.setVisible(false);
+            right.setVisible(true);
+        }
 
         if (questionId >= 0 && questionId < test.getQuestionList().size()) {
 
@@ -187,24 +219,31 @@ public class FXMLDoingTestController implements Initializable {
     @FXML
     private void forward(MouseEvent event) throws IOException {
         questionId++;
-        if (testDone) {
 
+        if (questionId > 0) {
+            left.setVisible(true);
+        }
+        System.out.println("questionListSize = " + test.getQuestionList().size());
+
+        System.out.println("questionListSize = " + questionId);
+
+        if (test.getQuestionList().size() == (questionId + 1)) {
+            quittest.setVisible(true);
+            quittest.setText("Skicka in provet");
+
+            right.setVisible(false);
         } else {
-            savePickedAnswer();
-            try {
-                showQuestion();
-                showAnswer();
-            } catch (IndexOutOfBoundsException e) {
-                logic.setUserStudent(logic.getUser());
-                testComplete();
-                Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                Scene sc = new Scene(FXMLLoader.load(getClass().getResource("FXMLShowTestResult.fxml")));
-                stg.setScene(sc);
-                stg.show();
-            } catch (Exception e) {
-                System.out.println("ERROR: " + e);
-            }
 
+            quittest.setVisible(false);
+        }
+
+        try {
+            savePickedAnswer();
+            showQuestion();
+            showAnswer();
+
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e);
         }
 
     }

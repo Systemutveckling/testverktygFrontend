@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -9,7 +15,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="Anchor" prefHeight="635.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #ff7f50, #10374b);" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="Anchor" prefHeight="635.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom, #ff7f50, #10374b);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.FXMLDocumentController">
     <children>
         <Button fx:id="button" layoutX="251.0" layoutY="371.0" onAction="#loginAction" stylesheets="@newCascadeStyleSheet.css" text="Logga in">
          <effect>
@@ -30,5 +36,6 @@
             <Font name="Josefin Sans" size="35.0" />
          </font>
       </Label>
+      <Label fx:id="wrongCredentials" layoutX="202.0" layoutY="413.0" prefHeight="17.0" prefWidth="246.0" textFill="RED" />
     </children>
 </AnchorPane>

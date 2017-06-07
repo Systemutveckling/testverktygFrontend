@@ -57,10 +57,23 @@ public class StartTestPopUpController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        testName.setText("'' " + logic.getPickedTest().getName() + " ''");
-        testTime.setText(logic.getPickedTest().getTimeLimit().toString());
+            int time =  logic.getPickedTest().getTimeLimit();
+            
+            
+           int hours = time / 3600;
+           int minutes = (time % 3600) / 60;
+            
+        testName.setText("'' "+logic.getPickedTest().getName()+" ''");
+        
+        if(hours == 0){
+        
+        testTime.setText(String.valueOf(minutes + " minuter"));
+        } else {
+        
+        testTime.setText(hours + " t " + minutes + " min");
+        }
     }
-
+    
     @FXML
     private void startTest(ActionEvent event) throws IOException {
         Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -69,5 +82,7 @@ public class StartTestPopUpController implements Initializable {
         logic.getStudentStage().close();
         stg.show();
     }
+    }
 
-}
+
+

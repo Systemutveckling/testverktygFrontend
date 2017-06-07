@@ -13,6 +13,8 @@ import com.model.UserHasTest;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -122,7 +124,7 @@ public class FXMLStudentPageController implements Initializable {
     }
      @FXML
     private void startTestAction(ActionEvent event) throws IOException {
-        // logic.setPickedTest((Test) testsToDo.getSelectionModel().getSelectedItem());
+        
         Stage stage;
         Parent root;
         stage = new Stage();
@@ -164,6 +166,7 @@ public class FXMLStudentPageController implements Initializable {
       
         btnStart.setDisable(true);
         showTest.setDisable(true);
+        logic.login(logic.getUser().getEMail(), logic.getUser().getPassword());
     }    
       
     

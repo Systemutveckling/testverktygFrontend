@@ -64,8 +64,9 @@ public class FXMLTeacherController implements Initializable {
 
     @FXML
     private void seeCourse(MouseEvent event) throws IOException {
-
+        
         if (!(courseListView.getSelectionModel().getSelectedIndex() == -1)) {
+            
             tests.clear();
             students.clear();
             testsNotDone.clear();
@@ -86,7 +87,8 @@ public class FXMLTeacherController implements Initializable {
 
     @FXML
     private void seeTests(MouseEvent event) throws IOException {
-
+             showTest.setDisable(true);
+            btnStart.setDisable(true);
         tests.clear();
         testsNotDone.clear();
         List<User> fakeStudentList = new ArrayList();
@@ -96,7 +98,7 @@ public class FXMLTeacherController implements Initializable {
                 fakeStudentList.add(c);
             }
         }
-
+    
         if (!(studentList.getSelectionModel().getSelectedIndex() == -1)) {
 
             for (UserHasTest d : fakeStudentList.get(studentList.getSelectionModel().getSelectedIndex()).getUserHasTestList()) {
@@ -104,18 +106,20 @@ public class FXMLTeacherController implements Initializable {
                 if (d.getIsDone() == 0) {
                     testsNotDone.add(d.getTestId());
 
-                    System.out.println(d.getGrade());
                 } else if (d.getIsDone() == 1) {
                     tests.add(d.getTestId());
 
                 }
             }
-
+                
+            
             testNotDoneList.setItems(testsNotDone);
 
             testDoneList.setItems(tests);
 
         }
+        
+        
        
     }
 
@@ -136,6 +140,7 @@ public class FXMLTeacherController implements Initializable {
     @FXML
     private void getTestUndone(MouseEvent event) throws IOException {
         if (!(testNotDoneList.getSelectionModel().getSelectedIndex() == -1)) {
+            btnStart.setDisable(false);
             System.out.println(testNotDoneList.getSelectionModel().getSelectedItem());
             Test test = (Test) testNotDoneList.getSelectionModel().getSelectedItem();
             logic.setPickedTest(test);
@@ -157,7 +162,7 @@ public class FXMLTeacherController implements Initializable {
         }
 
         courseListView.setItems(courses);
-
+        logic.login(logic.getUser().getEMail(), logic.getUser().getPassword());
     }
 
     @FXML
