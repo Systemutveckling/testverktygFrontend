@@ -6,6 +6,7 @@
 package com.logic;
 
 import com.model.Course;
+import com.model.Studentanswer;
 import com.model.Test;
 import com.model.Testresult;
 import com.model.User;
@@ -57,6 +58,14 @@ public class Logic {
 
     public List<User> getUsers() {
         return server.getUsers();
+    }
+    
+    public void saveStudentAnswer(Studentanswer sa){
+        server.saveStudentAnswer(sa);
+    }
+    
+    public void updateStudentTestStatus(UserHasTest uht){
+        server.updateStudentTestStatus(uht);
     }
 
     
