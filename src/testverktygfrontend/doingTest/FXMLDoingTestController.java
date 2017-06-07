@@ -146,7 +146,7 @@ public class FXMLDoingTestController implements Initializable {
             hours = secondsLeft / 3600;
             minutes = (secondsLeft % 3600) / 60;
             seconds = secondsLeft % 60;
-            countDownLabel.setText(String.valueOf("Hours = " + hours + " Minutes = " + minutes + " Seconds = " + seconds));
+            countDownLabel.setText(String.valueOf( hours +" h  " + minutes   + " min  "+  seconds+" sek "));
         }
         return secondsLeft;
 

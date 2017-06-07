@@ -32,7 +32,7 @@ public class Server {
     }
 
     public List<User> getUsers() {
-        List<User> user = client.target("http://localhost:8080/testverktygbackend2/webapi/users")
+        List<User> user = client.target("http://localhost:8080/testverktygbackend/webapi/users")
                 .request(MediaType.APPLICATION_JSON).get(new GenericType<List<User>>() {
         });
 
@@ -41,7 +41,7 @@ public class Server {
 
     public List<UserHasTest> getUserTests(int userId) {
 
-        List<UserHasTest> tests = client.target("http://localhost:8080/testverktygbackend2/webapi/users/students/" + userId + "/tests")
+        List<UserHasTest> tests = client.target("http://localhost:8080/testverktygbackend/webapi/users/students/" + userId + "/tests")
                 .request(MediaType.APPLICATION_JSON).get(new GenericType<List<UserHasTest>>() {
         });
         return tests;
@@ -51,13 +51,13 @@ public class Server {
         int userid = sa.getUserId().getId();
         int questionid = sa.getQuestionId().getId();
         int answerid = sa.getAnswerId().getId();
-        client.target("http://localhost:8080/testverktygbackend2/webapi/users/studentanswers?studentId=" + userid + "&questionId=" + questionid + "&answerId=" + answerid).request(MediaType.APPLICATION_JSON)
+        client.target("http://localhost:8080/testverktygbackend/webapi/users/studentanswers?studentId=" + userid + "&questionId=" + questionid + "&answerId=" + answerid).request(MediaType.APPLICATION_JSON)
                 .post(Entity.entity(sa, "application/json;charset=utf-8"), Studentanswer.class);;
 
     }
     
     public void updateStudentTestStatus(UserHasTest uht){
-         client.target("http://localhost:8080/testverktygbackend2/webapi/tests/"+uht.getId()).request().put(Entity.entity(uht, MediaType.APPLICATION_JSON));
+         client.target("http://localhost:8080/testverktygbackend/webapi/tests/"+uht.getId()).request().put(Entity.entity(uht, MediaType.APPLICATION_JSON));
     }
 
     public User login(String email, String password) {
@@ -66,7 +66,7 @@ public class Server {
         user.setEMail(email);
         user.setPassword(password);
 
-        User s = client.target("http://localhost:8080/testverktygbackend2/webapi/users/login")
+        User s = client.target("http://localhost:8080/testverktygbackend/webapi/users/login")
                 .request(MediaType.APPLICATION_JSON).post(Entity.json(user), User.class);
 
         if (s.getEMail() == null) {
@@ -89,7 +89,7 @@ public class Server {
         testToDb.setSeeResult(test.getSeeResult());
 
         // Sparar testet till databasen. Får tillbaka objektet med rätt id
-        Test testFromDb = client.target("http://localhost:8080/testverktygbackend2/webapi/tests")
+        Test testFromDb = client.target("http://localhost:8080/testverktygbackend/webapi/tests")
                 .request(MediaType.APPLICATION_JSON)
                 .post(Entity.entity(testToDb, "application/json;charset=utf-8"), Test.class);
 
@@ -100,7 +100,7 @@ public class Server {
             questionToDb.setTestId(testFromDb);
 
             // Sparar frågor till databasen. Får tillbaka objekt med rätt id
-            Question questionFromDb = client.target("http://localhost:8080/testverktygbackend2/webapi/tests")
+            Question questionFromDb = client.target("http://localhost:8080/testverktygbackend/webapi/tests")
                     .path(String.valueOf(testFromDb.getId()))
                     .path("questions")
                     .request(MediaType.APPLICATION_JSON)
@@ -113,7 +113,7 @@ public class Server {
                 answerToDb.setQuestionId(questionToDb);
 
                 // Sparar svarsalternativ till databasen. Får tillbaka objekt med rätt id
-                Answer answerFromDb = client.target("http://localhost:8080/testverktygbackend2/webapi/tests")
+                Answer answerFromDb = client.target("http://localhost:8080/testverktygbackend/webapi/tests")
                         .path(String.valueOf(testFromDb.getId()))
                         .path("questions")
                         .path(String.valueOf(questionFromDb.getId()))
@@ -129,14 +129,14 @@ public class Server {
     }
 
     public void addCreatedTestToCourseAndUser(int courseId, int testId) {
-        List<User> studentsInCourse = client.target("http://localhost:8080/testverktygbackend2/webapi/courses")
+        List<User> studentsInCourse = client.target("http://localhost:8080/testverktygbackend/webapi/courses")
                 .path(String.valueOf(courseId))
                 .path("students")
                 .request(MediaType.APPLICATION_JSON).get(new GenericType<List<User>>() {
         });
 
         studentsInCourse.forEach((u) -> {
-            client.target("http://localhost:8080/testverktygbackend2/webapi/courses")
+            client.target("http://localhost:8080/testverktygbackend/webapi/courses")
                     .path(String.valueOf(courseId))
                     .path("tests")
                     .path(String.valueOf(testId))
@@ -148,7 +148,7 @@ public class Server {
     }
     
     public List <Testresult> getResultFromTest(int studentId, int testId) {
-        List<Testresult> result = client.target("http://localhost:8080/testverktygbackend2/webapi/users/students/"+studentId+"/tests/"+testId+"/testresult")
+        List<Testresult> result = client.target("http://localhost:8080/testverktygbackend/webapi/users/students/"+studentId+"/tests/"+testId+"/testresult")
                 .request(MediaType.APPLICATION_JSON).get(new GenericType<List<Testresult>>() {
         });
 

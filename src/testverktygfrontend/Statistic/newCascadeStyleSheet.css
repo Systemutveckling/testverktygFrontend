@@ -31,6 +31,13 @@ and open the template in the editor.
     -fx-cursor: hand;
 }
 
+#statisticPageLabel{
+    -fx-text-fill: #e74a43;
+    -fx-font-family: "System";
+    -fx-font-size: 13px; 
+    -fx-font-weight:bold;
+}
+
 #topHBox{
     -fx-background-color: #dbdde0;
 }
@@ -47,7 +54,7 @@ and open the template in the editor.
     -fx-background-size: 18 18;
     -fx-background-repeat: no-repeat;
     -fx-background-color: none;
-    -fx-text-fill: #b9bbbf;
+    -fx-text-fill: #ebe6ed;
     -fx-font-family: "Quicksand Book";
     -fx-background-position: center;
     -fx-cursor: hand;
@@ -65,11 +72,7 @@ and open the template in the editor.
     -fx-font-size: 13px; 
 }
 
-#pageLabel{
-    -fx-text-fill: #e74a43;
-    -fx-font-family: "Avenir Book";
-    -fx-font-size: 13px; 
-}
+
 
 #userName{
     -fx-font-family: "Avenir Book";

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.chart.*?>
@@ -20,43 +21,56 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.Statistic.StatisticsPageController">
+<AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" stylesheets="@newCascadeStyleSheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.Statistic.StatisticsPageController">
    <children>
       <BorderPane layoutX="200.0" layoutY="135.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <HBox alignment="CENTER_LEFT">
+                  <VBox prefHeight="51.0" prefWidth="232.0">
                      <children>
-                        <Region prefHeight="30.0" prefWidth="75.0" />
-                        <Label text="Prov ">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="provLabel" text="provnamn">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
+                        <HBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label text="Prov :">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="provLabel" text="provnamn" textFill="#e74a43">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="BOTTOM_LEFT">
+                           <children>
+                              <Label prefHeight="28.0" prefWidth="40.0" text="Kurs:">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="courseLabel" prefHeight="28.0" prefWidth="175.0" text="Kursnamn" textFill="#e74a43">
+                                  <tooltip>
+                            <Tooltip text="This is a button. Click on it." />
+                        </tooltip>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
-                  <HBox alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="10.0">
-                     <children>
-                        <Region prefHeight="30.0" prefWidth="100.0" />
-                        <Label fx:id="courseLabel" prefHeight="67.0" prefWidth="175.0" text="Kursnamn">
-                            <tooltip>
-                      <Tooltip text="This is a button. Click on it." />
-                  </tooltip>
-                           <padding>
-                              <Insets left="15.0" />
-                           </padding>
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
+                     <VBox.margin>
+                        <Insets left="30.0" top="10.0" />
+                     </VBox.margin>
+                  </VBox>
                   <BarChart fx:id="barChart" prefHeight="470.0" prefWidth="500.0" styleClass="bar1" title="Medelvärde 50%">
                     <xAxis>
                       <CategoryAxis label="Elever" fx:id="xAxis">
@@ -75,11 +89,14 @@
             </VBox>
          </center>
          <top>
-            <HBox fx:id="topHBox" alignment="CENTER_LEFT" spacing="20.0" stylesheets="@newCascadeStyleSheet.css">
+            <HBox fx:id="topHBox" alignment="CENTER_LEFT" spacing="20.0">
                <children>
-                  <Region prefHeight="75.0" prefWidth="0.0" />
-                  <Label fx:id="userLabelImg" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" />
-                  <VBox alignment="CENTER">
+                  <Label fx:id="userLabelImg" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="54.0">
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </Label>
+                  <VBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="485.0">
                      <children>
                         <Label fx:id="studentLabel" text="LÄRARE">
                            <font>
@@ -88,18 +105,29 @@
                         </Label>
                         <Label fx:id="profileLabel" stylesheets="@../studentPage/newCascadeStyleSheet.css" text="MIN PROFIL " />
                      </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </VBox>
-                  <Region HBox.hgrow="ALWAYS" />
-                  <Label fx:id="pageLabel" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="70.0" text="STATISTIK" />
-                  <Region HBox.hgrow="ALWAYS" />
-                  <VBox alignment="CENTER">
+                  <Region prefHeight="75.0" prefWidth="88.0" />
+                  <HBox prefHeight="75.0" prefWidth="82.0">
                      <children>
-                        <Button fx:id="logOut" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#logOut" stylesheets="@../studentPage/newCascadeStyleSheet.css" text="LOGGA UT" textAlignment="CENTER">
-                           <padding>
-                              <Insets top="40.0" />
-                           </padding>
-                        </Button>
+                        <Line endY="30.0" startY="-42.0" stroke="#e74a43" style="-fx-stroke-width: 2;">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Line>
+                        <Label fx:id="statisticPageLabel" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="90.0" stylesheets="@newCascadeStyleSheet.css" text="Statistik sida">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" top="25.0" />
+                           </HBox.margin>
+                        </Label>
                      </children>
+                  </HBox>
+                  <VBox alignment="CENTER">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -110,9 +138,17 @@
          <left>
             <VBox alignment="BOTTOM_CENTER" prefHeight="516.0" prefWidth="128.0" spacing="20.0" style="-fx-background-color: linear-gradient(to bottom, #ff7f50, #10374b);" BorderPane.alignment="CENTER">
                <children>
-                  <Button id="backLabel" fx:id="backLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#back" prefHeight="44.0" prefWidth="50.0" stylesheets="@newCascadeStyleSheet.css" text="TIILBAKA" textAlignment="CENTER">
+                  <Button id="backLabel" fx:id="backLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#back" prefHeight="62.0" prefWidth="80.0" stylesheets="@newCascadeStyleSheet.css" text="TIILBAKA" textAlignment="CENTER">
                      <padding>
                         <Insets top="45.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="400.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="logOut" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#logOut" stylesheets="@../studentPage/newCascadeStyleSheet.css" text="LOGGA UT" textAlignment="CENTER">
+                     <padding>
+                        <Insets top="40.0" />
                      </padding>
                      <VBox.margin>
                         <Insets bottom="20.0" />
