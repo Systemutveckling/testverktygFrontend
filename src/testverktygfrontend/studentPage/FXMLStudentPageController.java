@@ -142,6 +142,7 @@ public class FXMLStudentPageController implements Initializable {
     //visar resultat på ett redan gjord test
      @FXML
     private void showResultAction(ActionEvent event) throws IOException {
+        logic.setUserStudent(logic.getUser());
         Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene sc = new Scene(FXMLLoader.load(getClass().getResource("/testverktygfrontend/doingTest/FXMLShowTestResult.fxml")));
         stg.setScene(sc);
