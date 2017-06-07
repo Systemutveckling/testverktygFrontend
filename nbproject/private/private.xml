@@ -17,6 +17,9 @@
         <group>
             <file>file:/Users/hampus/Desktop/newtonBankish/testverktygFrontends/src/testverktygfrontend/doingTest/FXMLDoingTestController.java</file>
             <file>file:/Users/hampus/Desktop/newtonBankish/testverktygFrontends/src/com/serverconnection/Server.java</file>
+            <file>file:/Users/hampus/Desktop/newtonBankish/testverktygFrontends/src/testverktygfrontend/FXMLDocumentController.java</file>
+            <file>file:/Users/hampus/Desktop/newtonBankish/testverktygFrontends/src/testverktygfrontend/teacherPage/FXMLTeacherController.java</file>
+            <file>file:/Users/hampus/Desktop/newtonBankish/testverktygFrontends/src/testverktygfrontend/studentPage/StartTestPopUpController.java</file>
         </group>
     </open-files>
 </project-private>

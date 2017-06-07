@@ -23,6 +23,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 
@@ -40,6 +41,14 @@ public class FXMLDocumentController implements Initializable {
     private TextField username;
     @FXML
     private PasswordField password;
+    @FXML
+    private AnchorPane Anchor;
+    @FXML
+    private Label userLabel;
+    @FXML
+    private Label passwordLabel;
+    @FXML
+    private Label wrongCredentials;
     
     
     @FXML
@@ -58,6 +67,8 @@ public class FXMLDocumentController implements Initializable {
             stg.setScene(one);
             stg.show();
             System.out.println("Lärare!");
+        } else{
+            wrongCredentials.setText("Fel lösernord eller användarnamn");
         }  
     
     }

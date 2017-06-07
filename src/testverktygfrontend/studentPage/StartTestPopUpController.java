@@ -52,9 +52,21 @@ public class StartTestPopUpController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+            int time =  logic.getPickedTest().getTimeLimit();
+            
+            
+           int hours = time / 3600;
+           int minutes = (time % 3600) / 60;
+            
         testName.setText("'' "+logic.getPickedTest().getName()+" ''");
-        testTime.setText(logic.getPickedTest().getTimeLimit().toString());
+        
+        if(hours == 0){
+        
+        testTime.setText(String.valueOf(minutes + " minuter"));
+        } else {
+        
+        testTime.setText(hours + " t " + minutes + " min");
+        }
     }    
 
     @FXML

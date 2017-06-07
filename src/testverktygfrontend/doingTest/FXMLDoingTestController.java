@@ -75,7 +75,8 @@ public class FXMLDoingTestController implements Initializable {
 
     int questionId = 0;
 
-    int secondsLeft = 9;
+    int secondsLeft = 500;
+    
     @FXML
     private Button quittest;
     @FXML
@@ -87,13 +88,12 @@ public class FXMLDoingTestController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         nameOnTest.setText(test.getName());
 
-        startCounter();
         counterLogic();
+        startCounter();
         
         showQuestion();
         showAnswer();
         quittest.setVisible(false);
-        
         
     }
 

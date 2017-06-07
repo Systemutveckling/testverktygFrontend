@@ -64,10 +64,11 @@ public class FXMLTeacherController implements Initializable {
 
     @FXML
     private void seeCourse(MouseEvent event) throws IOException {
-
+        
         if (!(courseListView.getSelectionModel().getSelectedIndex() == -1)) {
             tests.clear();
             students.clear();
+            testsNotDone.clear();
             for (User c : logic.getUsers()) {
                 for (Course d : c.getCourseList()) {
                     if (d.getName().equals(courseListView.getSelectionModel().getSelectedItem().toString()) && c.getAuthorization() == 0) {
@@ -103,7 +104,6 @@ public class FXMLTeacherController implements Initializable {
                 if (d.getIsDone() == 0) {
                     testsNotDone.add(d.getTestId());
 
-                    System.out.println(d.getGrade());
                 } else if (d.getIsDone() == 1) {
                     tests.add(d.getTestId());
 
