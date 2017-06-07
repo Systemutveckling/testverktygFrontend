@@ -127,6 +127,7 @@ public class FXMLDoingTestController implements Initializable {
             quittest.setOnAction((event)->{
             
             });
+            testComplete();
 
         } else {
 
@@ -173,20 +174,7 @@ public class FXMLDoingTestController implements Initializable {
                 showQuestion();
                 showAnswer();
             } catch (Exception e) {
-                List<UserHasTest> userTests = logic.getUserTests(logic.getUser().getId());
-                for (UserHasTest uht : userTests) {
-                    if (uht.getTestId().getId() == test.getId()) {
-                        uht.setGrade(gradeCalc());
-                        uht.setIsDone((short) 1);
-                        logic.updateStudentTestStatus(uht);
-                    }
-                }
-                System.out.println("!!");
-                System.out.println("VISA TESTRESULTAT");
-                System.out.println("!!");
-                for (Studentanswer sa : studentAnswer) {
-                    //logic.saveStudentAnswer(sa);
-                }
+                testComplete();
             }
 
         }
@@ -264,8 +252,25 @@ public class FXMLDoingTestController implements Initializable {
             }
         }
 
-        int percent = (int) ((amountOfCorrects * 100.0f) / studentAnswer.size());
+        int percent = (int) ((amountOfCorrects * 100.0f) / test.getQuestionList().size());
 
         return Integer.toString(percent);
+    }
+    
+    public void testComplete(){
+        List<UserHasTest> userTests = logic.getUserTests(logic.getUser().getId());
+                for (UserHasTest uht : userTests) {
+                    if (uht.getTestId().getId() == test.getId()) {
+                        uht.setGrade(gradeCalc());
+                        uht.setIsDone((short) 1);
+                        logic.updateStudentTestStatus(uht);
+                    }
+                }
+                System.out.println("!!");
+                System.out.println("VISA TESTRESULTAT");
+                System.out.println("!!");
+                for (Studentanswer sa : studentAnswer) {
+                    logic.saveStudentAnswer(sa);
+                }
     }
 }
