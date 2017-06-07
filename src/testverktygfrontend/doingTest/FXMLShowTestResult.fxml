@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.doingTest.FXMLShowTestResultController">
+<AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.doingTest.FXMLShowTestResultController">
    <children>
       <VBox fx:id="vBoxTop" alignment="CENTER" layoutY="76.0" prefHeight="138.0" prefWidth="622.0" style="-fx-background-color: #ea6b4f;" stylesheets="@newCascadeTestResult.css">
          <children>
-            <Label fx:id="confirmation" stylesheets="@newCascadeTestResult.css" text="DU HAR LÄMNAT IN TESTET" />
+            <Label fx:id="confirmation" stylesheets="@newCascadeTestResult.css" text="Testet är avklarat" />
             <StackPane prefHeight="95.0" prefWidth="622.0">
                <children>
                   <Button fx:id="showResult" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#showResult" stylesheets="@newCascadeTestResult.css" text="visa resultat" textAlignment="CENTER">
