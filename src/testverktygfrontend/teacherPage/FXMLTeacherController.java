@@ -68,7 +68,7 @@ public class FXMLTeacherController implements Initializable {
         if (!(courseListView.getSelectionModel().getSelectedIndex() == -1)) {
             tests.clear();
             students.clear();
-            btnStart.setDisable(false);
+           
             for (User c : logic.getUsers()) {
                 for (Course d : c.getCourseList()) {
                     if (d.getName().equals(courseListView.getSelectionModel().getSelectedItem().toString()) && c.getAuthorization() == 0) {
@@ -122,6 +122,8 @@ public class FXMLTeacherController implements Initializable {
     @FXML
     private void getTest(MouseEvent event) throws IOException {
         if (!(testDoneList.getSelectionModel().getSelectedIndex() == -1)) {
+            showTest.setDisable(false);
+            btnStart.setDisable(false);
             System.out.println(testDoneList.getSelectionModel().getSelectedItem());
             Test test = (Test) testDoneList.getSelectionModel().getSelectedItem();
             logic.setPickedTest(test);
@@ -133,6 +135,7 @@ public class FXMLTeacherController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        showTest.setDisable(true);
         btnStart.setDisable(true);
         profileLabel.setText(logic.getUser().getEMail());
     
