@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="600.0" style="-fx-background-color: #f7f7f7;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.doingTest.FXMLShowTestResultController">
+<AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.doingTest.FXMLShowTestResultController">
    <children>
       <VBox fx:id="vBoxTop" alignment="CENTER" layoutY="76.0" prefHeight="138.0" prefWidth="622.0" style="-fx-background-color: #ea6b4f;" stylesheets="@newCascadeTestResult.css">
          <children>
@@ -39,12 +40,15 @@
       </ScrollPane>
       <HBox fx:id="topHBox" layoutY="-1.0" prefHeight="77.0" prefWidth="622.0" stylesheets="@../studentPage/newCascadeStyleSheet.css">
          <children>
-            <Label fx:id="userLabelImg" prefHeight="75.0" prefWidth="111.0" />
-            <GridPane prefHeight="77.0" prefWidth="329.0">
+            <Label fx:id="userLabelImg" prefHeight="75.0" prefWidth="63.0">
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin></Label>
+            <GridPane prefHeight="77.0" prefWidth="373.0">
                <children>
                   <Label fx:id="profileLabel" prefHeight="34.0" prefWidth="166.0" stylesheets="@../studentPage/newCascadeStyleSheet.css" text="MIN PROFIL " GridPane.rowIndex="1">
                      <GridPane.margin>
-                        <Insets left="10.0" />
+                        <Insets />
                      </GridPane.margin>
                   </Label>
                   <Label fx:id="studentLabel" text="STUDENT">
@@ -60,19 +64,24 @@
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="201.0" minWidth="10.0" prefWidth="200.0" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="45.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <Label text=" Resultat sida" textFill="#fa5837">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="70.0" top="30.0" />
-               </HBox.margin>
-            </Label>
+            <HBox prefHeight="77.0" prefWidth="146.0">
+               <children>
+                  <Line endY="30.0" startY="-42.0" stroke="#e74a43" style="-fx-stroke-width: 2;" />
+                  <Label text=" Resultat sida" textFill="#fa5837">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="20.0" top="30.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
          </children>
       </HBox>
       <VBox fx:id="resultBox" layoutX="17.0" layoutY="219.0" prefHeight="80.0" prefWidth="346.0" visible="false">

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -11,7 +12,7 @@
 <AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.teacherPage.FXMLShowStudentResultController">
 
    <children>
-      <VBox fx:id="vBoxTop" alignment="CENTER" layoutY="84.0" prefHeight="138.0" prefWidth="622.0" style="-fx-background-color: #ea6b4f;" stylesheets="@CascadeStudentResult.css">
+      <VBox fx:id="vBoxTop" alignment="CENTER" layoutY="76.0" prefHeight="146.0" prefWidth="622.0" style="-fx-background-color: #ea6b4f;" stylesheets="@CascadeStudentResult.css">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="479.0">
                <children>
@@ -53,7 +54,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" stylesheets="@CascadeStudentResult.css">
                <children>
-                  <Label fx:id="totalPoang" prefHeight="18.0" prefWidth="116.0" stylesheets="@CascadeStudentResult.css" text="TOTAL POÄNG: ">
+                  <Label fx:id="totalPoang" prefHeight="22.0" prefWidth="116.0" stylesheets="@CascadeStudentResult.css" text="TOTAL POÄNG: ">
                      <HBox.margin>
                         
                      </HBox.margin>
@@ -63,7 +64,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" stylesheets="@CascadeStudentResult.css">
                <children>
-                  <Label fx:id="resultLabel" stylesheets="@CascadeStudentResult.css" text="RESULTAT">
+                  <Label fx:id="resultLabel" prefHeight="28.0" prefWidth="72.0" stylesheets="@CascadeStudentResult.css" text="RESULTAT">
                      <HBox.margin>
                       
                      </HBox.margin>
@@ -77,7 +78,7 @@
             </HBox>
          </children>
       </VBox>
-      <HBox fx:id="topHBox" alignment="CENTER" prefHeight="84.0" prefWidth="622.0" spacing="10.0" stylesheets="@../studentPage/newCascadeStyleSheet.css">
+      <HBox fx:id="topHBox" alignment="CENTER" prefHeight="77.0" prefWidth="622.0" spacing="10.0" stylesheets="@../studentPage/newCascadeStyleSheet.css">
          <children>
             <Region prefHeight="84.0" prefWidth="14.0" />
             <Label fx:id="userLabelImg" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0">
@@ -85,7 +86,7 @@
                   <Insets left="5.0" right="5.0" />
                </HBox.margin>
             </Label>
-            <VBox alignment="CENTER">
+            <VBox alignment="CENTER" prefHeight="77.0" prefWidth="103.0">
                <children>
                   <Label fx:id="studentLabel" text="LÄRARE">
                      <font>
@@ -95,7 +96,8 @@
                   <Label fx:id="profileLabel" stylesheets="@../studentPage/newCascadeStyleSheet.css" text="MIN PROFIL " />
                </children>
             </VBox>
-            <Region prefHeight="84.0" prefWidth="199.0" />
+            <Region prefHeight="59.0" prefWidth="199.0" />
+            <Line endY="30.0" startY="-42.0" stroke="#e74a43" style="-fx-stroke-width: 2;" />
             <Label text="Studentens Resultat sida" textFill="#fa5837">
                <HBox.margin>
                   <Insets />

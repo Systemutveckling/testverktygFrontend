@@ -98,6 +98,10 @@ public class Logic {
     public void setChoosenCourseToCreateTestTo(Course choosenCourseToCreateTestTo) {
         this.choosenCourseToCreateTestTo = choosenCourseToCreateTestTo;
     }
+    
+    public List<User> getStudentsInCourse(int courseId){
+        return server.getStudentsInCourse(courseId);
+    }
    
 
     public void setPickedTest(Test test) {

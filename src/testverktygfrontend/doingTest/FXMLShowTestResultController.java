@@ -57,8 +57,8 @@ public class FXMLShowTestResultController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    List<Testresult> result = server.getResultFromTest(logic.getUser().getId(), logic.getPickedTest().getId());
-    List<UserHasTest> userTest = server.getUserTests(logic.getUser().getId());
+    List<Testresult> result = server.getResultFromTest(logic.getUserStudent().getId(), logic.getPickedTest().getId());
+    List<UserHasTest> userTest = server.getUserTests(logic.getUserStudent().getId());
     
     public void showResult(ActionEvent event) throws IOException {
         scroll.setVisible(true);
@@ -109,11 +109,19 @@ public class FXMLShowTestResultController implements Initializable {
     
     @FXML
     private void goToMyPage(ActionEvent event) throws IOException {
+        if(logic.getUser().getAuthorization()==0){
         Parent root = FXMLLoader.load(getClass().getResource("/testverktygfrontend/studentPage/FXMLStudentPage.fxml"));
         Scene one = new Scene(root);
         Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stg.setScene(one);
         stg.show();
+        }else{
+         Parent root = FXMLLoader.load(getClass().getResource("/testverktygfrontend/teacherPage/FXMLTeacher.fxml"));
+        Scene one = new Scene(root);
+        Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stg.setScene(one);
+        stg.show();   
+        }
     }
     
     @Override

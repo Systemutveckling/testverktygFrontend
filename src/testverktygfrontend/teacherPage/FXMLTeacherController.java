@@ -64,8 +64,9 @@ public class FXMLTeacherController implements Initializable {
 
     @FXML
     private void seeCourse(MouseEvent event) throws IOException {
-
+        
         if (!(courseListView.getSelectionModel().getSelectedIndex() == -1)) {
+            
             tests.clear();
             students.clear();
             testsNotDone.clear();
@@ -86,17 +87,21 @@ public class FXMLTeacherController implements Initializable {
 
     @FXML
     private void seeTests(MouseEvent event) throws IOException {
-
+        System.out.println("inne");
+             showTest.setDisable(true);
+            btnStart.setDisable(true);
         tests.clear();
         testsNotDone.clear();
         List<User> fakeStudentList = new ArrayList();
-
-        for (User c : logic.getUsers()) {
+        System.out.println(logic.getCourse().getId());
+        for (User c : logic.getStudentsInCourse(logic.getCourse().getId())) {
+            
             if (c.getAuthorization() == 0) {
+                System.out.println(c.getEMail());
                 fakeStudentList.add(c);
             }
         }
-
+    
         if (!(studentList.getSelectionModel().getSelectedIndex() == -1)) {
 
             for (UserHasTest d : fakeStudentList.get(studentList.getSelectionModel().getSelectedIndex()).getUserHasTestList()) {
@@ -104,26 +109,43 @@ public class FXMLTeacherController implements Initializable {
                 if (d.getIsDone() == 0) {
                     testsNotDone.add(d.getTestId());
 
-                    System.out.println(d.getGrade());
                 } else if (d.getIsDone() == 1) {
                     tests.add(d.getTestId());
 
                 }
             }
-
+                
+            
             testNotDoneList.setItems(testsNotDone);
 
             testDoneList.setItems(tests);
 
         }
+        
+        
        
     }
 
     @FXML
     private void getTest(MouseEvent event) throws IOException {
         if (!(testDoneList.getSelectionModel().getSelectedIndex() == -1)) {
+            showTest.setDisable(false);
+            btnStart.setDisable(false);
             System.out.println(testDoneList.getSelectionModel().getSelectedItem());
             Test test = (Test) testDoneList.getSelectionModel().getSelectedItem();
+            logic.setPickedTest(test);
+            User userStudent = (User) studentList.getSelectionModel().getSelectedItem();
+            logic.setUserStudent(userStudent);
+        }
+        
+    }
+    
+    @FXML
+    private void getTestUndone(MouseEvent event) throws IOException {
+        if (!(testNotDoneList.getSelectionModel().getSelectedIndex() == -1)) {
+            btnStart.setDisable(false);
+            System.out.println(testNotDoneList.getSelectionModel().getSelectedItem());
+            Test test = (Test) testNotDoneList.getSelectionModel().getSelectedItem();
             logic.setPickedTest(test);
             User userStudent = (User) studentList.getSelectionModel().getSelectedItem();
             logic.setUserStudent(userStudent);
@@ -133,7 +155,8 @@ public class FXMLTeacherController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        showTest.setDisable(true);
+        btnStart.setDisable(true);
         profileLabel.setText(logic.getUser().getEMail());
     
         for (Course c : logic.getUser().getCourseList()) {
@@ -142,7 +165,7 @@ public class FXMLTeacherController implements Initializable {
         }
 
         courseListView.setItems(courses);
-
+        logic.login(logic.getUser().getEMail(), logic.getUser().getPassword());
     }
 
     @FXML

@@ -56,7 +56,7 @@ public class Server {
 
     }
     
-   public void updateStudentTestStatus(UserHasTest uht){
+    public void updateStudentTestStatus(UserHasTest uht){
          client.target("http://localhost:8080/testverktygBackend/webapi/tests/"+uht.getId()).request().put(Entity.entity(uht, MediaType.APPLICATION_JSON));
     }
 
@@ -126,6 +126,15 @@ public class Server {
         }
 
         return testFromDb.getId();
+    }
+    
+    public List<User> getStudentsInCourse(int courseId){
+         List<User> studentsInCourse = client.target("http://localhost:8080/testverktygBackend/webapi/courses")
+                .path(String.valueOf(courseId))
+                .path("students")
+                .request(MediaType.APPLICATION_JSON).get(new GenericType<List<User>>() {
+        });
+         return studentsInCourse;
     }
 
     public void addCreatedTestToCourseAndUser(int courseId, int testId) {

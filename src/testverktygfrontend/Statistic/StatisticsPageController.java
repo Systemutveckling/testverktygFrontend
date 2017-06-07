@@ -48,7 +48,7 @@ import javafx.util.Duration;
  * @author Conrad Letelier <Conrad@Letelier.email>
  */
 public class StatisticsPageController implements Initializable {
-    
+
     @FXML
     private Label profileLabel;
     @FXML
@@ -63,7 +63,7 @@ public class StatisticsPageController implements Initializable {
     private CategoryAxis xAxis;
     @FXML
     private NumberAxis yAxis;
-    
+
     private int courseId = 1;
     private int testId = 1;
     private String courseName;
@@ -76,7 +76,7 @@ public class StatisticsPageController implements Initializable {
     Server server = new Server();
     List<User> users = server.getUsers();
     List<User> usersInClass = new ArrayList<User>();
-    
+
     @FXML
     private void back(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/testverktygfrontend/teacherPage/FXMLTeacher.fxml"));
@@ -84,9 +84,9 @@ public class StatisticsPageController implements Initializable {
         Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stg.setScene(one);
         stg.show();
-        
+
     }
-    
+
     @FXML
     private void logOut(ActionEvent event) throws IOException {
         Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -105,7 +105,7 @@ public class StatisticsPageController implements Initializable {
         testId = logic.getPickedTest().getId();
         courseId = logic.getCourse().getId();
         profileLabel.setText(logic.getUser().getEMail());
-        
+
         for (User u : users) {
             for (Course c : u.getCourseList()) {
                 if (c.getId() == courseId && u.getAuthorization() == 0) {
@@ -114,12 +114,12 @@ public class StatisticsPageController implements Initializable {
                 }
             }
         }
-        
+
         for (int i = 0; i < usersInClass.size(); i++) {
             List<UserHasTest> tests = logic.getUserTests(usersInClass.get(i).getId());
             for (UserHasTest ut : tests) {
                 if (ut.getCourseId().getId() == courseId && ut.getTestId().getId() == testId) {
-                    
+
                     bars.add(new XYChart.Series<>());
                     String email = usersInClass.get(i).getEMail();
                     String[] parts = email.split("@");
@@ -139,7 +139,7 @@ public class StatisticsPageController implements Initializable {
         for (XYChart.Series s : bars) {
             barChart.getData().add(s);
             setupHover(s);
-            
+
         }
         yAxis.setTickLabelFormatter(
                 new NumberAxis.DefaultFormatter(yAxis, null, " %")
@@ -147,11 +147,11 @@ public class StatisticsPageController implements Initializable {
         if (isDoneCount != 0) {
             avarageGrade /= isDoneCount;
         }
-        
+
         barChart.setTitle("Medelvärde: " + avarageGrade + "%");
         provLabel.setText(testName);
         courseLabel.setText(courseName);
-        
+
     }
 
     //Metoden kopierad från https://stackoverflow.com/questions/14119475/javafx-2-2-adding-a-mouse-event-to-a-bar-in-a-barchart-or-stockedbarchart
@@ -159,7 +159,7 @@ public class StatisticsPageController implements Initializable {
     private void setupHover(XYChart.Series<String, Number> series) {
         for (final XYChart.Data<String, Number> dt : series.getData()) {
             final Node n = dt.getNode();
-            
+
             n.setEffect(null);
             n.setOnMouseEntered(new EventHandler<MouseEvent>() {
                 @Override
@@ -182,26 +182,23 @@ public class StatisticsPageController implements Initializable {
             n.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent e) {
-                    System.out.println("1: "+logic.getPickedTest().getName());
+
                     for (User u : logic.getUsers()) {
                         for (UserHasTest uht : u.getUserHasTestList()) {
-                            
+
                             String email = u.getEMail();
                             String[] parts = email.split("@");
                             String name = parts[0];
-                            /*
-                            System.out.println(name);
-                            System.out.println(dt.getXValue());
-                            System.out.println(uht.getGrade());
-                            System.out.println(dt.getYValue());
-*/
-                            if (name.equals(dt.getXValue()) && uht.getGrade().equals(dt.getYValue())) {
+                            String grade = String.valueOf(dt.getYValue());
+
+                            if (name.equals(dt.getXValue()) && grade.equals(uht.getGrade())) {
+                                logic.setUserStudent(u);
                                 logic.setPickedTest(uht.getTestId());
-                                System.out.println("Im in!");
+
                             }
                         }
                     }
-                    System.out.println("2: "+logic.getPickedTest().getName());
+
                     Stage stage;
                     Parent root = null;
                     stage = new Stage();
@@ -211,16 +208,13 @@ public class StatisticsPageController implements Initializable {
                         Logger.getLogger(StatisticsPageController.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     stage.setScene(new Scene(root));
-                    stage.setTitle("Redigera Spelare");
                     stage.initModality(Modality.APPLICATION_MODAL);
-                    //stage.initOwner(removePlayerButton.getScene().getWindow());
                     stage.showAndWait();
-                    
-                    System.out.println(dt.getXValue() + " : " + dt.getYValue());
+
                 }
             });
         }
-        
+
     }
 
     //Metoden kopierad från https://stackoverflow.com/questions/26854301/control-javafx-tooltip-delay
@@ -229,16 +223,16 @@ public class StatisticsPageController implements Initializable {
             Field fieldBehavior = tooltip.getClass().getDeclaredField("BEHAVIOR");
             fieldBehavior.setAccessible(true);
             Object objBehavior = fieldBehavior.get(tooltip);
-            
+
             Field fieldTimer = objBehavior.getClass().getDeclaredField("activationTimer");
             fieldTimer.setAccessible(true);
             Timeline objTimer = (Timeline) fieldTimer.get(objBehavior);
-            
+
             objTimer.getKeyFrames().clear();
             objTimer.getKeyFrames().add(new KeyFrame(new Duration(250)));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
 }

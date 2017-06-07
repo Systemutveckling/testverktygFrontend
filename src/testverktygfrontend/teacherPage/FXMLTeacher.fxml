@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -23,7 +24,7 @@
    <children>
       <BorderPane prefHeight="635.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <HBox alignment="CENTER" spacing="5.0" BorderPane.alignment="CENTER_LEFT">
+            <HBox alignment="CENTER" spacing="5.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER_LEFT">
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="489.0" prefWidth="184.0">
                      <children>
@@ -87,7 +88,7 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <ListView fx:id="testNotDoneList" layoutY="25.0" onMouseClicked="#getTest" prefHeight="121.0" prefWidth="242.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                          <ListView fx:id="testNotDoneList" layoutY="25.0" onMouseClicked="#getTestUndone" prefHeight="121.0" prefWidth="242.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                  </content>
@@ -157,14 +158,6 @@
          <left>
             <VBox alignment="BOTTOM_CENTER" prefHeight="516.0" prefWidth="128.0" spacing="20.0" style="-fx-background-color: linear-gradient(to bottom, #ff7f50, #10374b);" BorderPane.alignment="CENTER">
                <children>
-                  <Button id="backLabel" fx:id="backLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#back" prefHeight="33.0" prefWidth="61.0" stylesheets="@../Statistic/newCascadeStyleSheet.css" text="TIILBAKA" textAlignment="CENTER">
-                     <padding>
-                        <Insets top="45.0" />
-                     </padding>
-                     <VBox.margin>
-                        <Insets bottom="390.0" />
-                     </VBox.margin>
-                  </Button>
                   <Button fx:id="logOut" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#logOut" prefHeight="44.0" prefWidth="86.0" stylesheets="@../studentPage/newCascadeStyleSheet.css" text="LOGGA UT" textAlignment="CENTER">
                      <padding>
                         <Insets top="40.0" />
@@ -180,8 +173,11 @@
             <HBox fx:id="topHBox" alignment="CENTER_LEFT" spacing="20.0" stylesheets="@newCascadeStyleSheet.css" BorderPane.alignment="CENTER">
                <children>
                   <Region prefHeight="75.0" prefWidth="0.0" />
-                  <Label fx:id="userLabelImg" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0" />
-                  <VBox alignment="CENTER">
+                  <Label fx:id="userLabelImg" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin></Label>
+                  <VBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="309.0">
                      <children>
                         <Label fx:id="studentLabel" text="LÄRARE">
                            <font>
@@ -191,17 +187,11 @@
                         <Label fx:id="profileLabel" stylesheets="@../studentPage/newCascadeStyleSheet.css" text="MIN PROFIL " />
                      </children>
                   </VBox>
-                  <Region HBox.hgrow="ALWAYS" />
-                  <Label fx:id="pageLabel" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="70.0" text="HEM" />
+                  <Region prefHeight="75.0" prefWidth="263.0" HBox.hgrow="ALWAYS" />
+                  <Line endY="30.0" startY="-42.0" stroke="#e74a43" style="-fx-stroke-width: 2;" />
+                  <Label fx:id="pageLabel" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="39.0" text="Hem" />
                   <Region HBox.hgrow="ALWAYS" />
                   <VBox alignment="CENTER">
-                     <children>
-                        <Button fx:id="logOut" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#logOut" stylesheets="@../studentPage/newCascadeStyleSheet.css" text="LOGGA UT" textAlignment="CENTER">
-                           <padding>
-                              <Insets top="40.0" />
-                           </padding>
-                        </Button>
-                     </children>
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>

@@ -67,8 +67,9 @@ and open the template in the editor.
 
 #pageLabel{
     -fx-text-fill: #e74a43;
-    -fx-font-family: "Avenir Book";
+    -fx-font-family: "System";
     -fx-font-size: 13px; 
+    -fx-font-weight:bold;
 }
 
 #userName{

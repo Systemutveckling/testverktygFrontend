@@ -15,12 +15,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -35,6 +39,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /**
  * FXML Controller class
@@ -161,6 +166,21 @@ public class FXMLCreateTestController implements Initializable {
                 // Stänger sidan när man skapat ett test
                 Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stg.close();
+                stg.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                    public void handle(WindowEvent we) {
+                        // Refresh the parent window here
+                        Parent root = null;
+                        try {
+                            root = FXMLLoader.load(getClass().getResource("/testverktygfrontend/teacherPage/FXMLTeacher.fxml"));
+                        } catch (IOException ex) {
+                            Logger.getLogger(FXMLCreateTestController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+        Scene s = new Scene(root);
+        Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stg.setScene(s);
+        stg.show();
+                    }
+                });
                 // Rensa alla inmatningar
                 /*questionCount = 1;
                 lblQuestionCount.setText("Fråga " + questionCount);
