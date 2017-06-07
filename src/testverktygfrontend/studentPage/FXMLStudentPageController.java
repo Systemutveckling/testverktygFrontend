@@ -122,7 +122,7 @@ public class FXMLStudentPageController implements Initializable {
     }
      @FXML
     private void startTestAction(ActionEvent event) throws IOException {
-//        logic.setPickedTest(testsToDo.getSelectionModel().getSelectedItem());
+        // logic.setPickedTest((Test) testsToDo.getSelectionModel().getSelectedItem());
         Stage stage;
         Parent root;
         stage = new Stage();

@@ -40,6 +40,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -68,6 +69,9 @@ public class FXMLDoingTestController implements Initializable {
     private Label countDownLabel;
     @FXML
     private VBox vbox;
+    @FXML
+    private ImageView questionImage;
+
     Logic logic = Logic.getInstanceOf();
     Test test = logic.getPickedTest();
 
@@ -185,12 +189,14 @@ public class FXMLDoingTestController implements Initializable {
             try {
                 showQuestion();
                 showAnswer();
-            } catch (Exception e) {
+            } catch (NullPointerException e) {
                 testComplete();
                 Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 Scene sc = new Scene(FXMLLoader.load(getClass().getResource("FXMLShowTestResult.fxml")));
                 stg.setScene(sc);
                 stg.show();
+            } catch (Exception e) {
+                System.out.println("ERROR: " + e);
             }
 
         }
@@ -229,7 +235,25 @@ public class FXMLDoingTestController implements Initializable {
     }
 
     public void showQuestion() {
+        if (test.getQuestionList().get(questionId).getImgUrl().isEmpty()) {
+            questionImage.setVisible(false);
+        } else {
 
+            questionImage.setVisible(true);
+            Image image = null;
+
+            try {
+                image = new Image(test.getQuestionList().get(questionId).getImgUrl());
+            } catch (Exception e) {
+                System.out.println(e);
+
+                image = new Image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBts1WDuUyrYVWju_bZU_12feDt-1DkfcjwFYKP-N4JeQ6OfB-8A");
+
+            }
+
+            questionImage.setImage(image);
+
+        }
         label.setText(test.getQuestionList().get(questionId).getQuestion());
         questionsLeft.setText(String.valueOf(questionId + 1) + "/" + test.getQuestionList().size());
 
