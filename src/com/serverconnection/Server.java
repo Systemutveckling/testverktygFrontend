@@ -39,7 +39,7 @@ public class Server {
     }
 
     public List<UserHasTest> getUserTests(int userId) {
-        List<UserHasTest> tests = client.target("http://localhost:8080/testverktygBackend/webapi/users/students/"+userId+"/tests")
+        List<UserHasTest> tests = client.target("http://localhost:8080/testverktygbackend/webapi/users/students/"+userId+"/tests")
                 .request(MediaType.APPLICATION_JSON).get(new GenericType<List<UserHasTest>>() {
         });
         return tests;
@@ -114,14 +114,14 @@ public class Server {
     }
  
     public void addCreatedTestToCourseAndUser(int courseId,int testId){
-        List<User> studentsInCourse = client.target("http://localhost:8080/testverktygBackend/webapi/courses")
+        List<User> studentsInCourse = client.target("http://localhost:8080/testverktygbackend/webapi/courses")
                 .path(String.valueOf(courseId))
                 .path("students")
                 .request(MediaType.APPLICATION_JSON).get(new GenericType<List<User>>() {
         });
         
         studentsInCourse.forEach((u) -> {
-            client.target("http://localhost:8080/testverktygBackend/webapi/courses")
+            client.target("http://localhost:8080/testverktygbackend/webapi/courses")
                     .path(String.valueOf(courseId))
                     .path("tests")
                     .path(String.valueOf(testId))

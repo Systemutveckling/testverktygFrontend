@@ -3,18 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package testverktygfrontend.doingTest;
+package testverktygfrontend.teacherPage;
 
 import com.logic.Logic;
-import com.model.Test;
 import com.model.Testresult;
+import com.model.User;
 import com.model.UserHasTest;
 import com.serverconnection.Server;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,8 +25,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import static javafx.scene.paint.Color.GREEN;
 import static javafx.scene.paint.Color.RED;
@@ -37,38 +38,90 @@ import javafx.stage.Stage;
  *
  * @author ramonachantaf
  */
-public class FXMLShowTestResultController implements Initializable {
-    
+public class FXMLShowStudentResultController implements Initializable {
+
     Logic logic = Logic.getInstanceOf();
     Server server = new Server();
     @FXML
-    private Label showText, procentage,profileLabel;
+    private VBox vBoxTop;
     @FXML
-    private Button showResult, myPage;
+    private Label confirmation;
+   
     @FXML
-    private Label show, testName, testI, points, totalPoang, resultLabel, labelAboveScroll;
+    private Label showText;
     @FXML
-    private ListView resultView;
+    private Label show;
     @FXML
-    private VBox vBox, resultBox;
+    private Button myPage;
     @FXML
     private ScrollPane scroll;
+    @FXML
+    private VBox vBox;
+    @FXML
+    private HBox topHBox;
+    @FXML
+    private Label userLabelImg;
+    @FXML
+    private Label profileLabel;
+    @FXML
+    private Label studentLabel,studentName;
+    @FXML
+    private Label userName;
+    @FXML
+    private VBox resultBox;
+    @FXML
+    private Label testI;
+    @FXML
+    private Label testName;
+    @FXML
+    private Label totalPoang;
+    @FXML
+    private Label points;
+    @FXML
+    private Label resultLabel;
+    @FXML
+    private Label procentage;
 
     /**
      * Initializes the controller class.
      */
-    List<Testresult> result = server.getResultFromTest(logic.getUser().getId(), logic.getPickedTest().getId());
-    List<UserHasTest> userTest = server.getUserTests(logic.getUser().getId());
+     ObservableList<User> students = FXCollections.observableArrayList();
+       List<Testresult> result;
+        List<UserHasTest> userTest;
+
+
+    @FXML
+    private void goBack(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/testverktygfrontend/teacherPage/FXMLTeacher.fxml"));
+        Scene one = new Scene(root);
+        Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stg.setScene(one);
+        stg.show();
+    }
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+   
+      
+      if(logic.getUserStudent()==null){
+           result = server.getResultFromTest(logic.getUser().getId(), logic.getPickedTest().getId());
+             userTest = server.getUserTests(logic.getUser().getId());
+               
+    }else{
+             result = server.getResultFromTest(logic.getUserStudent().getId(), logic.getPickedTest().getId());
+             userTest = server.getUserTests(logic.getUserStudent().getId()); 
+            
+             studentName.setText(logic.getUserStudent().getEMail());
+             
+      }
+        
+       profileLabel.setText(logic.getUser().getEMail());
+     
+      testName.setText(logic.getPickedTest().getName());
     
-    public void showResult(ActionEvent event) throws IOException {
-        scroll.setVisible(true);
-        resultBox.setVisible(true);
-        testName.setText(logic.getPickedTest().getName());
-        labelAboveScroll.setVisible(true);
         int count = 0;
         int questionCounter = 1;
         String correction = "";
-        
+
         for (Testresult resultTest : result) {
             Label question = new Label();
             Label answer = new Label();
@@ -80,53 +133,33 @@ public class FXMLShowTestResultController implements Initializable {
                 correction = "Fel";
                 answer.setTextFill(RED);
             }
-            
+
             question.setText("Fråga " + questionCounter + ". " + resultTest.getQuestion());
-            answer.setText("Ditt svar: " + resultTest.getAnswer() + "\t" + correction);
+            answer.setText("Ditt svar: " + resultTest.getAnswer()+ "  "+correction);
             empty.setText("");
             answer.setFont(new Font("Quicksand", 13));
             question.setFont(new Font("Quicksand", 13));
-            
+
             vBox.getChildren().add(question);
             vBox.getChildren().add(answer);
             vBox.getChildren().add(empty);
-            
+
             if (resultTest.getIsCorrect() == 1) {
                 count++;
             }
             questionCounter++;
         }
         points.setText(count + "/" + result.size());
-        
         for (UserHasTest userHasTest : userTest) {
             
             if (logic.getPickedTest().getId().equals(userHasTest.getTestId().getId())) {
                 procentage.setText(userHasTest.getGrade());                
             } 
         }
-        showResult.setDisable(true);    
-    }
+
     
-    @FXML
-    private void goToMyPage(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/testverktygfrontend/studentPage/FXMLStudentPage.fxml"));
-        Scene one = new Scene(root);
-        Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stg.setScene(one);
-        stg.show();
-    }
-    
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        profileLabel.setText(logic.getUser().getEMail());
-        if (logic.getPickedTest().getSeeResult() == 0) {
-            showText.setVisible(false);
-            showResult.setVisible(true);
-        } else {
-            showResult.setVisible(false);
-            showText.setVisible(true);
-            
-        }
-    }
+    }    
+
+   
     
 }

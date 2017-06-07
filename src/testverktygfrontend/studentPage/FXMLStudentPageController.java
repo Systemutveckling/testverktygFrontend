@@ -39,7 +39,7 @@ public class FXMLStudentPageController implements Initializable {
     
     Logic logic = Logic.getInstanceOf();
     @FXML
-    private Label userName;
+    private Label profileLabel;
     @FXML
     private Button logOut;
     @FXML
@@ -104,6 +104,7 @@ public class FXMLStudentPageController implements Initializable {
              //Hämtar det objektet man klickar på i listview
              Test a = (Test) testsToDo.getSelectionModel().getSelectedItem();
              logic.setPickedTest(a);
+            
          
     }
       @FXML
@@ -116,7 +117,8 @@ public class FXMLStudentPageController implements Initializable {
              //Hämtar det objektet man klickar på i listview
 //             Test b = (Test) testsDone.getSelectionModel().getSelectedItem();
 //             logic.setResultFromTest(b);
-         
+//          UserHasTest userGrade = (UserHasTest) testsDone.getSelectionModel().getSelectedItem();
+//          logic.setStudentGrade(userGrade);
     }
      @FXML
     private void startTestAction(ActionEvent event) throws IOException {
@@ -151,7 +153,7 @@ public class FXMLStudentPageController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Sätter userName label till studentens mail
-        userName.setText(logic.getUser().getEMail());
+        profileLabel.setText(logic.getUser().getEMail());
         
         //Hämtar listan på kurser som en student har och visar den i Listviewn
         for (Course c : logic.getUser().getCourseList()) {

@@ -24,11 +24,12 @@ public class Logic {
     private Server server = new Server();
 
     User user;
+    User userStudent;
     private Course choosenCourseToCreateTestTo;
     private Test createdTempTest;
     private Test test;
     private Course course;
-
+    private UserHasTest userHasTest;
     private Testresult testresult;
     public static Logic getInstanceOf() {
         if (p == null) {
@@ -103,5 +104,19 @@ public class Logic {
     public void setCourse(Course course) {
         this.course = course;
     }
+    
+    public void setUserEmail(User user){
+        this.user=user;
+    }
+    public User getUserEmail(){
+        return user;
+    }
+    
+   public void setUserStudent(User userStudent){
+       this.userStudent=userStudent;
+   }
+   public User getUserStudent(){
+       return userStudent;
+   }
 
 }
