@@ -58,7 +58,7 @@ public class FXMLTeacherController implements Initializable {
     @FXML
     private ListView testNotDoneList;
     @FXML
-    private Button btnStart;
+    private Button btnStart,showTest;
     @FXML
     private Button logOut;
 
@@ -116,7 +116,7 @@ public class FXMLTeacherController implements Initializable {
             testDoneList.setItems(tests);
 
         }
-
+       
     }
 
     @FXML
@@ -125,15 +125,17 @@ public class FXMLTeacherController implements Initializable {
             System.out.println(testDoneList.getSelectionModel().getSelectedItem());
             Test test = (Test) testDoneList.getSelectionModel().getSelectedItem();
             logic.setPickedTest(test);
+            User userStudent = (User) studentList.getSelectionModel().getSelectedItem();
+            logic.setUserStudent(userStudent);
         }
-
+        
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         profileLabel.setText(logic.getUser().getEMail());
-
+    
         for (Course c : logic.getUser().getCourseList()) {
 
             courses.add(c);
@@ -179,6 +181,15 @@ public class FXMLTeacherController implements Initializable {
         stg.setScene(one);
         stg.show();
 
+    }
+    
+       @FXML
+    private void showResultAction(ActionEvent event) throws IOException {
+        Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene sc = new Scene(FXMLLoader.load(getClass().getResource("/testverktygfrontend/teacherPage/FXMLShowStudentResult.fxml")));
+        stg.setScene(sc);
+        stg.show();
+    
     }
 
 }

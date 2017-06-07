@@ -151,8 +151,8 @@ and open the template in the editor.
 }*/
 
 #courseLabelImg{
-    -fx-background-image: url("all-course.png");
-    -fx-background-size: 40 40;
+    -fx-background-image: url("student.png");
+    -fx-background-size: 35 35;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
 }

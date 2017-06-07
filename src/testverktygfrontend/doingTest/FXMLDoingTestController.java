@@ -11,6 +11,7 @@ import com.model.Question;
 import com.model.Studentanswer;
 import com.model.Test;
 import com.model.UserHasTest;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +30,12 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -39,6 +44,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
@@ -89,12 +95,11 @@ public class FXMLDoingTestController implements Initializable {
 
         startCounter();
         counterLogic();
-        
+
         showQuestion();
         showAnswer();
         quittest.setVisible(false);
-        
-        
+
     }
 
     public void startCounter() {
@@ -121,12 +126,20 @@ public class FXMLDoingTestController implements Initializable {
             quittest.setText("Avsluta test");
             left.setVisible(false);
             right.setVisible(false);
-            for(Studentanswer sa : studentAnswer){
-                
+            for (Studentanswer sa : studentAnswer) {
+
             }
-            quittest.setOnAction((event)->{
-            
+            quittest.setOnAction((event) -> {
+                try {
+                    Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    Scene sc = new Scene(FXMLLoader.load(getClass().getResource("FXMLShowTestResult.fxml")));
+                    stg.setScene(sc);
+                    stg.show();
+
+                } catch (IOException iOException) {
+                }
             });
+            testComplete();
 
         } else {
 
@@ -163,7 +176,7 @@ public class FXMLDoingTestController implements Initializable {
     }
 
     @FXML
-    private void forward(MouseEvent event) {
+    private void forward(MouseEvent event) throws IOException {
         questionId++;
         if (testDone) {
 
@@ -173,20 +186,11 @@ public class FXMLDoingTestController implements Initializable {
                 showQuestion();
                 showAnswer();
             } catch (Exception e) {
-                List<UserHasTest> userTests = logic.getUserTests(logic.getUser().getId());
-                for (UserHasTest uht : userTests) {
-                    if (uht.getTestId().getId() == test.getId()) {
-                        uht.setGrade(gradeCalc());
-                        uht.setIsDone((short) 1);
-                        logic.updateStudentTestStatus(uht);
-                    }
-                }
-                System.out.println("!!");
-                System.out.println("VISA TESTRESULTAT");
-                System.out.println("!!");
-                for (Studentanswer sa : studentAnswer) {
-                    //logic.saveStudentAnswer(sa);
-                }
+                testComplete();
+                Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene sc = new Scene(FXMLLoader.load(getClass().getResource("FXMLShowTestResult.fxml")));
+                stg.setScene(sc);
+                stg.show();
             }
 
         }
@@ -264,8 +268,23 @@ public class FXMLDoingTestController implements Initializable {
             }
         }
 
-        int percent = (int) ((amountOfCorrects * 100.0f) / studentAnswer.size());
+        int percent = (int) ((amountOfCorrects * 100.0f) / test.getQuestionList().size());
 
         return Integer.toString(percent);
     }
+
+    public void testComplete() {
+        List<UserHasTest> userTests = logic.getUserTests(logic.getUser().getId());
+        for (UserHasTest uht : userTests) {
+            if (uht.getTestId().getId() == test.getId()) {
+                uht.setGrade(gradeCalc());
+                uht.setIsDone((short) 1);
+                logic.updateStudentTestStatus(uht);
+            }
+        }
+        for (Studentanswer sa : studentAnswer) {
+            logic.saveStudentAnswer(sa);
+        }
+    }
+
 }

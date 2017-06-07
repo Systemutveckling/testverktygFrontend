@@ -95,4 +95,8 @@ public class UserHasTest implements Serializable {
     public void setUserId(User userId) {
         this.userId = userId;
     }
+
+   
+    
+   
 }

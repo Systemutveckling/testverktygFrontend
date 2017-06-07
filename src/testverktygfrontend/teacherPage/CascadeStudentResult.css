@@ -1,0 +1,170 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2017-jun-05, 15:00:01
+    Author     : ramonachantaf
+*/
+
+#confirmation{
+    -fx-font-family:"Josefin sans";
+    -fx-font-size:25px;
+    -fx-text-fill:#dad5f3;
+     
+}
+
+#showResult{
+    -fx-background-color: #0f3340;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius:0;
+     -fx-cursor: hand;
+}
+
+#showResult:hover{
+    -fx-background-color: #0d303d;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius:0;
+     -fx-cursor: hand;
+}
+
+#myPage{
+    -fx-background-color:none;
+    -fx-border-color: #c15840;
+    -fx-border-width: 2px;
+    -fx-text-fill: #c15840;
+    -fx-font-weight: bold;
+    -fx-border-radius:20;
+     -fx-cursor: hand;
+}
+
+#myPage:hover{
+    -fx-background-color:none;
+     -fx-border-color: #d67740;
+    -fx-border-width: 2px;
+    -fx-text-fill: #d67740;
+    -fx-font-weight: bold;
+    -fx-border-radius:20;
+     -fx-cursor: hand;
+}
+
+#showText{
+    -fx-font-family:"quicksand";
+    -fx-font-size:13px;
+    -fx-text-fill: #d3cfe6;
+}
+
+.list-view {
+    -fx-background-color:   #0e3951;
+    -fx-background-insets: 0;
+    -fx-padding: 1;
+}
+
+.list-view:focused {
+    -fx-background-color:   #0e3951;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+}
+
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
+    -fx-padding: 1em 2em 1em 2em;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
+    -fx-background-color:   #0e3951;
+}
+
+.list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:focused {
+    -fx-background-color:  #0e3951;
+}
+
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell {
+    -fx-background-color:  #0e3951;
+}
+
+.list-view:focused > .virtual-flow > .clipped-container > .sheet > .list-cell:focused {
+    -fx-background-color: -fx-background;
+    -fx-background-insets: 0;
+}
+
+/* scrollpane */
+.scroll-pane {
+    -fx-background-color:  white;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.increment-button, .decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0em;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color:  #ea6b4f;
+    -fx-background-radius: 5em;
+}
+
+.scroll-pane > .corner {
+    -fx-background-color: #153342;
+}
+
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+
+
+#testI{
+   -fx-font-family:"Josefin sans";
+    -fx-font-size:14px;
+    -fx-text-fill:#2c3444;
+}
+
+#totalPoang{
+    -fx-font-family:"Josefin sans";
+    -fx-font-size:14px;
+    -fx-text-fill:#2c3444;
+}
+
+#resultLabel{
+     -fx-font-family:"Josefin sans";
+    -fx-font-size:14px;
+    -fx-text-fill:#2c3444;
+}
+
+#testName{
+    -fx-text-fill: #e74a43;
+   -fx-font-family:"Josefin sans";
+   -fx-font-size: 20px; 
+}
+
+#points{
+     -fx-text-fill: #e74a43;
+   -fx-font-family:"Josefin sans";
+   -fx-font-size: 20px; 
+}
+
+#studentName{
+      -fx-font-family:"Josefin sans";
+    -fx-font-size:15px;
+    -fx-text-fill:#dad5f3;
+}
+
+#procentage{
+    -fx-text-fill: #e74a43;
+   -fx-font-family:"Josefin sans";
+   -fx-font-size: 20px; 
+}
