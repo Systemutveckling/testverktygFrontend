@@ -68,6 +68,7 @@ public class FXMLTeacherController implements Initializable {
         if (!(courseListView.getSelectionModel().getSelectedIndex() == -1)) {
             tests.clear();
             students.clear();
+            btnStart.setDisable(false);
             for (User c : logic.getUsers()) {
                 for (Course d : c.getCourseList()) {
                     if (d.getName().equals(courseListView.getSelectionModel().getSelectedItem().toString()) && c.getAuthorization() == 0) {
@@ -132,7 +133,7 @@ public class FXMLTeacherController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        btnStart.setDisable(true);
         profileLabel.setText(logic.getUser().getEMail());
     
         for (Course c : logic.getUser().getCourseList()) {
