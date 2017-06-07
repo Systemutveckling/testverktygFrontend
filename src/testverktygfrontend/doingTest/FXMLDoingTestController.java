@@ -82,6 +82,9 @@ public class FXMLDoingTestController implements Initializable {
     private RadioButton correctAnswerRadioButton;
     private List<Studentanswer> studentAnswer = new ArrayList();
     private boolean testDone = false;
+    public Timeline timeline = new Timeline(new KeyFrame(
+            Duration.millis(1000),
+            ae -> counterLogic()));
 
     int questionId = 0;
 
@@ -95,6 +98,7 @@ public class FXMLDoingTestController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        studentAnswer.clear();
         nameOnTest.setText(test.getName());
 
         startCounter();
@@ -108,9 +112,6 @@ public class FXMLDoingTestController implements Initializable {
 
     public void startCounter() {
 
-        Timeline timeline = new Timeline(new KeyFrame(
-                Duration.millis(1000),
-                ae -> counterLogic()));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
 
@@ -143,7 +144,9 @@ public class FXMLDoingTestController implements Initializable {
                 } catch (IOException iOException) {
                 }
             });
+
             testComplete();
+            timeline.stop();
 
         } else {
 
@@ -189,7 +192,8 @@ public class FXMLDoingTestController implements Initializable {
             try {
                 showQuestion();
                 showAnswer();
-            } catch (NullPointerException e) {
+            } catch (IndexOutOfBoundsException e) {
+                logic.setUserStudent(logic.getUser());
                 testComplete();
                 Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 Scene sc = new Scene(FXMLLoader.load(getClass().getResource("FXMLShowTestResult.fxml")));
@@ -309,6 +313,7 @@ public class FXMLDoingTestController implements Initializable {
         for (Studentanswer sa : studentAnswer) {
             logic.saveStudentAnswer(sa);
         }
+        studentAnswer.clear();
     }
 
 }

@@ -129,6 +129,18 @@ public class FXMLTeacherController implements Initializable {
         }
         
     }
+    
+    @FXML
+    private void getTestUndone(MouseEvent event) throws IOException {
+        if (!(testNotDoneList.getSelectionModel().getSelectedIndex() == -1)) {
+            System.out.println(testNotDoneList.getSelectionModel().getSelectedItem());
+            Test test = (Test) testNotDoneList.getSelectionModel().getSelectedItem();
+            logic.setPickedTest(test);
+            User userStudent = (User) studentList.getSelectionModel().getSelectedItem();
+            logic.setUserStudent(userStudent);
+        }
+        
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

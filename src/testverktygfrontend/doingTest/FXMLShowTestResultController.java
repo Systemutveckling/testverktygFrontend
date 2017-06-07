@@ -57,8 +57,8 @@ public class FXMLShowTestResultController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    List<Testresult> result = server.getResultFromTest(logic.getUser().getId(), logic.getPickedTest().getId());
-    List<UserHasTest> userTest = server.getUserTests(logic.getUser().getId());
+    List<Testresult> result = server.getResultFromTest(logic.getUserStudent().getId(), logic.getPickedTest().getId());
+    List<UserHasTest> userTest = server.getUserTests(logic.getUserStudent().getId());
     
     public void showResult(ActionEvent event) throws IOException {
         scroll.setVisible(true);
