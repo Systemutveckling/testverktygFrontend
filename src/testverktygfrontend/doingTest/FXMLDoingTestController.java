@@ -81,7 +81,7 @@ public class FXMLDoingTestController implements Initializable {
 
     int questionId = 0;
 
-    int secondsLeft = test.getTimeLimit();
+    int secondsLeft = 5;
 
     @FXML
     private Button quittest;
@@ -89,6 +89,8 @@ public class FXMLDoingTestController implements Initializable {
     private ImageView left;
     @FXML
     private ImageView right;
+    @FXML
+    private Button sendTest;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -102,7 +104,13 @@ public class FXMLDoingTestController implements Initializable {
         showQuestion();
         showAnswer();
         quittest.setVisible(false);
-
+        
+        if(questionId == 0){
+            left.setVisible(false);
+        }
+        
+        sendTest.setVisible(false);
+        
     }
 
     public void startCounter() {
@@ -158,7 +166,13 @@ public class FXMLDoingTestController implements Initializable {
     @FXML
     private void backward(MouseEvent event) {
         questionId--;
-
+      if(questionId <= 0){
+            left.setVisible(false);
+        } else{
+          sendTest.setVisible(false);
+          right.setVisible(true);
+      }
+        
         if (questionId >= 0 && questionId < test.getQuestionList().size()) {
 
             showQuestion();
@@ -181,6 +195,25 @@ public class FXMLDoingTestController implements Initializable {
     @FXML
     private void forward(MouseEvent event) throws IOException {
         questionId++;
+        
+          if(questionId > 0){
+            left.setVisible(true);
+        }
+        System.out.println("questionListSize = " + test.getQuestionList().size());
+        
+        System.out.println("questionListSize = " + questionId);
+        
+        
+         if(test.getQuestionList().size() == ( questionId + 1)){
+        sendTest.setVisible(true);
+        sendTest.setText("Skicka in provet");
+        right.setVisible(false);
+         } else {
+             
+        sendTest.setVisible(false);
+         }
+          
+        
         if (testDone) {
 
         } else {

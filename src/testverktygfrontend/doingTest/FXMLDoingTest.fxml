@@ -69,5 +69,6 @@
       </Label>
       <VBox fx:id="vbox" layoutX="31.0" layoutY="127.0" />
       <Button fx:id="quittest" layoutX="214.0" layoutY="331.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="sendTest" layoutX="517.0" layoutY="362.0" mnemonicParsing="false" text="Button" />
    </children>
 </AnchorPane>
