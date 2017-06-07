@@ -11,7 +11,7 @@ and open the template in the editor.
 
 #userLabel{
     -fx-background-image: url("email.png");
-    -fx-font-family:"quicksand";
+    -fx-font-family:"quicksand book";
     -fx-font-size:13px;
     -fx-text-fill: #d3cfe6;
     -fx-background-size: 25 25;
@@ -21,7 +21,7 @@ and open the template in the editor.
 
 #passwordLabel{
     -fx-background-image: url("password.png");
-    -fx-font-family:"quicksand";
+    -fx-font-family:"quicksand book";
     -fx-font-size:13px;
     -fx-text-fill: #d3cfe6;
     -fx-background-size: 20 20;
@@ -33,7 +33,7 @@ and open the template in the editor.
     -fx-background-color: #91483a;
     -fx-background-radius: none;
     -fx-text-fill: #d3cfe6;
-    -fx-font-family:"quicksand";
+    -fx-font-family:"quicksand book";
     -fx-font-size:12px;
 }
  
@@ -46,7 +46,7 @@ and open the template in the editor.
     -fx-background-color: #103446;
      -fx-background-radius: none;
        -fx-text-fill: #ff7f50;
-       -fx-font-family:"quicksand";
+       -fx-font-family:"quicksand book";
        -fx-font-weight:bold;
        -fx-cursor: hand;
 }
@@ -55,7 +55,7 @@ and open the template in the editor.
     -fx-background-color: #1d4559;
      -fx-background-radius: none;
        -fx-text-fill: #ff7f50;
-       -fx-font-family:"quicksand";
+       -fx-font-family:"quicksand book";
        -fx-font-weight:bold;
        -fx-cursor: hand;
 }

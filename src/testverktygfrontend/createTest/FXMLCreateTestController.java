@@ -131,7 +131,7 @@ public class FXMLCreateTestController implements Initializable {
         } else if (sliderTimeLimit.getValue() == 0) {
              lblLeftWarning.setText("Ska studenterna verkligen få så lite tid på sig att svara på testet");
         } else {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alert = new Alert(null);
             alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText("Är du säker på att du vill spara testet?");
@@ -142,8 +142,8 @@ public class FXMLCreateTestController implements Initializable {
             alert.getButtonTypes().setAll(btnYes, btnNo);
 
             DialogPane dialogPane = alert.getDialogPane();
-            //dialogPane.getStylesheets().add(
-            //      getClass().getResource("style.css").toExternalForm());
+            dialogPane.getStylesheets().add(
+                  getClass().getResource("createtest.css").toExternalForm());
 
             Optional<ButtonType> result = alert.showAndWait();
 
