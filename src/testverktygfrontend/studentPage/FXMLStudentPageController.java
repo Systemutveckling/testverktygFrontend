@@ -8,6 +8,7 @@ package testverktygfrontend.studentPage;
 import com.logic.Logic;
 import com.model.Course;
 import com.model.Test;
+import com.model.Testresult;
 import com.model.UserHasTest;
 import java.io.IOException;
 import java.net.URL;
@@ -38,7 +39,7 @@ public class FXMLStudentPageController implements Initializable {
     
     Logic logic = Logic.getInstanceOf();
     @FXML
-    private Label userName;
+    private Label profileLabel;
     @FXML
     private Button logOut;
     @FXML
@@ -103,12 +104,25 @@ public class FXMLStudentPageController implements Initializable {
              //Hämtar det objektet man klickar på i listview
              Test a = (Test) testsToDo.getSelectionModel().getSelectedItem();
              logic.setPickedTest(a);
+            
          
     }
-    
+      @FXML
+    private void showButtonResult(MouseEvent event) throws IOException {
+         if (testsDone.getSelectionModel().getSelectedIndex() != -1) {
+
+         } 
+             //gör att knappen blir klickbar
+             showTest.setDisable(false);
+             //Hämtar det objektet man klickar på i listview
+//             Test b = (Test) testsDone.getSelectionModel().getSelectedItem();
+//             logic.setResultFromTest(b);
+//          UserHasTest userGrade = (UserHasTest) testsDone.getSelectionModel().getSelectedItem();
+//          logic.setStudentGrade(userGrade);
+    }
      @FXML
     private void startTestAction(ActionEvent event) throws IOException {
-//        logic.setPickedTest(testsToDo.getSelectionModel().getSelectedItem());
+      // logic.setPickedTest(testsToDo.getSelectionModel().getSelectedItem());
         Stage stage;
         Parent root;
         stage = new Stage();
@@ -125,11 +139,21 @@ public class FXMLStudentPageController implements Initializable {
     
     }
     
+    //visar resultat på ett redan gjord test
+     @FXML
+    private void showResultAction(ActionEvent event) throws IOException {
+        Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene sc = new Scene(FXMLLoader.load(getClass().getResource("/testverktygfrontend/doingTest/FXMLShowTestResult.fxml")));
+        stg.setScene(sc);
+        stg.show();
+    
+    }
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Sätter userName label till studentens mail
-        userName.setText(logic.getUser().getEMail());
+        profileLabel.setText(logic.getUser().getEMail());
         
         //Hämtar listan på kurser som en student har och visar den i Listviewn
         for (Course c : logic.getUser().getCourseList()) {

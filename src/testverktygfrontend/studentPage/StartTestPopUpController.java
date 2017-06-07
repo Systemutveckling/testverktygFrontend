@@ -18,6 +18,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 /**
@@ -39,19 +41,22 @@ public class StartTestPopUpController implements Initializable {
     @FXML
     private Label startTestLabel;
 
+    @FXML
+    private Button result;
+
     /**
      * Initializes the controller class.
      */
-    
-    
-     @FXML
+    @FXML
     private void cancelPop(ActionEvent event) {
         Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stg.close();
 
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
             int time =  logic.getPickedTest().getTimeLimit();
             
             
@@ -67,8 +72,8 @@ public class StartTestPopUpController implements Initializable {
         
         testTime.setText(hours + " t " + minutes + " min");
         }
-    }    
-
+    }
+    
     @FXML
     private void startTest(ActionEvent event) throws IOException {
         Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -76,5 +81,7 @@ public class StartTestPopUpController implements Initializable {
         stg.setScene(sc);
         stg.show();
     }
-    
-}
+    }
+
+
+

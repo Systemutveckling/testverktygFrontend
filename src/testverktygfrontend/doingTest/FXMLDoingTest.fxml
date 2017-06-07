@@ -16,6 +16,24 @@
 
 <AnchorPane id="AnchorPane" prefHeight="443.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.doingTest.FXMLDoingTestController">
    <children>
+      <HBox prefHeight="87.0" prefWidth="600.0" style="-fx-background-color: #ea6b4f;">
+         <children>
+            <Label prefHeight="35.0" prefWidth="315.0" text="&quot;Namnet på provet&quot;" textFill="#dad5f3">
+               <font>
+                  <Font name="Josefin Sans Light" size="28.0" />
+               </font>
+               <HBox.margin>
+               </HBox.margin>
+            </Label>
+            <Label fx:id="countDownLabel" prefHeight="27.0" prefWidth="144.0" text="Label" textFill="#dad5f3">
+               <font>
+                  <Font name="Josefin Sans Bold" size="15.0" />
+               </font>
+               <HBox.margin>
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
       <ImageView fitHeight="201.0" fitWidth="200.0" layoutX="360.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="nameOnTest" layoutX="14.0" layoutY="14.0" prefHeight="35.0" prefWidth="243.0" text="&quot;Namnet på provet&quot;">
          <font>
