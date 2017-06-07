@@ -13,6 +13,7 @@ import com.model.User;
 import com.model.UserHasTest;
 import com.serverconnection.Server;
 import java.util.List;
+import javafx.stage.Stage;
 
 /**
  *
@@ -26,6 +27,7 @@ public class Logic {
 
     User user;
     User userStudent;
+    private Stage studentStage;
     private Course choosenCourseToCreateTestTo;
     private Test createdTempTest;
     private Test test;
@@ -127,5 +129,15 @@ public class Logic {
    public User getUserStudent(){
        return userStudent;
    }
+
+    public Stage getStudentStage() {
+        return studentStage;
+    }
+
+    public void setStudentStage(Stage studentStage) {
+        this.studentStage = studentStage;
+    }
+   
+   
 
 }

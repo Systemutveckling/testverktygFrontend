@@ -48,6 +48,7 @@ public class FXMLDocumentController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getResource("studentPage/FXMLStudentPage.fxml"));
             Scene one = new Scene(root);
             Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            logic.setStudentStage(stg);
             stg.setScene(one);
             stg.show();
             System.out.println("Elev!");

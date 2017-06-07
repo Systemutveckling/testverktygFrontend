@@ -66,6 +66,7 @@ public class StartTestPopUpController implements Initializable {
         Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene sc = new Scene(FXMLLoader.load(getClass().getResource("/testverktygfrontend/doingTest/FXMLDoingTest.fxml")));
         stg.setScene(sc);
+        logic.getStudentStage().close();
         stg.show();
     }
 

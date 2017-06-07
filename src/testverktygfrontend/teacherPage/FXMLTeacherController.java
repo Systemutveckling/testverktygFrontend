@@ -68,6 +68,7 @@ public class FXMLTeacherController implements Initializable {
         if (!(courseListView.getSelectionModel().getSelectedIndex() == -1)) {
             tests.clear();
             students.clear();
+            testsNotDone.clear();
             for (User c : logic.getUsers()) {
                 for (Course d : c.getCourseList()) {
                     if (d.getName().equals(courseListView.getSelectionModel().getSelectedItem().toString()) && c.getAuthorization() == 0) {
