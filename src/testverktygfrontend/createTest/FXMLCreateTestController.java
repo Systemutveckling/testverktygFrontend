@@ -184,7 +184,8 @@ public class FXMLCreateTestController implements Initializable {
         l.getCreatedTempTest().setName(txtFieldTestName.getText());
         l.getCreatedTempTest().setDescription(txtAreaTestDescription.getText());
         String substringTime = lblTime.getText().substring(0, lblTime.getText().indexOf("."));
-        l.getCreatedTempTest().setTimeLimit(Integer.parseInt(substringTime));
+        int timeLimitSeconds = Integer.parseInt(substringTime) * 60;
+        l.getCreatedTempTest().setTimeLimit(timeLimitSeconds);
         RadioButton selectedRadioButton = (RadioButton) toggleGroupSeeResult.getSelectedToggle();
         if (selectedRadioButton.getText().equals("Ja")) {
             l.getCreatedTempTest().setSeeResult(Short.valueOf("1"));
