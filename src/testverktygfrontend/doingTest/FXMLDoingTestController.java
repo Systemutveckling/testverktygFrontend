@@ -156,6 +156,7 @@ public class FXMLDoingTestController implements Initializable {
     @FXML
     private void showTestResult(ActionEvent event) throws IOException {
         timeline.stop();
+        savePickedAnswer();
         logic.setUserStudent(logic.getUser());
         List<Studentanswer> list = timeIsUpList(studentAnswer);
         studentAnswer = list;
@@ -323,7 +324,7 @@ public class FXMLDoingTestController implements Initializable {
     }
 
     public void testComplete() {
-        savePickedAnswer();
+        
         List<UserHasTest> userTests = logic.getUserTests(logic.getUser().getId());
         for (UserHasTest uht : userTests) {
             if (uht.getTestId().getId() == test.getId()) {
@@ -341,7 +342,8 @@ public class FXMLDoingTestController implements Initializable {
 
     public List<Studentanswer> timeIsUpList(List<Studentanswer> studentList) {
         List<Studentanswer> toReturnList = studentList;
-        if (test.getQuestionList().size() > studentList.size()) {
+        if (test.getQuestionList().size() != studentList.size()) {
+            System.out.println("kommer in här");
             for (int i = toReturnList.size(); i < test.getQuestionList().size(); i++) {
                 for (Answer a : test.getQuestionList().get(i).getAnswerList()) {
                     if (a.getIsCorrect() == 0) {
