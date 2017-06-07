@@ -14,6 +14,9 @@
             <file>file:/Users/ramonachantaf/Desktop/testverktygFrontend/src/testverktygfrontend/studentPage/FXMLStudentPage.fxml</file>
             <file>file:/Users/ramonachantaf/Desktop/testverktygFrontend/src/com/serverconnection/Server.java</file>
         </group>
-        <group/>
+        <group>
+            <file>file:/Users/hampus/Desktop/newtonBankish/testverktygFrontends/src/testverktygfrontend/doingTest/FXMLDoingTestController.java</file>
+            <file>file:/Users/hampus/Desktop/newtonBankish/testverktygFrontends/src/com/serverconnection/Server.java</file>
+        </group>
     </open-files>
 </project-private>
