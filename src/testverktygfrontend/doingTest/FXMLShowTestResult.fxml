@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="600.0" style="-fx-background-color: #f7f7f7;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="testverktygfrontend.doingTest.FXMLShowTestResultController">
+   <children>
+      <VBox fx:id="vBoxTop" alignment="CENTER" layoutY="76.0" prefHeight="138.0" prefWidth="622.0" style="-fx-background-color: #ea6b4f;" stylesheets="@newCascadeTestResult.css">
+         <children>
+            <Label fx:id="confirmation" stylesheets="@newCascadeTestResult.css" text="DU HAR LÄMNAT IN TESTET" />
+            <StackPane prefHeight="95.0" prefWidth="622.0">
+               <children>
+                  <Button fx:id="showResult" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#showResult" stylesheets="@newCascadeTestResult.css" text="visa resultat" textAlignment="CENTER">
+                     <StackPane.margin>
+                        <Insets top="60.0" />
+                     </StackPane.margin></Button>
+                  <Label fx:id="showText" prefHeight="101.0" prefWidth="306.0" stylesheets="@newCascadeTestResult.css" text="Läraren behöver rätta provet,du kommer få &#10;resultatet om några dagar!" textAlignment="CENTER" visible="false">
+                     <StackPane.margin>
+                        <Insets top="50.0" />
+                     </StackPane.margin></Label>
+               </children>
+            </StackPane>
+         </children>
+      </VBox>
+      <Button fx:id="myPage" layoutX="513.0" layoutY="595.0" mnemonicParsing="false" onAction="#goToMyPage" stylesheets="@newCascadeTestResult.css" text="min sida" AnchorPane.topAnchor="595.0" />
+      <ScrollPane fx:id="scroll" layoutX="17.0" layoutY="330.0" prefHeight="257.0" prefWidth="604.0" stylesheets="@newCascadeTestResult.css" visible="false" AnchorPane.topAnchor="330.0">
+         <content>
+            <VBox fx:id="vBox" prefHeight="321.0" prefWidth="530.0">
+               <padding>
+                  <Insets left="15.0" top="15.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+      <HBox fx:id="topHBox" layoutY="-1.0" prefHeight="77.0" prefWidth="622.0" stylesheets="@../studentPage/newCascadeStyleSheet.css">
+         <children>
+            <Label fx:id="userLabelImg" prefHeight="75.0" prefWidth="111.0" />
+            <GridPane prefHeight="77.0" prefWidth="329.0">
+               <children>
+                  <Label fx:id="profileLabel" prefHeight="34.0" prefWidth="166.0" stylesheets="@../studentPage/newCascadeStyleSheet.css" text="MIN PROFIL " GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label fx:id="studentLabel" text="STUDENT">
+                     <font>
+                        <Font name="Avenir Book" size="21.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets top="20.0" />
+                     </GridPane.margin>
+                  </Label>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="201.0" minWidth="10.0" prefWidth="200.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="35.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <Label text=" Resultat sida" textFill="#fa5837">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="70.0" top="30.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <VBox fx:id="resultBox" layoutX="17.0" layoutY="219.0" prefHeight="80.0" prefWidth="346.0" visible="false">
+         <children>
+            <HBox prefHeight="23.0" prefWidth="475.0">
+               <children>
+                  <Label fx:id="testI" prefHeight="18.0" prefWidth="49.0" stylesheets="@newCascadeTestResult.css" text="TEST I">
+                     <HBox.margin>
+                        <Insets top="3.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="testName" prefHeight="28.0" prefWidth="186.0" stylesheets="@newCascadeTestResult.css">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="totalPoang" prefHeight="18.0" prefWidth="116.0" stylesheets="@newCascadeTestResult.css" text="TOTAL POÄNG: ">
+                     <HBox.margin>
+                        <Insets top="9.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="points" prefHeight="35.0" prefWidth="119.0" stylesheets="@newCascadeTestResult.css" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="resultLabel" stylesheets="@newCascadeTestResult.css" text="RESULTAT">
+                     <HBox.margin>
+                        <Insets top="9.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="procentage" prefHeight="18.0" prefWidth="105.0" stylesheets="@newCascadeTestResult.css">
+                     <HBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox layoutX="463.0" layoutY="226.0" prefHeight="80.0" prefWidth="147.0" style="-fx-border-color: #f46e42;">
+         <children>
+            <Label text="Betyg krav:" textFill="#f46e42">
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="27.0" prefWidth="186.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="113.0" text="0%-49%">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label text="IG">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="27.0" prefWidth="186.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="115.0" text="50%-69%">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label text="G">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="27.0" prefWidth="186.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="112.0" text="70%-79%">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label text="VG">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+            <HBox prefHeight="27.0" prefWidth="186.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="111.0" text="80%-100%">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label text="MVG">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+      <Label fx:id="labelAboveScroll" layoutX="17.0" layoutY="309.0" prefHeight="17.0" prefWidth="266.0" text="Nedan hittar du vad du har svarat på testet" visible="false">
+         <font>
+            <Font name="QuicksandBook-Regular" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

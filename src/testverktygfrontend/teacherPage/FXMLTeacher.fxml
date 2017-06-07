@@ -62,7 +62,7 @@
                      <children>
                         <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="41.0" prefWidth="215.0">
                            <children>
-                              <Label fx:id="courseLabelImg" prefHeight="44.0" prefWidth="56.0" stylesheets="@../studentPage/newCascadeStyleSheet.css" />
+                              <Label fx:id="courseLabelImg" prefHeight="44.0" prefWidth="56.0" stylesheets="@newCascadeStyleSheet.css" />
                               <Label text="ELEVER" textFill="#f26a46">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
@@ -113,7 +113,7 @@
                                     <Insets left="58.0" top="10.0" />
                                  </HBox.margin>
                               </Button>
-                              <Button fx:id="showTest" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" stylesheets="@../studentPage/newCascadeStyleSheet.css" text="Visa test">
+                              <Button fx:id="showTest" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#showResultAction" stylesheets="@../studentPage/newCascadeStyleSheet.css" text="Visa test">
                                  <HBox.margin>
                                     <Insets left="20.0" top="10.0" />
                                  </HBox.margin>
@@ -125,15 +125,52 @@
                </children>
             </HBox>
          </center>
+         <top>
+            <HBox fx:id="topHBox" alignment="CENTER" spacing="10.0" stylesheets="@../studentPage/newCascadeStyleSheet.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="userLabelImg" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="50.0">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <Label fx:id="studentLabel" text="LÄRARE">
+                           <font>
+                              <Font name="Avenir Book" size="21.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="profileLabel" stylesheets="@../studentPage/newCascadeStyleSheet.css" text="MIN PROFIL " />
+                     </children>
+                  </VBox>
+                  <Region prefHeight="75.0" prefWidth="230.0" />
+                  <Label text="Hem" textFill="#fa5837">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="80.0" />
+                     </HBox.margin></Label>
+               </children>
+            </HBox>
+         </top>
          <left>
             <VBox alignment="BOTTOM_CENTER" prefHeight="516.0" prefWidth="128.0" spacing="20.0" style="-fx-background-color: linear-gradient(to bottom, #ff7f50, #10374b);" BorderPane.alignment="CENTER">
                <children>
-                  <Button id="backLabel" fx:id="backLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#back" prefHeight="44.0" prefWidth="50.0" stylesheets="@../Statistic/newCascadeStyleSheet.css" text="TIILBAKA" textAlignment="CENTER">
+                  <Button id="backLabel" fx:id="backLabel" alignment="CENTER" contentDisplay="CENTER" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#back" prefHeight="33.0" prefWidth="61.0" stylesheets="@../Statistic/newCascadeStyleSheet.css" text="TIILBAKA" textAlignment="CENTER">
                      <padding>
                         <Insets top="45.0" />
                      </padding>
                      <VBox.margin>
-                        <Insets bottom="20.0" />
+                        <Insets bottom="390.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="logOut" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#logOut" prefHeight="44.0" prefWidth="86.0" stylesheets="@../studentPage/newCascadeStyleSheet.css" text="LOGGA UT" textAlignment="CENTER">
+                     <padding>
+                        <Insets top="40.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
                      </VBox.margin>
                   </Button>
                </children>
