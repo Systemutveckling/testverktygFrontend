@@ -88,8 +88,8 @@ public class FXMLDoingTestController implements Initializable {
 
     int questionId = 0;
 
-    //int secondsLeft = logic.getPickedTest().getTimeLimit();
-    int secondsLeft = 6;
+    int secondsLeft = logic.getPickedTest().getTimeLimit();
+    //int secondsLeft = 6;
 
     @FXML
     private Button quittest;
@@ -139,29 +139,6 @@ public class FXMLDoingTestController implements Initializable {
             quittest.setText("Avsluta test");
             left.setVisible(false);
             right.setVisible(false);
-            /* ETT FÖRSÖK FÖR ATT FÅ FEL PÅ RESTERANDE SVAR
-            int answerSize = studentAnswer.size();
-            if(answerSize<=studentAnswer.size()){
-                int size = studentAnswer.size();
-                size-=answerSize;
-                for(int i = 0; i > size; i++){
-                    Studentanswer sa = new Studentanswer();
-                    for(int j =size; j > test.getQuestionList().size();j++){
-                        for(Answer a : test.getQuestionList().get(j).getAnswerList()){
-                            if(a.getIsCorrect()==0){
-                                sa.setAnswerId(a);
-                                sa.setQuestionId(test.getQuestionList().get(j));
-                                sa.setUserId(logic.getUser());
-                            }
-                        }
-                    }
-                    
-                    studentAnswer.add(sa);
-                }
-
-            }
-*/
-            testComplete();
             timeline.stop();
 
         } else {
@@ -177,7 +154,10 @@ public class FXMLDoingTestController implements Initializable {
 
     @FXML
     private void showTestResult(ActionEvent event) throws IOException {
+        timeline.stop();
         logic.setUserStudent(logic.getUser());
+        List<Studentanswer> list = timeIsUpList(studentAnswer);
+        studentAnswer = list;
         testComplete();
         Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene sc = new Scene(FXMLLoader.load(getClass().getResource("FXMLShowTestResult.fxml")));
@@ -338,7 +318,6 @@ public class FXMLDoingTestController implements Initializable {
         }
 
         int percent = (int) ((amountOfCorrects * 100.0f) / test.getQuestionList().size());
-
         return Integer.toString(percent);
     }
 
@@ -349,12 +328,32 @@ public class FXMLDoingTestController implements Initializable {
                 uht.setGrade(gradeCalc());
                 uht.setIsDone((short) 1);
                 logic.updateStudentTestStatus(uht);
+                break;
             }
         }
         for (Studentanswer sa : studentAnswer) {
             logic.saveStudentAnswer(sa);
         }
         studentAnswer.clear();
+    }
+
+    public List<Studentanswer> timeIsUpList(List<Studentanswer> studentList) {
+        List<Studentanswer> toReturnList = studentList;
+        if (test.getQuestionList().size() > studentList.size()) {
+            for (int i = toReturnList.size(); i < test.getQuestionList().size(); i++) {
+                for (Answer a : test.getQuestionList().get(i).getAnswerList()) {
+                    if (a.getIsCorrect() == 0) {
+                        Studentanswer sa = new Studentanswer();
+                        sa.setAnswerId(a);
+                        sa.setQuestionId(test.getQuestionList().get(i));
+                        sa.setUserId(logic.getUser());
+                        toReturnList.add(sa);
+                        break;
+                    }
+                }
+            }
+        }
+        return toReturnList;
     }
 
 }
