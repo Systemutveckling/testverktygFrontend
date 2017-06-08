@@ -132,12 +132,7 @@ public class FXMLStudentPageController implements Initializable {
         stage.setResizable(false);
         root = FXMLLoader.load(getClass().getResource("StartTestPopUp.fxml"));
         stage.setScene(new Scene(root));
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.initOwner(btnStart.getScene().getWindow());
-        stage.setOnCloseRequest((WindowEvent we) -> {
-            stage.close();
-        });
-        stage.showAndWait();
+        stage.show();
     
     }
     
