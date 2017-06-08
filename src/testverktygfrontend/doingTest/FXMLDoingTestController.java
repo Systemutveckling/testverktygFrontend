@@ -270,6 +270,8 @@ public class FXMLDoingTestController implements Initializable {
             Image image = null;
 
             try {
+                System.out.println("Är vi här?");
+                System.out.println(test.getQuestionList().get(questionId).getImgUrl());
                 image = new Image(test.getQuestionList().get(questionId).getImgUrl());
             } catch (Exception e) {
                 System.out.println(e);

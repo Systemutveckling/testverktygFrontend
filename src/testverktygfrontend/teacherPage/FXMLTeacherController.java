@@ -106,10 +106,10 @@ public class FXMLTeacherController implements Initializable {
 
             for (UserHasTest d : fakeStudentList.get(studentList.getSelectionModel().getSelectedIndex()).getUserHasTestList()) {
 
-                if (d.getIsDone() == 0) {
+                if (d.getIsDone() == 0 && d.getCourseId().getId() == logic.getCourse().getId()) {
                     testsNotDone.add(d.getTestId());
 
-                } else if (d.getIsDone() == 1) {
+                } else if (d.getIsDone() == 1 && d.getCourseId().getId() == logic.getCourse().getId()) {
                     tests.add(d.getTestId());
 
                 }
