@@ -92,11 +92,11 @@ public class FXMLShowStudentResultController implements Initializable {
 
     @FXML
     private void goBack(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/testverktygfrontend/teacherPage/FXMLTeacher.fxml"));
-        Scene one = new Scene(root);
+        //Parent root = FXMLLoader.load(getClass().getResource("/testverktygfrontend/teacherPage/FXMLTeacher.fxml"));
+        //Scene one = new Scene(root);
         Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stg.setScene(one);
-        stg.show();
+        //stg.setScene(one);
+        stg.close();
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {

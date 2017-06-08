@@ -208,10 +208,11 @@ public class FXMLTeacherController implements Initializable {
     
        @FXML
     private void showResultAction(ActionEvent event) throws IOException {
-        Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = new Stage();
+        //Stage stg = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene sc = new Scene(FXMLLoader.load(getClass().getResource("/testverktygfrontend/teacherPage/FXMLShowStudentResult.fxml")));
-        stg.setScene(sc);
-        stg.show();
+        stage.setScene(sc);
+        stage.show();
     
     }
 

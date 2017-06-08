@@ -30,6 +30,6 @@
             <Font name="Josefin Sans" size="35.0" />
          </font>
       </Label>
-      <Label fx:id="wrongCredentials" layoutX="202.0" layoutY="413.0" prefHeight="17.0" prefWidth="246.0" textFill="RED" />
+      <Label fx:id="wrongCredentials" layoutX="177.0" layoutY="415.0" prefHeight="17.0" prefWidth="246.0" textAlignment="CENTER" textFill="WHITE" />
     </children>
 </AnchorPane>

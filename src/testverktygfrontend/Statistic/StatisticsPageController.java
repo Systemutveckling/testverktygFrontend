@@ -203,7 +203,7 @@ public class StatisticsPageController implements Initializable {
                     Parent root = null;
                     stage = new Stage();
                     try {
-                        root = FXMLLoader.load(getClass().getResource("/testverktygfrontend/doingTest/FXMLShowTestResult.fxml"));
+                        root = FXMLLoader.load(getClass().getResource("/testverktygfrontend/teacherPage/FXMLShowStudentResult.fxml"));
                     } catch (IOException ex) {
                         Logger.getLogger(StatisticsPageController.class.getName()).log(Level.SEVERE, null, ex);
                     }
